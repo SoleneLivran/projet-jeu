@@ -41,6 +41,43 @@
 | utilisateur | pouvoir écrire un synopsys de mon scénario | afin de décrire l'univers de mon jeu |
 | utilisateur | pouvoir choisir un niveau de difficulté à titre indicatif | afin d'indiquer aux autres utilisateurs un niveau de difficulté  |
 | utilisateur | pouvoir sauvegarder un scénario en cours de création | afin de poursuivre l'édition de son scénario plus tard |
-| utilisateur |  |  |
-| utilisateur |  |  |
+| utilisateur | pouvoir modifier un jeu que j'ai créé | afin de modifier le scénario  |
+| utilisateur | pouvoir publier un jeu que j'ai créé | afin qu'il soit jouable et public |
+| utilisateur | pouvoir attribuer un genre à mon scénario parmi une liste  | afin de pouvoir le retrouver à l'aide des filtres  |
+| utilisateur | pouvoir choisir un lieu où se passe la scène en cours | afin de donner une ambiance spatiotemporelle |
+| utilisateur | pouvoir choisir les évènements qui s'y déroule | afin de dynamiser le scénario et créer des actions en conséquences |
+| utilisateur | pouvoir choisir les actions qui y ont lieu | afin de créer des choix ou des contraintes  |
 
+## Back Office
+| En tant que | Je veux | Afin de (si besoin/nécessaire) |
+|--|--|--|
+| Administrateur | pouvoir me connecter à l'interface d'administration |  |
+| Administrateur | visualiser tous les utilisateurs | Accéder la liste utilisateur détaillée selon la BDD |
+| Administrateur | ajouter un utilisateur |  |
+| Administrateur | modifier un utilisateur |  |
+| Administrateur | supprimer un utilisateur |  |
+| Administrateur | visualiser tous les jeux  | (avec leurs détails : synopsys, genre, difficulté, title, avatar, publié ou en création) et aussi permettre de voir afin de voir leur date de modification / mise à jour et nettoyer la base de donnée |
+| Administrateur | ajouter un jeu |  |
+| Administrateur | modifier un jeu | modifier uniquement son descriptif (on ne retouche pas l'histoire) |
+| Administrateur | supprimer un jeu |  |
+| Administrateur | visualiser la liste des genres | Accéder la liste genres détaillée selon la BDD |
+| Administrateur | ajouter un genre |  |
+| Administrateur | modifier un genre |  |
+| Administrateur | supprimer un genre |  |
+| Administrateur | visualiser la liste des avatars | Accéder la liste avatars détaillée selon la BDD |
+| Administrateur | ajouter un avatar |  |
+| Administrateur | modifier un avatar |  |
+| Administrateur | supprimer un avatar |  |
+| Administrateur | visualiser la liste des évènements | Accéder la liste évenements détaillée selon la BDD |
+| Administrateur | ajouter un  évènement |  |
+| Administrateur | modifier un  évènement |  |
+| Administrateur | supprimer un  évènement |  |
+| Administrateur | visualiser la liste des lieux | Accéder la liste lieux détaillée selon la BDD |
+| Administrateur | ajouter un  lieu |  |
+| Administrateur | modifier un  lieu |  |
+| Administrateur | supprimer un  lieu |  |
+| Administrateur | visualiser la liste des actions | Accéder la liste actions détaillée selon la BDD |
+| Administrateur | ajouter une action |  |
+| Administrateur | modifier une action |  |
+| Administrateur | supprimer une action |  |
+| Super- Administrateur | modifier les droits d'un utilisateur | Afin de changer les droits d'un utilisateur et le passer Administrateur/Super - Administrateur |
