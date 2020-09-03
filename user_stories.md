@@ -34,8 +34,13 @@
 | utilisateur | pouvoir entrer dans une interface de jeu immersive | afin d'être plongé dans un mode de jeu où la barre de navigation disparait et laisse place à un bouton "quitter" |
 | utilisateur | pouvoir noter un jeu une fois terminé | afin de générer un rating des jeux |
 
-
-
+## Create interface
+| En tant que | Je veux | Afin de (si besoin/nécessaire) |
+|--|--|--|
+| utilisateur | pouvoir choisir le titre de mon scénario | afin qu'il apparaisse dans la liste des jeux |
+| utilisateur | pouvoir écrire un synopsys de mon scénario | afin de décrire l'univers de mon jeu |
+| utilisateur | pouvoir choisir un niveau de difficulté à titre indicatif | afin d'indiquer aux autres utilisateurs un niveau de difficulté  |
+| utilisateur | pouvoir sauvegarder un scénario en cours de création | afin de poursuivre l'édition de son scénario plus tard |
 | utilisateur |  |  |
 | utilisateur |  |  |
 
