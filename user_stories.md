@@ -25,3 +25,17 @@
 | utilisateur | pouvoir supprimer un de mes jeux | Supprimer mes informations |
 | utilisateur | pouvoir démarrer une partie à partir de la page détails de mes jeux | afin de jouer un jeu sélectionné |
 | utilisateur | pouvoir accèder à la page Créer | afin de créer un scénario |
+
+## Game interface
+| En tant que | Je veux | Afin de (si besoin/nécessaire) |
+|--|--|--|
+| utilisateur | pouvoir quitter une partie en cours  | afin de sortir du mode jeu |
+| utilisateur | pouvoir recommencer une partie si le jeu est terminé | afin de retenter l'aventure |
+| utilisateur | pouvoir entrer dans une interface de jeu immersive | afin d'être plongé dans un mode de jeu où la barre de navigation disparait et laisse place à un bouton "quitter" |
+| utilisateur | pouvoir noter un jeu une fois terminé | afin de générer un rating des jeux |
+
+
+
+| utilisateur |  |  |
+| utilisateur |  |  |
+
