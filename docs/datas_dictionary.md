@@ -11,6 +11,8 @@
 | sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place |
 | updated_at | TIMESTAMP | NULL | Updated time for place |
+| place_type | ENTITY | FOREIGN KEY | data about the type of place |
+
 
 ## Evenements (`event`)
 
@@ -23,6 +25,7 @@
 | sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for event |
 | updated_at | TIMESTAMP | NULL | Updated time for event |
+| event_type | ENTITY | FOREIGN KEY | data about the type of event |
 
 ## Actions (`action`)
 
@@ -34,6 +37,7 @@
 | sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for action |
 | updated_at | TIMESTAMP | NULL | Updated time for action |
+| action_type | ENTITY | FOREIGN KEY | data about the type of action |
 
 ## Histoires (`story`)
 
