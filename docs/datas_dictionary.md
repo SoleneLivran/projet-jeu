@@ -62,6 +62,7 @@
 | mail | VARCHAR(255) | NOT NULL | user mail|
 | password | VARCHAR(255) | NOT NULL | user password |
 | role | TINYINT(1) | NOT NULL, DEFAULT | user role (user or admin) |
+| stories_played | INT | NOT NULL, DEFAULT 0 | to see how many stories played by user |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for user |
 | updated_at | TIMESTAMP | NULL | Updated time for user |
 | avatar_id | ENTITY | FOREIGN KEY | data about author (user)|

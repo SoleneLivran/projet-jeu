@@ -34,6 +34,8 @@
 | utilisateur | pouvoir consulter ma liste de favoris | afin de naviguer rapidemment parmi mes jeux préférés | BONUS
 | utilisateur | pouvoir consulter ma wishlist | afin de lancer un jeu qui s'y trouve | BONUS
 | utilisateur | pouvoir consulter la liste de mes badges (trophées/succès) | afin d'en tirer une fierté toute relative | BONUS
+| utilisateur | pouvoir consulter le nombre de parties créées | afin de voir mes statistiques | BONUS
+| utilisateur | pouvoir consulter le nombre de parties jouées | afin de voir mes statistiques | BONUS
 
 ## Game interface
 
