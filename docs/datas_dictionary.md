@@ -34,3 +34,16 @@
 | sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for action |
 | updated_at | TIMESTAMP | NULL | Updated time for action |
+
+## Histoires (`story`)
+
+|Champ|Type|Spécificités|Description|
+|-|-|-|-|
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|story ID|
+| status | TINYINT(1) | NOT NULL, DEFAULT 0 | story status: playable(1), editing(2) |
+| rating | TINYINT(1) | NOT NULL, DEFAULT 0 | story rating out of 5 |
+| synopsis | TEXT | NULL | story synopsis |
+| created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for action |
+| updated_at | TIMESTAMP | NULL | Updated time for action |
+| author | ENTITY | FOREIGN KEY, NOT NULL | data about author (user)|
+| category | ENTITY | FOREIGN KEY, NULL | data about category |
