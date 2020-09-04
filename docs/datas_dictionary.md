@@ -4,11 +4,11 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Place ID|
-| name | VARCHAR(64) | NOT NULL | Place name |
-| description | TEXT | NULL | Place describe |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | Link to picture file |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | Link to sound file |
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|place ID|
+| name | VARCHAR(64) | NOT NULL | place name |
+| description | TEXT | NULL | place describe |
+| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to picture file |
+| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place |
 | updated_at | TIMESTAMP | NULL | Updated time for place |
 
@@ -16,11 +16,21 @@
 
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Place ID|
-| name | VARCHAR(64) | NOT NULL | Place name |
-| description | TEXT | NULL | Place describe |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | Link to picture file |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | Link to sound file |
-| created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place |
-| updated_at | TIMESTAMP | NULL | Updated time for place |
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|event ID|
+| name | VARCHAR(64) | NOT NULL | event name |
+| description | TEXT | NULL | event describe |
+| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to picture file |
+| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
+| created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for event |
+| updated_at | TIMESTAMP | NULL | Updated time for event |
 
+## Actions (`action`)
+
+|Champ|Type|Spécificités|Description|
+|-|-|-|-|
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|action ID|
+| name | VARCHAR(64) | NOT NULL | action name |
+| description | TEXT | NULL | action describe |
+| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
+| created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for action |
+| updated_at | TIMESTAMP | NULL | Updated time for action |
