@@ -7,8 +7,8 @@
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|place ID|
 | name | VARCHAR(64) | NOT NULL | place name |
 | description | TEXT | NULL | place describe |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to picture file about the main place (place_type) |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
+| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to the picture representing the specific place appearing in the "place" card |
+| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file for the atmosphere of the current place |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place |
 | updated_at | TIMESTAMP | NULL | Updated time for place |
 | place_type_id | ENTITY | FOREIGN KEY | data about the type of place |
@@ -44,7 +44,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|story ID|
-| status | TINYINT(1) | NOT NULL, DEFAULT 0 | story status: playable(1), editing(2) |
+| status | TINYINT(1) | NOT NULL, DEFAULT 2 | story status: playable(1), editing(2) |
 | rating | TINYINT(1) | NOT NULL, DEFAULT 0 | story rating out of 5 |
 | synopsis | TEXT | NULL | story synopsis |
 | difficulty | TINYINT(1) | NULL | story difficulty |
@@ -61,7 +61,7 @@
 | name | VARCHAR(64) | NOT NULL | user name |
 | mail | VARCHAR(255) | NOT NULL | user mail|
 | password | VARCHAR(255) | NOT NULL | user password |
-| role | TINYINT(1) | NOT NULL, DEFAULT | user role (user or admin) |
+| role | TINYINT(1) | NOT NULL, DEFAULT | user(1), admin(2), superadmin(3) |
 | stories_played | INT | NOT NULL, DEFAULT 0 | to see how many stories played by user |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for user |
 | updated_at | TIMESTAMP | NULL | Updated time for user |
@@ -73,7 +73,7 @@
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|place_type ID|
 | name | VARCHAR(64) | NOT NULL | place_type name |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to picture file. Main place |
+| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to the picture representing the type of place, appearing in the background |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place_type |
 | updated_at | TIMESTAMP | NULL | Updated time for place_type |
 
