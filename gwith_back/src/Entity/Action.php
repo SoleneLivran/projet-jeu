@@ -50,7 +50,7 @@ class Action
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
      */
-    private $actionTypeId;
+    private $actionType;
 
     /**
      * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="actionId", orphanRemoval=true)
@@ -127,14 +127,14 @@ class Action
         return $this;
     }
 
-    public function getActionTypeId(): ?ActionType
+    public function getActionType(): ?ActionType
     {
-        return $this->actionTypeId;
+        return $this->actionType;
     }
 
-    public function setActionTypeId(?ActionType $actionTypeId): self
+    public function setActionType(?ActionType $actionType): self
     {
-        $this->actionTypeId = $actionTypeId;
+        $this->actionType = $actionType;
 
         return $this;
     }
@@ -151,7 +151,7 @@ class Action
     {
         if (!$this->transitions->contains($transition)) {
             $this->transitions[] = $transition;
-            $transition->setActionId($this);
+            $transition->setAction($this);
         }
 
         return $this;
@@ -162,8 +162,8 @@ class Action
         if ($this->transitions->contains($transition)) {
             $this->transitions->removeElement($transition);
             // set the owning side to null (unless already changed)
-            if ($transition->getActionId() === $this) {
-                $transition->setActionId(null);
+            if ($transition->getAction() === $this) {
+                $transition->setAction(null);
             }
         }
 

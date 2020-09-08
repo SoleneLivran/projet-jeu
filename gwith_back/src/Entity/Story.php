@@ -60,12 +60,12 @@ class Story
      * @ORM\ManyToOne(targetEntity=AppUser::class, inversedBy="stories")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $authorId;
+    private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
      */
-    private $categoryId;
+    private $category;
 
     public function getId(): ?int
     {
@@ -156,26 +156,26 @@ class Story
         return $this;
     }
 
-    public function getAuthorId(): ?AppUser
+    public function getAuthor(): ?AppUser
     {
-        return $this->authorId;
+        return $this->author;
     }
 
-    public function setAuthorId(?AppUser $authorId): self
+    public function setAuthor(?AppUser $author): self
     {
-        $this->authorId = $authorId;
+        $this->author = $author;
 
         return $this;
     }
 
-    public function getCategoryId(): ?StoryCategory
+    public function getCategory(): ?StoryCategory
     {
-        return $this->categoryId;
+        return $this->category;
     }
 
-    public function setCategoryId(?StoryCategory $categoryId): self
+    public function setCategory(?StoryCategory $category): self
     {
-        $this->categoryId = $categoryId;
+        $this->category = $category;
 
         return $this;
     }

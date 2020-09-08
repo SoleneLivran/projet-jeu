@@ -33,18 +33,18 @@ class Transition
     /**
      * @ORM\ManyToMany(targetEntity=Scene::class, inversedBy="transitions")
      */
-    private $currentSceneId;
+    private $currentScene;
 
     /**
      * @ORM\ManyToOne(targetEntity=Scene::class, inversedBy="transitions")
      */
-    private $nextSceneId;
+    private $nextScene;
 
     /**
      * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="transitions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $actionId;
+    private $action;
 
     public function __construct()
     {
@@ -83,49 +83,49 @@ class Transition
     /**
      * @return Collection|Scene[]
      */
-    public function getCurrentSceneId(): Collection
+    public function getCurrentScene(): Collection
     {
-        return $this->currentSceneId;
+        return $this->currentScene;
     }
 
-    public function addCurrentSceneId(Scene $currentSceneId): self
+    public function addCurrentScene(Scene $currentScene): self
     {
-        if (!$this->currentSceneId->contains($currentSceneId)) {
-            $this->currentSceneId[] = $currentSceneId;
+        if (!$this->currentScene->contains($currentScene)) {
+            $this->currentScene[] = $currentScene;
         }
 
         return $this;
     }
 
-    public function removeCurrentSceneId(Scene $currentSceneId): self
+    public function removeCurrentScene(Scene $currentScene): self
     {
-        if ($this->currentSceneId->contains($currentSceneId)) {
-            $this->currentSceneId->removeElement($currentSceneId);
+        if ($this->currentScene->contains($currentScene)) {
+            $this->currentScene->removeElement($currentScene);
         }
 
         return $this;
     }
 
-    public function getNextSceneId(): ?Scene
+    public function getNextScene(): ?Scene
     {
-        return $this->nextSceneId;
+        return $this->nextScene;
     }
 
-    public function setNextSceneId(?Scene $nextSceneId): self
+    public function setNextScene(?Scene $nextScene): self
     {
-        $this->nextSceneId = $nextSceneId;
+        $this->nextScene = $nextScene;
 
         return $this;
     }
 
-    public function getActionId(): ?Action
+    public function getAction(): ?Action
     {
-        return $this->actionId;
+        return $this->action;
     }
 
-    public function setActionId(?Action $actionId): self
+    public function setaction(?Action $action): self
     {
-        $this->actionId = $actionId;
+        $this->action = $action;
 
         return $this;
     }

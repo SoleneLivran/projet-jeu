@@ -62,7 +62,7 @@ class Event
      * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $eventTypeId;
+    private $eventType;
 
     /**
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="eventId", orphanRemoval=true)
@@ -163,14 +163,14 @@ class Event
         return $this;
     }
 
-    public function getEventTypeId(): ?EventType
+    public function getEventType(): ?EventType
     {
-        return $this->eventTypeId;
+        return $this->eventType;
     }
 
-    public function setEventTypeId(?EventType $eventTypeId): self
+    public function setEventType(?EventType $eventType): self
     {
-        $this->eventTypeId = $eventTypeId;
+        $this->eventType = $eventType;
 
         return $this;
     }
@@ -187,7 +187,7 @@ class Event
     {
         if (!$this->scenes->contains($scene)) {
             $this->scenes[] = $scene;
-            $scene->setEventId($this);
+            $scene->setEvent($this);
         }
 
         return $this;
@@ -198,8 +198,8 @@ class Event
         if ($this->scenes->contains($scene)) {
             $this->scenes->removeElement($scene);
             // set the owning side to null (unless already changed)
-            if ($scene->getEventId() === $this) {
-                $scene->setEventId(null);
+            if ($scene->getEvent() === $this) {
+                $scene->setEvent(null);
             }
         }
 

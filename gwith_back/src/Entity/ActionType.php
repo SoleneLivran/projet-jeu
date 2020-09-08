@@ -98,7 +98,7 @@ class ActionType
     {
         if (!$this->actions->contains($action)) {
             $this->actions[] = $action;
-            $action->setActionTypeId($this);
+            $action->setActionType($this);
         }
 
         return $this;
@@ -109,8 +109,8 @@ class ActionType
         if ($this->actions->contains($action)) {
             $this->actions->removeElement($action);
             // set the owning side to null (unless already changed)
-            if ($action->getActionTypeId() === $this) {
-                $action->setActionTypeId(null);
+            if ($action->getActionType() === $this) {
+                $action->setActionType(null);
             }
         }
 

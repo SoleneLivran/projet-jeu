@@ -98,7 +98,7 @@ class StoryCategory
     {
         if (!$this->stories->contains($story)) {
             $this->stories[] = $story;
-            $story->setCategoryId($this);
+            $story->setCategory($this);
         }
 
         return $this;
@@ -109,8 +109,8 @@ class StoryCategory
         if ($this->stories->contains($story)) {
             $this->stories->removeElement($story);
             // set the owning side to null (unless already changed)
-            if ($story->getCategoryId() === $this) {
-                $story->setCategoryId(null);
+            if ($story->getCategory() === $this) {
+                $story->setCategory(null);
             }
         }
 

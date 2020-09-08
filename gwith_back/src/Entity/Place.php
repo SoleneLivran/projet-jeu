@@ -55,7 +55,7 @@ class Place
     /**
      * @ORM\ManyToMany(targetEntity=PlaceType::class, inversedBy="places")
      */
-    private $placeTypeId;
+    private $placeType;
 
     /**
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="placeId", orphanRemoval=true)
@@ -64,7 +64,7 @@ class Place
 
     public function __construct()
     {
-        $this->placeTypeId = new ArrayCollection();
+        $this->placeType = new ArrayCollection();
         $this->scenes = new ArrayCollection();
     }
 
@@ -148,24 +148,24 @@ class Place
     /**
      * @return Collection|PlaceType[]
      */
-    public function getPlaceTypeId(): Collection
+    public function getPlaceType(): Collection
     {
-        return $this->placeTypeId;
+        return $this->placeType;
     }
 
-    public function addPlaceTypeId(PlaceType $placeTypeId): self
+    public function addPlaceType(PlaceType $placeType): self
     {
-        if (!$this->placeTypeId->contains($placeTypeId)) {
-            $this->placeTypeId[] = $placeTypeId;
+        if (!$this->placeType->contains($placeType)) {
+            $this->placeType[] = $placeType;
         }
 
         return $this;
     }
 
-    public function removePlaceTypeId(PlaceType $placeTypeId): self
+    public function removePlaceType(PlaceType $placeType): self
     {
-        if ($this->placeTypeId->contains($placeTypeId)) {
-            $this->placeTypeId->removeElement($placeTypeId);
+        if ($this->placeType->contains($placeType)) {
+            $this->placeType->removeElement($placeType);
         }
 
         return $this;
@@ -183,7 +183,7 @@ class Place
     {
         if (!$this->scenes->contains($scene)) {
             $this->scenes[] = $scene;
-            $scene->setPlaceId($this);
+            $scene->setPlace($this);
         }
 
         return $this;
@@ -194,8 +194,8 @@ class Place
         if ($this->scenes->contains($scene)) {
             $this->scenes->removeElement($scene);
             // set the owning side to null (unless already changed)
-            if ($scene->getPlaceId() === $this) {
-                $scene->setPlaceId(null);
+            if ($scene->getPlace() === $this) {
+                $scene->setPlace(null);
             }
         }
 

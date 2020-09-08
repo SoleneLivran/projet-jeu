@@ -116,7 +116,7 @@ class PlaceType
     {
         if (!$this->places->contains($place)) {
             $this->places[] = $place;
-            $place->addPlaceTypeId($this);
+            $place->addPlaceType($this);
         }
 
         return $this;
@@ -126,7 +126,7 @@ class PlaceType
     {
         if ($this->places->contains($place)) {
             $this->places->removeElement($place);
-            $place->removePlaceTypeId($this);
+            $place->removePlaceType($this);
         }
 
         return $this;

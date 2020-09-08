@@ -39,13 +39,13 @@ class Scene
      * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $placeId;
+    private $place;
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $eventId;
+    private $event;
 
     public function __construct()
     {
@@ -93,7 +93,7 @@ class Scene
     {
         if (!$this->transitions->contains($transition)) {
             $this->transitions[] = $transition;
-            $transition->addCurrentSceneId($this);
+            $transition->addCurrentScene($this);
         }
 
         return $this;
@@ -103,32 +103,32 @@ class Scene
     {
         if ($this->transitions->contains($transition)) {
             $this->transitions->removeElement($transition);
-            $transition->removeCurrentSceneId($this);
+            $transition->removeCurrentScene($this);
         }
 
         return $this;
     }
 
-    public function getPlaceId(): ?Place
+    public function getPlace(): ?Place
     {
-        return $this->placeId;
+        return $this->place;
     }
 
-    public function setPlaceId(?Place $placeId): self
+    public function setPlace(?Place $place): self
     {
-        $this->placeId = $placeId;
+        $this->placeId = $place;
 
         return $this;
     }
 
-    public function getEventId(): ?Event
+    public function getEvent(): ?Event
     {
-        return $this->eventId;
+        return $this->event;
     }
 
-    public function setEventId(?Event $eventId): self
+    public function setEvent(?Event $event): self
     {
-        $this->eventId = $eventId;
+        $this->eventId = $event;
 
         return $this;
     }

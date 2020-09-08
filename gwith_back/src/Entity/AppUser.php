@@ -65,7 +65,7 @@ class AppUser
     /**
      * @ORM\ManyToOne(targetEntity=Avatar::class)
      */
-    private $avatarId;
+    private $avatar;
 
     public function __construct()
     {
@@ -173,7 +173,7 @@ class AppUser
     {
         if (!$this->stories->contains($story)) {
             $this->stories[] = $story;
-            $story->setAuthorId($this);
+            $story->setAuthor($this);
         }
 
         return $this;
@@ -184,22 +184,22 @@ class AppUser
         if ($this->stories->contains($story)) {
             $this->stories->removeElement($story);
             // set the owning side to null (unless already changed)
-            if ($story->getAuthorId() === $this) {
-                $story->setAuthorId(null);
+            if ($story->getAuthor() === $this) {
+                $story->setAuthor(null);
             }
         }
 
         return $this;
     }
 
-    public function getAvatarId(): ?Avatar
+    public function getAvatar(): ?Avatar
     {
-        return $this->avatarId;
+        return $this->avatar;
     }
 
-    public function setAvatarId(?Avatar $avatarId): self
+    public function setAvatar(?Avatar $avatar): self
     {
-        $this->avatarId = $avatarId;
+        $this->avatar = $avatar;
 
         return $this;
     }

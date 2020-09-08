@@ -98,7 +98,7 @@ class EventType
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setEventTypeId($this);
+            $event->setEventType($this);
         }
 
         return $this;
@@ -109,8 +109,8 @@ class EventType
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
             // set the owning side to null (unless already changed)
-            if ($event->getEventTypeId() === $this) {
-                $event->setEventTypeId(null);
+            if ($event->getEventType() === $this) {
+                $event->setEventType(null);
             }
         }
 
