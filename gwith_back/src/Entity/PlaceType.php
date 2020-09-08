@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlaceTypeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,6 +40,16 @@ class PlaceType
      * @ORM\Column(type="string", options={"default": ""})
      */
     private $pictureFile;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Place::class, mappedBy="placeTypeId")
+     */
+    private $places;
+
+    public function __construct()
+    {
+        $this->places = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -88,6 +100,34 @@ class PlaceType
     public function setPictureFile(string $pictureFile): self
     {
         $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Place[]
+     */
+    public function getPlaces(): Collection
+    {
+        return $this->places;
+    }
+
+    public function addPlace(Place $place): self
+    {
+        if (!$this->places->contains($place)) {
+            $this->places[] = $place;
+            $place->addPlaceTypeId($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlace(Place $place): self
+    {
+        if ($this->places->contains($place)) {
+            $this->places->removeElement($place);
+            $place->removePlaceTypeId($this);
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AppUserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,7 +36,7 @@ class AppUser
 
     /**
      * @ORM\Column(type="smallint")
-      * @ORM\Column(type="smallint", options={"default": 1})
+    * @ORM\Column(type="smallint", options={"default": 1})
      */
     private $role;
 
@@ -54,6 +56,21 @@ class AppUser
      * @ORM\Column(type="integer", options={"default": 0})
      */
     private $storiesPlayed;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="authorId", orphanRemoval=true)
+     */
+    private $stories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Avatar::class)
+     */
+    private $avatarId;
+
+    public function __construct()
+    {
+        $this->stories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,6 +157,49 @@ class AppUser
     public function setStoriesPlayed(int $storiesPlayed): self
     {
         $this->storiesPlayed = $storiesPlayed;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Story[]
+     */
+    public function getStories(): Collection
+    {
+        return $this->stories;
+    }
+
+    public function addStory(Story $story): self
+    {
+        if (!$this->stories->contains($story)) {
+            $this->stories[] = $story;
+            $story->setAuthorId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStory(Story $story): self
+    {
+        if ($this->stories->contains($story)) {
+            $this->stories->removeElement($story);
+            // set the owning side to null (unless already changed)
+            if ($story->getAuthorId() === $this) {
+                $story->setAuthorId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAvatarId(): ?Avatar
+    {
+        return $this->avatarId;
+    }
+
+    public function setAvatarId(?Avatar $avatarId): self
+    {
+        $this->avatarId = $avatarId;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActionTypeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,16 @@ class ActionType
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Action::class, mappedBy="actionTypeId")
+     */
+    private $actions;
+
+    public function __construct()
+    {
+        $this->actions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,6 +82,37 @@ class ActionType
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Action[]
+     */
+    public function getActions(): Collection
+    {
+        return $this->actions;
+    }
+
+    public function addAction(Action $action): self
+    {
+        if (!$this->actions->contains($action)) {
+            $this->actions[] = $action;
+            $action->setActionTypeId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAction(Action $action): self
+    {
+        if ($this->actions->contains($action)) {
+            $this->actions->removeElement($action);
+            // set the owning side to null (unless already changed)
+            if ($action->getActionTypeId() === $this) {
+                $action->setActionTypeId(null);
+            }
+        }
 
         return $this;
     }

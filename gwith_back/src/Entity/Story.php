@@ -56,6 +56,17 @@ class Story
      */
     private $synopsis;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=AppUser::class, inversedBy="stories")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $authorId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
+     */
+    private $categoryId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +152,30 @@ class Story
     public function setSynopsis(?string $synopsis): self
     {
         $this->synopsis = $synopsis;
+
+        return $this;
+    }
+
+    public function getAuthorId(): ?AppUser
+    {
+        return $this->authorId;
+    }
+
+    public function setAuthorId(?AppUser $authorId): self
+    {
+        $this->authorId = $authorId;
+
+        return $this;
+    }
+
+    public function getCategoryId(): ?StoryCategory
+    {
+        return $this->categoryId;
+    }
+
+    public function setCategoryId(?StoryCategory $categoryId): self
+    {
+        $this->categoryId = $categoryId;
 
         return $this;
     }

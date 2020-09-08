@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlaceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,6 +51,22 @@ class Place
      * @ORM\Column(type="string", options={"default": ""})
      */
     private $soundFile;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=PlaceType::class, inversedBy="places")
+     */
+    private $placeTypeId;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="placeId", orphanRemoval=true)
+     */
+    private $scenes;
+
+    public function __construct()
+    {
+        $this->placeTypeId = new ArrayCollection();
+        $this->scenes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,6 +141,63 @@ class Place
     public function setSoundFile(string $soundFile): self
     {
         $this->soundFile = $soundFile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlaceType[]
+     */
+    public function getPlaceTypeId(): Collection
+    {
+        return $this->placeTypeId;
+    }
+
+    public function addPlaceTypeId(PlaceType $placeTypeId): self
+    {
+        if (!$this->placeTypeId->contains($placeTypeId)) {
+            $this->placeTypeId[] = $placeTypeId;
+        }
+
+        return $this;
+    }
+
+    public function removePlaceTypeId(PlaceType $placeTypeId): self
+    {
+        if ($this->placeTypeId->contains($placeTypeId)) {
+            $this->placeTypeId->removeElement($placeTypeId);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Scene[]
+     */
+    public function getScenes(): Collection
+    {
+        return $this->scenes;
+    }
+
+    public function addScene(Scene $scene): self
+    {
+        if (!$this->scenes->contains($scene)) {
+            $this->scenes[] = $scene;
+            $scene->setPlaceId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScene(Scene $scene): self
+    {
+        if ($this->scenes->contains($scene)) {
+            $this->scenes->removeElement($scene);
+            // set the owning side to null (unless already changed)
+            if ($scene->getPlaceId() === $this) {
+                $scene->setPlaceId(null);
+            }
+        }
 
         return $this;
     }

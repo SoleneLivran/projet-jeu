@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,6 +46,21 @@ class Action
      * @ORM\Column(type="string", options={"default": ""})
      */
     private $soundFile;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
+     */
+    private $actionTypeId;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="actionId", orphanRemoval=true)
+     */
+    private $transitions;
+
+    public function __construct()
+    {
+        $this->transitions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -106,6 +123,49 @@ class Action
     public function setSoundFile(string $soundFile): self
     {
         $this->soundFile = $soundFile;
+
+        return $this;
+    }
+
+    public function getActionTypeId(): ?ActionType
+    {
+        return $this->actionTypeId;
+    }
+
+    public function setActionTypeId(?ActionType $actionTypeId): self
+    {
+        $this->actionTypeId = $actionTypeId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transition[]
+     */
+    public function getTransitions(): Collection
+    {
+        return $this->transitions;
+    }
+
+    public function addTransition(Transition $transition): self
+    {
+        if (!$this->transitions->contains($transition)) {
+            $this->transitions[] = $transition;
+            $transition->setActionId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransition(Transition $transition): self
+    {
+        if ($this->transitions->contains($transition)) {
+            $this->transitions->removeElement($transition);
+            // set the owning side to null (unless already changed)
+            if ($transition->getActionId() === $this) {
+                $transition->setActionId(null);
+            }
+        }
 
         return $this;
     }

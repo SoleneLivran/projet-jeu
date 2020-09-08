@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SceneRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +29,28 @@ class Scene
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Transition::class, mappedBy="currentSceneId")
+     */
+    private $transitions;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="scenes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $placeId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="scenes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $eventId;
+
+    public function __construct()
+    {
+        $this->transitions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,6 +77,58 @@ class Scene
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transition[]
+     */
+    public function getTransitions(): Collection
+    {
+        return $this->transitions;
+    }
+
+    public function addTransition(Transition $transition): self
+    {
+        if (!$this->transitions->contains($transition)) {
+            $this->transitions[] = $transition;
+            $transition->addCurrentSceneId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransition(Transition $transition): self
+    {
+        if ($this->transitions->contains($transition)) {
+            $this->transitions->removeElement($transition);
+            $transition->removeCurrentSceneId($this);
+        }
+
+        return $this;
+    }
+
+    public function getPlaceId(): ?Place
+    {
+        return $this->placeId;
+    }
+
+    public function setPlaceId(?Place $placeId): self
+    {
+        $this->placeId = $placeId;
+
+        return $this;
+    }
+
+    public function getEventId(): ?Event
+    {
+        return $this->eventId;
+    }
+
+    public function setEventId(?Event $eventId): self
+    {
+        $this->eventId = $eventId;
 
         return $this;
     }

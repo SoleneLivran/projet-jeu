@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StoryCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,16 @@ class StoryCategory
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="categoryId")
+     */
+    private $stories;
+
+    public function __construct()
+    {
+        $this->stories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,6 +82,37 @@ class StoryCategory
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Story[]
+     */
+    public function getStories(): Collection
+    {
+        return $this->stories;
+    }
+
+    public function addStory(Story $story): self
+    {
+        if (!$this->stories->contains($story)) {
+            $this->stories[] = $story;
+            $story->setCategoryId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStory(Story $story): self
+    {
+        if ($this->stories->contains($story)) {
+            $this->stories->removeElement($story);
+            // set the owning side to null (unless already changed)
+            if ($story->getCategoryId() === $this) {
+                $story->setCategoryId(null);
+            }
+        }
 
         return $this;
     }

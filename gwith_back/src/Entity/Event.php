@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -49,6 +51,28 @@ class Event
      * @ORM\Column(type="string", options={"default": ""})
      */
     private $soundFile;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $isEnd;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $eventTypeId;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="eventId", orphanRemoval=true)
+     */
+    private $scenes;
+
+    public function __construct()
+    {
+        $this->scenes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,6 +147,61 @@ class Event
     public function setSoundFile(string $soundFile): self
     {
         $this->soundFile = $soundFile;
+
+        return $this;
+    }
+
+    public function getIsEnd(): ?bool
+    {
+        return $this->isEnd;
+    }
+
+    public function setIsEnd(bool $isEnd): self
+    {
+        $this->isEnd = $isEnd;
+
+        return $this;
+    }
+
+    public function getEventTypeId(): ?EventType
+    {
+        return $this->eventTypeId;
+    }
+
+    public function setEventTypeId(?EventType $eventTypeId): self
+    {
+        $this->eventTypeId = $eventTypeId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Scene[]
+     */
+    public function getScenes(): Collection
+    {
+        return $this->scenes;
+    }
+
+    public function addScene(Scene $scene): self
+    {
+        if (!$this->scenes->contains($scene)) {
+            $this->scenes[] = $scene;
+            $scene->setEventId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScene(Scene $scene): self
+    {
+        if ($this->scenes->contains($scene)) {
+            $this->scenes->removeElement($scene);
+            // set the owning side to null (unless already changed)
+            if ($scene->getEventId() === $this) {
+                $scene->setEventId(null);
+            }
+        }
 
         return $this;
     }
