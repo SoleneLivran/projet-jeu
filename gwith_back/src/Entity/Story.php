@@ -18,7 +18,6 @@ class Story
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
@@ -35,13 +34,11 @@ class Story
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="smallint")
      * @ORM\Column(type="smallint", options={"default": 2})
      */
     private $status;
 
     /**
-     * @ORM\Column(type="smallint")
      * @ORM\Column(type="smallint", options={"default": 0})
      */
     private $rating;

@@ -35,14 +35,12 @@ class AppUser
     private $password;
 
     /**
-     * @ORM\Column(type="smallint")
-    * @ORM\Column(type="smallint", options={"default": 1})
+     * @ORM\Column(type="smallint", options={"default": 1})
      */
     private $role;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -52,7 +50,7 @@ class AppUser
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="integer")
+   
      * @ORM\Column(type="integer", options={"default": 0})
      */
     private $storiesPlayed;

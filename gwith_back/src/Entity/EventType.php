@@ -25,7 +25,6 @@ class EventType
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;

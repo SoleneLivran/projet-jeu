@@ -30,8 +30,7 @@ class Action
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -42,8 +41,7 @@ class Action
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
     private $soundFile;
 

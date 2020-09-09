@@ -25,7 +25,6 @@ class PlaceType
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
@@ -36,8 +35,7 @@ class PlaceType
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
     private $pictureFile;
 
