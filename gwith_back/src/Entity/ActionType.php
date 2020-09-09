@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ActionTypeRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,8 +26,7 @@ class ActionType
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -43,6 +43,7 @@ class ActionType
     public function __construct()
     {
         $this->actions = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

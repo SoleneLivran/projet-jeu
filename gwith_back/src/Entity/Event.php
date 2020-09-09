@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,8 +31,7 @@ class Event
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -41,22 +41,19 @@ class Event
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $pictureFile;
+    private $pictureFile = "";
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $soundFile;
+    private $soundFile = "";
 
     /**
-     * @ORM\Column(type="boolean")
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $isEnd;
+    private $isEnd = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
@@ -72,6 +69,7 @@ class Event
     public function __construct()
     {
         $this->scenes = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AppUserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,14 +36,12 @@ class AppUser
     private $password;
 
     /**
-     * @ORM\Column(type="smallint")
-    * @ORM\Column(type="smallint", options={"default": 1})
+     * @ORM\Column(type="smallint", options={"default": 1})
      */
-    private $role;
+    private $role = 1;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -52,10 +51,10 @@ class AppUser
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="integer")
+   
      * @ORM\Column(type="integer", options={"default": 0})
      */
-    private $storiesPlayed;
+    private $storiesPlayed = 0;
 
     /**
      * @ORM\OneToMany(targetEntity=Story::class, mappedBy="authorId", orphanRemoval=true)
@@ -70,6 +69,7 @@ class AppUser
     public function __construct()
     {
         $this->stories = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

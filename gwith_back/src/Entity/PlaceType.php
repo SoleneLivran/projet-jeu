@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PlaceTypeRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,7 +26,6 @@ class PlaceType
     private $name;
 
     /**
-     * @ORM\Column(type="datetime")
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
@@ -36,10 +36,9 @@ class PlaceType
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $pictureFile;
+    private $pictureFile = "";
 
     /**
      * @ORM\ManyToMany(targetEntity=Place::class, mappedBy="placeTypeId")
@@ -49,6 +48,7 @@ class PlaceType
     public function __construct()
     {
         $this->places = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
