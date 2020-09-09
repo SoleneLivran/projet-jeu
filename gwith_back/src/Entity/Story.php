@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\StoryRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -65,9 +67,15 @@ class Story
      */
     private $category;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Rating::class, mappedBy="story", orphanRemoval=true)
+     */
+    private $ratings;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
+        $this->ratings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +187,37 @@ class Story
     public function setCategory(?StoryCategory $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rating[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setStory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->contains($rating)) {
+            $this->ratings->removeElement($rating);
+            // set the owning side to null (unless already changed)
+            if ($rating->getStory() === $this) {
+                $rating->setStory(null);
+            }
+        }
 
         return $this;
     }
