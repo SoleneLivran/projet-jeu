@@ -36,7 +36,7 @@ class Transition
     private $currentScene;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Scene::class, inversedBy="transitions")
+     * @ORM\ManyToOne(targetEntity=Scene::class)
      */
     private $nextScene;
 

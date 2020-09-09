@@ -36,7 +36,7 @@ class StoryCategory
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="categoryId")
+     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="category")
      */
     private $stories;
 
