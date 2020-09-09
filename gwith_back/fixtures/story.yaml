@@ -4,5 +4,5 @@ App\Entity\Story:
     publishedAt: <dateTime()>
     dificulty: 1
     synopsis: "ABBA, Amour, Bière, Bagarre, Alien"
-    author: '@appuser_Matt'
+    author: '@appuser_matt'
     category: '@storycategory_adventure'

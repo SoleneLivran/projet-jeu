@@ -57,7 +57,7 @@ class AppUser
     private $storiesPlayed = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="authorId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="author", orphanRemoval=true)
      */
     private $stories;
 

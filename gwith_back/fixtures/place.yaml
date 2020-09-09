@@ -3,27 +3,27 @@ App\Entity\Place:
       name: "Forêt"
       description: "Vous entrez dans la forêt"
       updatedAt: <dateTime()>
-      placeType: '@placetype_nature'
+      addPlaceType: '@placetype_nature'
     place_oasis:
       name: "Oasis"
       description: "Vous entrez dans un Oasis"
       updatedAt: <dateTime()>
-      placeType: '@placetype_desert'
+      addPlaceType: '@placetype_desert'
     place_dune:
       name: "Dunes"
       description: "Vous montez sur une Dune"
       updatedAt: <dateTime()>
-      placeType: '@placetype_desert'
+      addPlaceType: '@placetype_desert'
     place_lake:
       name: "Lac"
       description: "Vous arrivez aux abords d'un Lac"
       updatedAt: <dateTime()>
-      placeType: '@placetype_nature'
+      addPlaceType: '@placetype_nature'
     place_raft:
       name: "Radeau"
       description: "Vous montez sur un radeau"
       updatedAt: <dateTime()>
-      placeType: '@placetype_ocean'
+      addPlaceType: '@placetype_ocean'
     place_spaceship:
       name: "Vaisseau Spatial"
       description: "Vous entrez dans un vaisseau spatial"
@@ -38,9 +38,9 @@ App\Entity\Place:
       name: "Caravansérail"
       description: "Vous arrivez dans un caravansérail"
       updatedAt: <dateTime()>
-      placeType: '@placetype_desert'
+      addPlaceType: '@placetype_desert'
     place_black_hole:
       name: "Trou noir"
       description: "Vous arrivez dans un trou noir"
       updatedAt: <dateTime()>
-      placeType: '@placetype_space'
+      addPlaceType: '@placetype_space'

@@ -48,7 +48,6 @@ class Transition
 
     public function __construct()
     {
-        $this->currentSceneId = new ArrayCollection();
         $this->createdAt = new DateTime();
     }
 
@@ -81,28 +80,14 @@ class Transition
         return $this;
     }
 
-    /**
-     * @return Collection|Scene[]
-     */
-    public function getCurrentScene(): Collection
+    public function getCurrentScene(): ?Scene
     {
         return $this->currentScene;
     }
 
-    public function addCurrentScene(Scene $currentScene): self
+    public function setCurrentScene(?Scene $currentScene): self
     {
-        if (!$this->currentScene->contains($currentScene)) {
-            $this->currentScene[] = $currentScene;
-        }
-
-        return $this;
-    }
-
-    public function removeCurrentScene(Scene $currentScene): self
-    {
-        if ($this->currentScene->contains($currentScene)) {
-            $this->currentScene->removeElement($currentScene);
-        }
+        $this->currentScene = $currentScene;
 
         return $this;
     }

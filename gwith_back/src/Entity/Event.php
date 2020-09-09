@@ -62,7 +62,7 @@ class Event
     private $eventType;
 
     /**
-     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="eventId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="event", orphanRemoval=true)
      */
     private $scenes;
 
