@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AvatarRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,7 +32,12 @@ class Avatar
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $pictureFile;
+    private $pictureFile = "";
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
     public function getId(): ?int
     {

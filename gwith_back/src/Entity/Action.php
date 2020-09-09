@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -43,7 +44,7 @@ class Action
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $soundFile;
+    private $soundFile = "";
 
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
@@ -58,6 +59,7 @@ class Action
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

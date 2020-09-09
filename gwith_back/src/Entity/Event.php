@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -42,17 +43,17 @@ class Event
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $pictureFile;
+    private $pictureFile = "";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $soundFile;
+    private $soundFile = "";
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $isEnd;
+    private $isEnd = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
@@ -68,6 +69,7 @@ class Event
     public function __construct()
     {
         $this->scenes = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

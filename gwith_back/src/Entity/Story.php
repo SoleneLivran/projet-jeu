@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\StoryRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,12 +37,12 @@ class Story
     /**
      * @ORM\Column(type="smallint", options={"default": 2})
      */
-    private $status;
+    private $status = 2;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
      */
-    private $rating;
+    private $rating = 0;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -63,6 +64,11 @@ class Story
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
 
     public function getId(): ?int
     {

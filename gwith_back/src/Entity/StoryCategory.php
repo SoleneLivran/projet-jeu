@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\StoryCategoryRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -42,6 +43,7 @@ class StoryCategory
     public function __construct()
     {
         $this->stories = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

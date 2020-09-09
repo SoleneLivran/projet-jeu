@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SceneRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -49,6 +50,7 @@ class Scene
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
