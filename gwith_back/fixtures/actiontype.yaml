@@ -1,0 +1,16 @@
+App\Entity\ActionType:
+  action_move:
+    name: "Deplacement"
+    updatedAt: <dateTime()>
+  action_type_chest_or_door_action:
+    name: "Action sur coffre ou porte"
+    updatedAt: <dateTime()>
+  action_fight:
+    name: "Combat"
+    updatedAt: <dateTime()>
+  action_item:
+    name: "Objet"
+    updatedAt: <dateTime()>
+  action_interaction:
+    name: "Interaction"
+    updatedAt: <dateTime()>

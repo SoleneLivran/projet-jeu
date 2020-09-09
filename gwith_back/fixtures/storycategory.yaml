@@ -1,0 +1,22 @@
+App\Entity\StoryCategory:
+  storycategory_investigation:
+    name: "Enquête"
+    updatedAt: <dateTime()>
+  storycategory_management:
+    name: "Gestion"
+    updatedAt: <dateTime()>
+  storycategory_narrative:
+    name: "Narratif"
+    updatedAt: <dateTime()>
+  storycategory_adventure:
+    name: "Aventure"
+    updatedAt: <dateTime()>
+  storycategory_horror:
+    name: "Horreur"
+    updatedAt: <dateTime()>
+  storycategory_fight:
+    name: "Combat"
+    updatedAt: <dateTime()>
+  storycategory_absurd:
+    name: "Absurde"
+    updatedAt: <dateTime()>

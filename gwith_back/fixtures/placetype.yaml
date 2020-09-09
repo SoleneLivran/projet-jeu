@@ -1,0 +1,22 @@
+App\Entity\PlaceType:
+  placetype_nature:
+    name: "Nature"
+    updatedAt: <dateTime()>
+  placetype_desert:
+    name: "Désert"
+    updatedAt: <dateTime()>
+  placetype_space:
+    name: "Espace"
+    updatedAt: <dateTime()>
+  placetype_ocean:
+    name: "Océan"
+    updatedAt: <dateTime()>
+  placetype_city:
+    name: "Cité"
+    updatedAt: <dateTime()>
+  placetype_inside:
+    name: "Intérieur"
+    updatedAt: <dateTime()>
+  placetype_air:
+    name: "Aérien"
+    updatedAt: <dateTime()>

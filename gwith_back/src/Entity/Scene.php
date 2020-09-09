@@ -31,7 +31,7 @@ class Scene
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Transition::class, mappedBy="currentSceneId")
+     * @ORM\ManyToOne(targetEntity=Transition::class, mappedBy="currentSceneId")
      */
     private $transitions;
 

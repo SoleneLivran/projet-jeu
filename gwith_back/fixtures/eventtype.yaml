@@ -1,0 +1,23 @@
+App\Entity\EventType:
+  eventtype_encouter:
+    name: "Rencontre"
+    updatedAt: <dateTime()>
+  eventtype_crossroads:
+    name: "Carrefour"
+    updatedAt: <dateTime()>
+  eventtype_item:
+    name: "Objet"
+    updatedAt: <dateTime()>
+  eventtype_end:
+    name: "Fin"
+    updatedAt: <dateTime()>
+  eventtype_death:
+    name: "Mort"
+    updatedAt: <dateTime()>
+  eventtype_state:
+    name: "Etat"
+    updatedAt: <dateTime()>
+  eventtype_event:
+    name: "Evènement"
+    updatedAt: <dateTime()>
+ 

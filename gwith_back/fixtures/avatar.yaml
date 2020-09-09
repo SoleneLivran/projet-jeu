@@ -1,0 +1,13 @@
+App\Entity\Avatar:
+  avatar_knight:
+    updatedAt: <dateTime()>
+    pictureFile: ""
+  avatar_witch:
+    updatedAt: <dateTime()>
+    pictureFile: ""
+  avatar_mage:
+    updatedAt: <dateTime()>
+    pictureFile: ""
+  avatar_alien:
+    updatedAt: <dateTime()>
+    pictureFile: ""

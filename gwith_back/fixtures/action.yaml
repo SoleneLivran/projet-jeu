@@ -1,0 +1,112 @@
+App\Entity\Action:
+    action_attack:
+        name: "Attaquer"
+        description: "Vous attaquez"
+        updatedAt: <dateTime()>
+        actionType: '@action_fight'
+    action_start_fight:
+        name: "Provoquer une bagarre"
+        description: "Vous provoquez une bagarre"
+        updatedAt: <dateTime()>
+        actionType: '@action_fight'
+    action_flee:
+        name: "Fuir"
+        description: "Vous partez en courant"
+        updatedAt: <dateTime()>
+        actionType: '@action_fight'
+    action_go_west:
+        name: "Aller à l'ouest"
+        description: "Vous allez à l'ouest"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_est:
+        name: "Aller à l'est"
+        description: "Vous allez à l'est"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_north:
+        name: "Aller au nord"
+        description: "Vous allez au nord"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_south:
+        name: "Aller au sud"
+        description: "Vous allez au sud"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_sword_hit:
+        name: "Coup d'épée"
+        description: "Vous portez un coup d'épée"
+        updatedAt: <dateTime()>
+        actionType: '@action_fight'
+    action_steal:
+        name: "Voler"
+        description: "Vous essayez de chaparder"
+        updatedAt: <dateTime()>
+        actionType: '@action_item'
+    action_fly:
+        name: "Voler"
+        description: "Vous volez dans les airs"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_negociate:
+        name: "Négocier"
+        description: "Vous tentez de parlementer"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_swim:
+        name: "Nager"
+        description: "Vous nagez à la surface"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_bar:
+        name: "Aller au bar"
+        description: "Vous vous dirigez vers le bar"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_kiss:
+        name: "Embrasser"
+        description: "Vous donnez un bisou"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_aquaponey:
+        name: "J'ai aquaponey"
+        description: "Ça suffit ces bêtises, vous avez Aquaponey"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_order_whisky:
+        name: "Commander du whisky"
+        description: "Vous commandez un whisky"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_order_beer:
+        name: "Commander une bière"
+        description: "Vous commandez une bière"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_marriage_proposal:
+        name: "Demander en mariage"
+        description: "Vous proposer de passer vos vies ensemble est c'est très romantique"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_be_happy:
+        name: "Être heureux"
+        description: "Vous vous contentez d'être heureux"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_open:
+        name: "Ouvrir"
+        description: "Ouvrir"
+        updatedAt: <dateTime()>
+        actionType: '@action_type_chest_or_door_action'
+    action_force:
+        name: "Forcer"
+        description: "Forcer"
+        updatedAt: <dateTime()>
+        actionType: '@action_type_chest_or_door_action'
+    action_crochet:
+        name: "Crocheter"
+        description: "Vous essayez de crocheter la serrure"
+        updatedAt: <dateTime()>
+        actionType: '@action_type_chest_or_door_action'
+        

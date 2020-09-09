@@ -1,0 +1,8 @@
+App\Entity\Story:
+  story_a:
+    updatedAt: <dateTime()>
+    publishedAt: <dateTime()>
+    dificulty: 1
+    synopsis: "ABBA, Amour, Bière, Bagarre, Alien"
+    author: '@appuser_Matt'
+    category: '@storycategory_adventure'
