@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ActionRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,8 +31,7 @@ class Action
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -42,10 +42,9 @@ class Action
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $soundFile;
+    private $soundFile = "";
 
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
@@ -60,6 +59,7 @@ class Action
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int

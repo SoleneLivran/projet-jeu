@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PlaceRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,8 +31,7 @@ class Place
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -41,16 +41,14 @@ class Place
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $pictureFile;
+    private $pictureFile = "";
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(type="string", options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": ""})
      */
-    private $soundFile;
+    private $soundFile = "";
 
     /**
      * @ORM\ManyToMany(targetEntity=PlaceType::class, inversedBy="places")
@@ -66,6 +64,7 @@ class Place
     {
         $this->placeType = new ArrayCollection();
         $this->scenes = new ArrayCollection();
+        $this->createdAt = new DateTime();
     }
 
     public function getId(): ?int
