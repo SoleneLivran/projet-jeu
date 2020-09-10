@@ -35,7 +35,7 @@ class PlaceController extends AbstractController
             $place,
             200,
             [],
-            ["groups" => ["places:view"]]
+            ["groups" => ["place:view"]]
         );
     }
 }
