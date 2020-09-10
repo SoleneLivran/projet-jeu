@@ -3,6 +3,8 @@ App\Entity\Story:
     updatedAt: <dateTime()>
     publishedAt: <dateTime()>
     dificulty: 1
-    synopsis: "ABBA, Amour, Bière, Bagarre, Alien"
+    title: "ABBA"
+    synopsis: "Amour, Bière, Bagarre, Alien"
     author: '@appuser_matt'
     category: '@storycategory_adventure'
+    firstScene: '@scene_a'

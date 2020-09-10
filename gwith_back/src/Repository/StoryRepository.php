@@ -19,32 +19,40 @@ class StoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Story::class);
     }
 
-    // /**
-    //  * @return Story[] Returns an array of Story objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * @return Story[] Returns an array of Story objects
     */
 
-    /*
-    public function findOneBySomeField($value): ?Story
+    public function findTopTen()
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        // de base ma requete ressemble à : SELECT * FROM story
+        $queryBuilder = $this->createQueryBuilder('story');
+
+         // je personnalise ma requete (ici max 10 résultats et ordonné par rating)
+         $queryBuilder->setMaxResults(10);
+         $queryBuilder->addOrderBy('story.rating');
+
+         // j'éxécute ma requête
+         $query = $queryBuilder->getQuery();
+
+        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        return $query->getResult();
     }
-    */
+
+
+    public function findLatestTen()
+    {
+        // de base ma requete ressemble à : SELECT * FROM story
+        $queryBuilder = $this->createQueryBuilder('story');
+
+         // je personnalise ma requete (ici max 10 résultats et ordonné par date de publication)
+         $queryBuilder->setMaxResults(10);
+         $queryBuilder->addOrderBy('story.publishedAt');
+
+         // j'éxécute ma requête
+         $query = $queryBuilder->getQuery();
+
+        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        return $query->getResult();
+    }
 }

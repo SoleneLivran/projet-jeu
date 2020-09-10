@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
@@ -17,6 +18,7 @@ class Story
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"stories:list"})
      */
     private $id;
 
@@ -27,6 +29,7 @@ class Story
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"stories:list"})
      *
      */
     private $publishedAt;
@@ -43,11 +46,13 @@ class Story
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
+     * @Groups({"stories:list"})
      */
     private $rating = 0;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
+     * @Groups({"stories:list"})
      */
     private $dificulty;
 
@@ -59,11 +64,13 @@ class Story
     /**
      * @ORM\ManyToOne(targetEntity=AppUser::class, inversedBy="stories")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"stories:list"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
+     * @Groups({"stories:list"})
      */
     private $category;
 
