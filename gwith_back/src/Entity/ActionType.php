@@ -23,6 +23,7 @@ class ActionType
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"actions:list", "action:view"})
      */
     private $name;
 

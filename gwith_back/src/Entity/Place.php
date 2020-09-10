@@ -18,16 +18,19 @@ class Place
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"places:list", "place:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"places:list", "place:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"places:list", "place:view"})
      */
     private $description;
 
@@ -43,16 +46,19 @@ class Place
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"places:list", "place:view"})
      */
     private $pictureFile = "";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"places:list"})
      */
     private $soundFile = "";
 
     /**
      * @ORM\ManyToMany(targetEntity=PlaceType::class, inversedBy="places")
+     * @Groups({"places:list", "place:view"})
      */
     private $placeType;
 

@@ -23,6 +23,7 @@ class PlaceType
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"places:list", "place:view"})
      */
     private $name;
 

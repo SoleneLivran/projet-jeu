@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -120,6 +121,8 @@
             "config/packages/test/nelmio_alice.yaml"
         ]
     },
+=======
+>>>>>>> development
     "nelmio/cors-bundle": {
         "version": "1.5",
         "recipe": {
@@ -132,6 +135,7 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+<<<<<<< HEAD
     "nikic/php-parser": {
         "version": "v4.9.1"
     },
@@ -546,5 +550,9 @@
     },
     "zendframework/zend-eventmanager": {
         "version": "3.2.1"
+=======
+    "php": {
+        "version": "7.3"
+>>>>>>> development
     }
 }
