@@ -31,7 +31,7 @@ class Scene
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Transition::class, mappedBy="currentSceneId")
+     * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="currentScene")
      */
     private $transitions;
 
@@ -94,7 +94,7 @@ class Scene
     {
         if (!$this->transitions->contains($transition)) {
             $this->transitions[] = $transition;
-            $transition->addCurrentScene($this);
+            $transition->setCurrentScene($this);
         }
 
         return $this;
@@ -104,7 +104,10 @@ class Scene
     {
         if ($this->transitions->contains($transition)) {
             $this->transitions->removeElement($transition);
-            $transition->removeCurrentScene($this);
+            // set the owning side to null (unless already changed)
+            if ($transition->getCurrentScene() === $this) {
+                $transition->setCurrentScene(null);
+            }
         }
 
         return $this;
@@ -117,7 +120,7 @@ class Scene
 
     public function setPlace(?Place $place): self
     {
-        $this->placeId = $place;
+        $this->place = $place;
 
         return $this;
     }
@@ -129,7 +132,7 @@ class Scene
 
     public function setEvent(?Event $event): self
     {
-        $this->eventId = $event;
+        $this->event = $event;
 
         return $this;
     }

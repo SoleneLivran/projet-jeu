@@ -36,7 +36,7 @@ class ActionType
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Action::class, mappedBy="actionTypeId")
+     * @ORM\OneToMany(targetEntity=Action::class, mappedBy="actionType")
      */
     private $actions;
 

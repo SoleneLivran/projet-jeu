@@ -1,0 +1,46 @@
+App\Entity\Place:
+    place_forest:
+      name: "Forêt"
+      description: "Vous entrez dans la forêt"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_nature'
+    place_oasis:
+      name: "Oasis"
+      description: "Vous entrez dans un Oasis"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_desert'
+    place_dune:
+      name: "Dunes"
+      description: "Vous montez sur une Dune"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_desert'
+    place_lake:
+      name: "Lac"
+      description: "Vous arrivez aux abords d'un Lac"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_nature'
+    place_raft:
+      name: "Radeau"
+      description: "Vous montez sur un radeau"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_ocean'
+    place_spaceship:
+      name: "Vaisseau Spatial"
+      description: "Vous entrez dans un vaisseau spatial"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_space'
+    place_tavern:
+      name: "Taverne"
+      description: "Vous entrez dans la taverne"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_caravan:
+      name: "Caravansérail"
+      description: "Vous arrivez dans un caravansérail"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_desert'
+    place_black_hole:
+      name: "Trou noir"
+      description: "Vous arrivez dans un trou noir"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_space'

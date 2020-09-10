@@ -1,0 +1,74 @@
+App\Entity\Transition:
+# HISTOIRE OURS/ALIEN
+  transition_a:
+  # taverne / rien de special -> whisky -> taverne / ivresse
+    updatedAt: <dateTime()>
+    currentScene: '@scene_a' 
+    action: '@action_order_whisky'
+    nextScene: '@scene_b'
+  transition_b:
+  # taverne / rien de special -> biere -> taverne / ivresse
+    updatedAt: <dateTime()>
+    currentScene: '@scene_a'
+    action: '@action_order_beer'
+    nextScene: '@scene_b'
+  transition_c:
+  # taverne / ivresse -> aller au bar -> taverne / rien de special
+    updatedAt: <dateTime()>
+    currentScene: '@scene_b'
+    action: '@action_order_beer'
+    nextScene: '@scene_a'
+  transition_d:
+  # taverne / rien de special -> bagarre -> foret / ours
+    updatedAt: <dateTime()>
+    currentScene: '@scene_a'
+    action: '@action_start_fight'
+    nextScene: '@scene_c'
+  transition_e:
+  # foret / ours -> bagarre -> foret / mort
+    updatedAt: <dateTime()>
+    currentScene: '@scene_c'
+    action: '@action_start_fight'
+    nextScene: '@scene_d'
+  transition_f:
+  # foret / ours -> embrasser -> foret / ours
+    updatedAt: <dateTime()>
+    currentScene: '@scene_c'
+    action: '@action_kiss'
+    nextScene: '@scene_e'
+  transition_g:
+  # foret / ours -> bagarre -> foret / mort
+    updatedAt: <dateTime()>
+    currentScene: '@scene_e'
+    action: '@action_start_fight'
+    nextScene: '@scene_d'
+  transition_h:
+  # foret / ours -> demande en mariage -> vaisseau spatial / alien
+    updatedAt: <dateTime()>
+    currentScene: '@scene_e'
+    action: '@action_marriage_proposal'
+    nextScene: '@scene_f'
+  transition_i:
+  # vaisseau spatial / alien -> bagarre -> trou noir / mort
+    updatedAt: <dateTime()>
+    currentScene: '@scene_f'
+    action: '@action_start_fight'
+    nextScene: '@scene_h'
+  transition_j:
+  # vaisseau spatial / alien -> demande en mariage -> vaisseau spatial / mariage
+    updatedAt: <dateTime()>
+    currentScene: '@scene_f'
+    action: '@action_marriage_proposal'
+    nextScene: '@scene_g'
+  transition_k:
+  # vaisseau spatial / mariage -> bagarre -> trou noir / mort
+    updatedAt: <dateTime()>
+    currentScene: '@scene_g'
+    action: '@action_start_fight'
+    nextScene: '@scene_h'
+  transition_l:
+  # vaisseau spatial / mariage -> etre heureux -> vaisseau spatial / gagner
+    updatedAt: <dateTime()>
+    currentScene: '@scene_g'
+    action: '@action_be_happy'
+    nextScene: '@scene_i'

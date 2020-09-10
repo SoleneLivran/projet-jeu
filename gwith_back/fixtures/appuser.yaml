@@ -1,0 +1,29 @@
+App\Entity\AppUser:
+  appuser_toto:
+    name: "Toto"
+    mail: "toto@gmail.com"
+    password: toto
+    updatedAt: <dateTime()>
+    avatar: '@avatar_knight'
+  appuser_titi:
+    name: "Titi"
+    mail: "titi@gmail.com"
+    password: titi
+    role: 2
+    updatedAt: <dateTime()>
+    avatar: '@avatar_witch'
+  appuser_tata:
+    name: "Tata"
+    mail: "tata@gmail.com"
+    password: tata
+    role: 2
+    updatedAt: <dateTime()>
+    storiesPlayed: 3
+    avatar: '@avatar_alien'
+  appuser_matt:
+    name: "Matt"
+    mail: "matt@gmail.com"
+    password: matt
+    role: 3
+    updatedAt: <dateTime()>
+    avatar: '@avatar_mage'

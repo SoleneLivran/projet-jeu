@@ -41,7 +41,7 @@ class PlaceType
     private $pictureFile = "";
 
     /**
-     * @ORM\ManyToMany(targetEntity=Place::class, mappedBy="placeTypeId")
+     * @ORM\ManyToMany(targetEntity=Place::class, mappedBy="placeType")
      */
     private $places;
 
