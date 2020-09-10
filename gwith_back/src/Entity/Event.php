@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -17,16 +18,19 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"events:list", "event:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"events:list", "event:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"events:list", "event:view"})
      */
     private $description;
 
@@ -42,22 +46,26 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"events:list", "event:view"})
      */
     private $pictureFile = "";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"event:view"})
      */
     private $soundFile = "";
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
+     * @Groups({"event:view"})
      */
     private $isEnd = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups({"events:list", "event:view"})
      */
     private $eventType;
 

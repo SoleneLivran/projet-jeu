@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AvatarRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AvatarRepository::class)
