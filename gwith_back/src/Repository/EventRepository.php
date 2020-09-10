@@ -38,17 +38,4 @@ class EventRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function view($id)    
-    {        
-        
-        $queryBuilder = $this->createQueryBuilder('event');
-        $queryBuilder->where(            
-        $queryBuilder->expr()->eq('event.id', $id)
-        );
-        $query = $queryBuilder->getQuery();                
-               
-        
-        return $query->getOneOrNullResult();    }
-
-   
 }
