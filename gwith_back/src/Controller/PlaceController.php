@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\ENtity\Place;
+use App\Entity\Place;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlaceRepository;
