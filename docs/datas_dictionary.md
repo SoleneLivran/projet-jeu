@@ -7,8 +7,8 @@
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|place ID|
 | name | VARCHAR(64) | NOT NULL | place name |
 | description | TEXT | NULL | place describe |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to the picture representing the specific place appearing in the "place" card |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file for the atmosphere of the current place |
+| picture_file | VARCHAR(255) | NOT NULL, DEFAULT | link to the picture representing the specific place appearing in the "place" card |
+| sound_file | VARCHAR(255) | NOT NULL, DEFAULT | link to sound file for the atmosphere of the current place |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place |
 | updated_at | TIMESTAMP | NULL | Updated time for place |
 | place_type_id | ENTITY | FOREIGN KEY | data about the type of place |
@@ -21,10 +21,11 @@
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|event ID|
 | name | VARCHAR(64) | NOT NULL | event name |
 | description | TEXT | NULL | event describe |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to picture file |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
+| picture_file | VARCHAR(255) | NOT NULL, DEFAULT | link to picture file |
+| sound_file | VARCHAR(255) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for event |
 | updated_at | TIMESTAMP | NULL | Updated time for event |
+| is_end | BOOLEAN | NOT NULL, DEFAULT FALSE | indicates if this event is the end of the story |
 | event_type_id | ENTITY | FOREIGN KEY | data about the type of event |
 
 ## Actions (`action`)
@@ -34,7 +35,7 @@
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|action ID|
 | name | VARCHAR(64) | NOT NULL | action name |
 | description | TEXT | NULL | action describe |
-| sound_file | VARCHAR(128) | NOT NULL, DEFAULT | link to sound file |
+| sound_file | VARCHAR(255) | NOT NULL, DEFAULT | link to sound file |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for action |
 | updated_at | TIMESTAMP | NULL | Updated time for action |
 | action_type_id | ENTITY | FOREIGN KEY | data about the type of action |
@@ -73,7 +74,7 @@
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|place_type ID|
 | name | VARCHAR(64) | NOT NULL | place_type name |
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | link to the picture representing the type of place, appearing in the background |
+| picture_file | VARCHAR(255) | NOT NULL, DEFAULT | link to the picture representing the type of place, appearing in the background |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for place_type |
 | updated_at | TIMESTAMP | NULL | Updated time for place_type |
 
@@ -109,7 +110,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|avatar ID|
-| picture_file | VARCHAR(128) | NOT NULL, DEFAULT | avatar name |
+| picture_file | VARCHAR(255) | NOT NULL, DEFAULT | avatar name |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for avatar |
 | updated_at | TIMESTAMP | NULL | Updated time for avatar |
 
@@ -133,3 +134,12 @@
 | updated_at | TIMESTAMP | NULL | Updated time for avatar |
 | place_id | ENTITY | FOREIGN KEY | data about place |
 | event_id | ENTITY | FOREIGN KEY | data about event |
+
+## Notes (`rating`)
+
+|Champ|Type|Spécificités|Description|
+|-|-|-|-|
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|rating ID|
+| created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for rating |
+| note | TINYINT | NOTE NULL | given score |
+| story_id | ENTITY | FOREIGN KEY | id of the rated story |
