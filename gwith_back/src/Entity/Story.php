@@ -72,6 +72,25 @@ class Story
      */
     private $ratings;
 
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
+     * @Groups({"stories:list"})
+     */
+    private $title = "Sans Titre";
+
+    /**
+     * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"stories:list"})
+     */
+    private $pictureFile = "";
+
+    /**
+     * @ORM\OneToOne(targetEntity=Scene::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $firstScene;
+
+   
     public function __construct()
     {
         $this->createdAt = new DateTime();
@@ -221,4 +240,41 @@ class Story
 
         return $this;
     }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getPictureFile(): ?string
+    {
+        return $this->pictureFile;
+    }
+
+    public function setPictureFile(string $pictureFile): self
+    {
+        $this->pictureFile = $pictureFile;
+
+        return $this;
+    }
+
+    public function getFirstScene(): ?Scene
+    {
+        return $this->firstScene;
+    }
+
+    public function setFirstScene(Scene $firstScene): self
+    {
+        $this->firstScene = $firstScene;
+
+        return $this;
+    }
+
 }
