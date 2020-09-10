@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StoryCategoryRepository::class)
@@ -22,11 +23,13 @@ class StoryCategory
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"stories:list"})
      */
     private $name;
 
     /**
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     *
      */
     private $createdAt;
 
