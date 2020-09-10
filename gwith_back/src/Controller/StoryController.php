@@ -16,7 +16,7 @@ class StoryController extends AbstractController
      */
     public function list(StoryRepository $repository)
     {
-        $stories = $repository->findAll();
+        $stories = $repository->findAllOrderByTitle();
         return $this->json(
             $stories,
             200,

@@ -23,6 +23,25 @@ class StoryRepository extends ServiceEntityRepository
     * @return Story[] Returns an array of Story objects
     */
 
+    public function findAllOrderByTitle()
+    {
+        // de base ma requete ressemble à : SELECT * FROM story
+        $queryBuilder = $this->createQueryBuilder('story');
+
+         // je personnalise ma requete (ordonné par titre)
+         $queryBuilder->addOrderBy('story.title');
+
+         // j'éxécute ma requête
+         $query = $queryBuilder->getQuery();
+
+        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        return $query->getResult();
+    }
+
+    /**
+    * @return Story[] Returns an array of Story objects
+    */
+
     public function findTopTen()
     {
         // de base ma requete ressemble à : SELECT * FROM story
