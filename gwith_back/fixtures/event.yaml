@@ -1,0 +1,68 @@
+App\Entity\Event:
+    event_crocodile:
+      name: "Crocodile"
+      description: "Vous faites face à un crocodile"
+      eventType: '@eventtype_encouter'
+    event_nothing_special:
+      name: "Rien de spécial"
+      description: "Il ne se passe rien de spécial"
+      eventType: '@eventtype_event'
+    event_drunk:
+      name: "Ivresse"
+      description: "Vous êtes ivre"
+      eventType: '@eventtype_state'
+    event_bear:
+      name: "Ours"
+      description: "Vous êtes face à un ours"
+      eventType: '@eventtype_encouter'
+    event_alien:
+      name: "Alien"
+      description: "Vous êtes face à un alien"
+      eventType: '@eventtype_encouter'
+    event_wedding:
+      name: "Mariage"
+      description: "Vous voilà à un mariage"
+      eventType: '@eventtype_event'
+    event_snake:
+      name: "Serpent"
+      description: "Vous faites face à un serpent"
+      eventType: '@eventtype_encouter'
+    event_camel:
+      name: "Chameau"
+      description: "Vous faites face à un Chameau"
+      eventType: '@eventtype_encouter'
+    event_trader:
+      name: "Marchand"
+      description: "Vous rencontrez un marchand"
+      eventType: '@eventtype_encouter'
+    event_lion:
+      name: "Lion"
+      description: "Vous faites face à un Lion"
+      eventType: '@eventtype_encouter'
+    event_crossroads:
+      name: "Carrefour"
+      description: "Plusieurs routes s'étendent devant vous"
+      eventType: '@eventtype_crossroads'
+    event_wooden_chest:
+      name: "Coffre"
+      description: "Vous êtes face à un coffre en bois"
+      eventType: '@eventtype_item'
+    event_strange_box:
+      name: "Boîte étrange"
+      description: "Vous êtes face à une boîte étrange"
+      eventType: '@eventtype_item'
+    event_death:
+      name: "Mort"
+      description: "Vous êtes...mort"
+      isEnd: true
+      eventType: '@eventtype_death'
+    event_gameEnd:
+      name: "Fin"
+      description: "Fin du jeu"
+      isEnd: true
+      eventType: '@eventtype_end'
+    event_gameLost:
+      name: "Jeu perdu"
+      description: "Vous avez perdu"
+      isEnd: true
+      eventType: '@eventtype_end'

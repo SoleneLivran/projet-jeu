@@ -36,7 +36,7 @@ class EventType
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="eventTypeId")
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="eventType")
      */
     private $events;
 

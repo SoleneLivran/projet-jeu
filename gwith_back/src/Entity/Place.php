@@ -56,7 +56,7 @@ class Place
     private $placeType;
 
     /**
-     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="placeId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="place", orphanRemoval=true)
      */
     private $scenes;
 

@@ -52,7 +52,7 @@ class Action
     private $actionType;
 
     /**
-     * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="actionId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="action", orphanRemoval=true)
      */
     private $transitions;
 
