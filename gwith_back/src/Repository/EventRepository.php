@@ -19,32 +19,36 @@ class EventRepository extends ServiceEntityRepository
         parent::__construct($registry, Event::class);
     }
 
-    // /**
-    //  * @return Event[] Returns an array of Event objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * @return Event[] Returns an array of Event objects
     */
 
-    /*
-    public function findOneBySomeField($value): ?Event
+    public function findAllOrderByName()
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        // de base ma requete ressemble à : SELECT * FROM story
+        $queryBuilder = $this->createQueryBuilder('event');
+
+         // je personnalise ma requete (ordonné par titre)
+         $queryBuilder->addOrderBy('event.name');
+
+         // j'éxécute ma requête
+         $query = $queryBuilder->getQuery();
+
+        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        return $query->getResult();
     }
-    */
+
+    public function view($id)    
+    {        
+        
+        $queryBuilder = $this->createQueryBuilder('event');
+        $queryBuilder->where(            
+        $queryBuilder->expr()->eq('event.id', $id)
+        );
+        $query = $queryBuilder->getQuery();                
+               
+        
+        return $query->getOneOrNullResult();    }
+
+   
 }
