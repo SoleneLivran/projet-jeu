@@ -18,7 +18,7 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"actions:list"})
+     * @Groups({"actions:list", "action:view"})
      */
     private $id;
 
