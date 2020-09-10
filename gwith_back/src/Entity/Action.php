@@ -7,6 +7,7 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ActionRepository::class)
@@ -17,16 +18,19 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"actions:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"actions:list", "action:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"actions:list", "action:view"})
      */
     private $description;
 
@@ -43,11 +47,13 @@ class Action
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"action:view"})
      */
     private $soundFile = "";
 
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
+     * @Groups({"actions:list", "action:view"})
      */
     private $actionType;
 

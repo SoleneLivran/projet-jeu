@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Story;
 use App\Repository\StoryRepository;
+
 /**
  * @Route("/api/stories")
  */
