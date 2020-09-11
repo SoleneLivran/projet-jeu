@@ -12,7 +12,7 @@ use App\Repository\EventRepository;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/", name="events_list")
+     * @Route("/", name="events_list", methods={"GET"})
      */
     public function list(EventRepository $repository)
     {
@@ -26,7 +26,7 @@ class EventController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="event_view", requirements={"id"="\d+"})
+     * @Route("/{id}", name="event_view" , methods={"GET"}, requirements={"id"="\d+"})
      */
     public function view(Event $event)
     {

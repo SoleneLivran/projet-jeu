@@ -13,7 +13,7 @@ use App\Repository\ActionRepository;
 class ActionController extends AbstractController
 {
     /**
-     * @Route("/", name="actions_list")
+     * @Route("/", name="actions_list", methods={"GET"})
      */
     public function list(ActionRepository $repository)
     {
@@ -27,7 +27,7 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="action_view", requirements={"id"="\d+"})
+     * @Route("/{id}", name="action_view", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function view(Action $action)
     {

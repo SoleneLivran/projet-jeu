@@ -55,7 +55,7 @@ class Story
      * @ORM\Column(type="smallint", nullable=true)
      * @Groups({"stories:list", "story:view"})
      */
-    private $dificulty;
+    private $difficulty;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -173,14 +173,14 @@ class Story
         return $this;
     }
 
-    public function getDificulty(): ?int
+    public function getDifficulty(): ?int
     {
-        return $this->dificulty;
+        return $this->difficulty;
     }
 
-    public function setDificulty(?int $dificulty): self
+    public function setDifficulty(?int $difficulty): self
     {
-        $this->dificulty = $dificulty;
+        $this->difficulty = $difficulty;
 
         return $this;
     }
