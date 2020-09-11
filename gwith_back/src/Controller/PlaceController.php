@@ -13,7 +13,7 @@ use App\Repository\PlaceRepository;
 class PlaceController extends AbstractController
 {
     /**
-     * @Route("/", name="places_list", methods={"GET")
+     * @Route("/", name="places_list", methods={"GET"})
      */
     public function list(PlaceRepository $repository)
     {
@@ -27,7 +27,7 @@ class PlaceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="place_view", requirements={"id"="\d+"}, methods={"GET")
+     * @Route("/{id}", name="place_view", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function view(Place $place)
     {
