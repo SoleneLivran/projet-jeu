@@ -13,7 +13,7 @@ use App\Repository\StoryRepository;
 class StoryController extends AbstractController
 {
     /**
-     * @Route("/", name="stories_list")
+     * @Route("/", name="stories_list", methods={"GET"})
      */
     public function list(StoryRepository $repository)
     {
@@ -27,7 +27,7 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/latest_ten", name="stories_latest_ten")
+     * @Route("/latest_ten", name="stories_latest_ten", methods={"GET"})
      */
     public function listLatestTen(StoryRepository $repository)
     {
@@ -41,7 +41,7 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/top_ten", name="stories_top_ten")
+     * @Route("/top_ten", name="stories_top_ten", methods={"GET"})
      */
     public function listTopTen(StoryRepository $repository)
     {
@@ -55,7 +55,7 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="story_view", requirements={"id"="\d+"})
+     * @Route("/{id}", name="story_view", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function view(Story $story)
     {
