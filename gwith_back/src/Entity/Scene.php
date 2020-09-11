@@ -34,6 +34,7 @@ class Scene
 
     /**
      * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="currentScene")
+     * @Groups({"story:view"})
      */
     private $transitions;
 
@@ -47,6 +48,7 @@ class Scene
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"story:view"})
      */
     private $event;
 
