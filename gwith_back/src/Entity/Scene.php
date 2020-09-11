@@ -18,6 +18,7 @@ class Scene
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"story:view"})
      */
     private $id;
 
@@ -39,6 +40,7 @@ class Scene
     /**
      * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"story:view"})
      */
     private $place;
 

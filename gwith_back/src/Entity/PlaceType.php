@@ -18,12 +18,13 @@ class PlaceType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"story:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"places:list", "place:view"})
+     * @Groups({"places:list", "place:view", "story:view"})
      */
     private $name;
 
@@ -39,6 +40,7 @@ class PlaceType
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"story:view"})
      */
     private $pictureFile = "";
 

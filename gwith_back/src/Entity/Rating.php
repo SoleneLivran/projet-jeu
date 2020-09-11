@@ -15,11 +15,13 @@ class Rating
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"story:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups({"story:view"})
      */
     private $note;
 

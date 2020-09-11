@@ -18,19 +18,19 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $description;
 
@@ -46,26 +46,26 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $pictureFile = "";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"event:view"})
+     * @Groups({"event:view", "story:view"})
      */
     private $soundFile = "";
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
-     * @Groups({"event:view"})
+     * @Groups({"event:view", "story:view"})
      */
     private $isEnd = false;
 
     /**
      * @ORM\ManyToOne(targetEntity=EventType::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $eventType;
 

@@ -53,8 +53,20 @@ class StoryController extends AbstractController
             ["groups" => ["stories:list"]]
         );
     }
+
+    /**
+     * @Route("/{id}", name="story_view", requirements={"id"="\d+"})
+     */
+    public function view(Story $story)
+    {
+        return $this->json(
+            $story,
+            200,
+            [],
+            ["groups" => ["story:view"]]
+        );
+    }
 }
 
 
 
-//php bin/console cache:clear

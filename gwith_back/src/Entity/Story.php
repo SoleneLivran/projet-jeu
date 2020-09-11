@@ -18,7 +18,7 @@ class Story
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $id;
 
@@ -29,7 +29,7 @@ class Story
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      *
      */
     private $publishedAt;
@@ -46,54 +46,57 @@ class Story
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $rating = 0;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $dificulty;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"story:view"})
      */
     private $synopsis;
 
     /**
      * @ORM\ManyToOne(targetEntity=AppUser::class, inversedBy="stories")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $category;
 
     /**
      * @ORM\OneToMany(targetEntity=Rating::class, mappedBy="story", orphanRemoval=true)
+     * @Groups({"story:view"})
      */
     private $ratings;
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $title = "Sans Titre";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"stories:list"})
+     * @Groups({"stories:list", "story:view"})
      */
     private $pictureFile = "";
 
     /**
      * @ORM\OneToOne(targetEntity=Scene::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"story:view"})
      */
     private $firstScene;
 

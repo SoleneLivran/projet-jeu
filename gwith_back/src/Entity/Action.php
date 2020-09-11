@@ -18,19 +18,19 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"actions:list", "action:view"})
+     * @Groups({"actions:list", "action:view","story:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"actions:list", "action:view"})
+     * @Groups({"actions:list", "action:view", "story:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"actions:list", "action:view"})
+     * @Groups({"actions:list", "action:view","story:view"})
      */
     private $description;
 
@@ -53,12 +53,13 @@ class Action
 
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
-     * @Groups({"actions:list", "action:view"})
+     * @Groups({"actions:list", "action:view", "story:view"})
      */
     private $actionType;
 
     /**
      * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="action", orphanRemoval=true)
+     * @Groups({"story:view"})
      */
     private $transitions;
 

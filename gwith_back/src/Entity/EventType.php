@@ -18,12 +18,13 @@ class EventType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"story:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"events:list", "event:view"})
+     * @Groups({"events:list", "event:view", "story:view"})
      */
     private $name;
 
