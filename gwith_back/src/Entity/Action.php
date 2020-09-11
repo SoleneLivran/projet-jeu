@@ -18,19 +18,19 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"actions:list", "action:view","story:view"})
+     * @Groups({"actions:list", "action:view","story:view", "action:listActionByActionType"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"actions:list", "action:view", "story:view"})
+     * @Groups({"actions:list", "action:view", "story:view", "action:listActionByActionType"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"actions:list", "action:view","story:view"})
+     * @Groups({"actions:list", "action:view","story:view", "action:listActionByActionType"})
      */
     private $description;
 
