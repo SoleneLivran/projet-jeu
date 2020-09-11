@@ -18,19 +18,19 @@ class Place
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"places:list", "place:view", "story:view"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"places:list", "place:view", "story:view"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"places:list", "place:view", "story:view"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $description;
 
@@ -46,19 +46,19 @@ class Place
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"places:list", "place:view", "story:view"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $pictureFile = "";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"places:list", "story:view"})
+     * @Groups({"places:list", "story:view", "next_scene"})
      */
     private $soundFile = "";
 
     /**
      * @ORM\ManyToMany(targetEntity=PlaceType::class, inversedBy="places")
-     * @Groups({"places:list", "place:view", "story:view"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $placeType;
 
