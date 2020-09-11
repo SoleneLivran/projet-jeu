@@ -41,6 +41,7 @@ class Story
 
     /**
      * @ORM\Column(type="smallint", options={"default": 2})
+     * @Groups({"story:view"})
      */
     private $status = 2;
 
