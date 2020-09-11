@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ActionController extends AbstractController
 {
     /**
-     * @Route("/", name="actions_list")
+     * @Route("/", name="actions_list", methods={"GET"})
      */
     public function list(ActionRepository $repository, Request $request)
     {
@@ -34,7 +34,7 @@ class ActionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="action_view", requirements={"id"="\d+"})
+     * @Route("/{id}", name="action_view", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function view(Action $action)
     {

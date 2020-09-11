@@ -2,7 +2,7 @@ App\Entity\Story:
   story_a:
     updatedAt: <dateTime()>
     publishedAt: <dateTime()>
-    dificulty: 1
+    difficulty: 1
     title: "ABBA"
     synopsis: "Amour, Bière, Bagarre, Alien"
     author: '@appuser_matt'

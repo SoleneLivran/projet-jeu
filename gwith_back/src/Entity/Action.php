@@ -59,7 +59,6 @@ class Action
 
     /**
      * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="action", orphanRemoval=true)
-     * @Groups({"story:view"})
      */
     private $transitions;
 
