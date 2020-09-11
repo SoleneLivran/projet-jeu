@@ -18,6 +18,7 @@ class Transition
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"story:view"})
      */
     private $id;
 
@@ -44,6 +45,7 @@ class Transition
     /**
      * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="transitions")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"story:view"})
      */
     private $action;
 
