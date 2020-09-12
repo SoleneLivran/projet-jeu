@@ -19,7 +19,7 @@ App\Entity\Action:
         description: "Vous allez à l'ouest"
         updatedAt: <dateTime()>
         actionType: '@action_move'
-    action_go_est:
+    action_go_east:
         name: "Aller à l'est"
         description: "Vous allez à l'est"
         updatedAt: <dateTime()>

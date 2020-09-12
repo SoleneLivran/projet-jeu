@@ -199,11 +199,6 @@ App\Entity\Transition:
     nextScene: '@scene_ee'
   transition_ll:
     updatedAt: <dateTime()>
-    currentScene: '@scene_cc'
-    action: '@action_follow_instructions'
-    nextScene: '@scene_ee'
-  transition_ll:
-    updatedAt: <dateTime()>
     currentScene: '@scene_ee'
     action: '@action_take'
     nextScene: '@scene_jj'

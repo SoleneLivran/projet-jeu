@@ -55,10 +55,6 @@ App\Entity\Scene:
     updatedAt: <dateTime()>
     place: '@place_oasis'
     event: '@event_crocodile'
-  scene_p:
-    updatedAt: <dateTime()>
-    place: '@place_oasis'
-    event: '@event_crocodile'
   scene_q:
     updatedAt: <dateTime()>
     place: '@place_dunes'
