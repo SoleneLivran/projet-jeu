@@ -34,6 +34,26 @@ App\Entity\Action:
         description: "Vous allez au sud"
         updatedAt: <dateTime()>
         actionType: '@action_move'
+    action_go_forward:
+        name: "Avancer"
+        description: "Vous avancez"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_climb:
+        name: "Grimper"
+        description: "Vous grimpez"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_get_around:
+        name: "Countourner"
+        description: "Vous contournez l'obstacle"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_enter:
+        name: "Entrer"
+        description: "Vous entrez"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
     action_sword_hit:
         name: "Coup d'épée"
         description: "Vous portez un coup d'épée"
@@ -44,6 +64,11 @@ App\Entity\Action:
         description: "Vous essayez de chaparder"
         updatedAt: <dateTime()>
         actionType: '@action_item'
+    action_take:
+        name: "Prendre"
+        description: "Vous prenez l'objet"
+        updatedAt: <dateTime()>
+        actionType: '@action_item'
     action_fly:
         name: "Voler"
         description: "Vous volez dans les airs"
@@ -52,6 +77,21 @@ App\Entity\Action:
     action_negociate:
         name: "Négocier"
         description: "Vous tentez de parlementer"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_apologize:
+        name: "S'excuser"
+        description: "Vous demandez pardon"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_tame:
+        name: "Apprivoiser"
+        description: "Vous essayer d'apprivoiser l'animal"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_pet:
+        name: "Caresser"
+        description: "Vous caressez l'animal"
         updatedAt: <dateTime()>
         actionType: '@action_interaction'
     action_swim:
@@ -86,14 +126,19 @@ App\Entity\Action:
         actionType: '@action_interaction'
     action_marriage_proposal:
         name: "Demander en mariage"
-        description: "Vous proposer de passer vos vies ensemble est c'est très romantique"
+        description: "Vous proposer de passer vos vies ensemble et c'est très romantique"
         updatedAt: <dateTime()>
         actionType: '@action_interaction'
     action_be_happy:
         name: "Être heureux"
         description: "Vous vous contentez d'être heureux"
         updatedAt: <dateTime()>
-        actionType: '@action_interaction'
+        actionType: '@action_self'
+    action_cry:
+        name: "Pleurer"
+        description: "Vous vous mettez à pleurer"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
     action_open:
         name: "Ouvrir"
         description: "Ouvrir"
@@ -109,4 +154,34 @@ App\Entity\Action:
         description: "Vous essayez de crocheter la serrure"
         updatedAt: <dateTime()>
         actionType: '@action_type_chest_or_door_action'
+    action_rest:
+        name: "Se reposer"
+        description: "Vous vous reposez quelques instants"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
+    action_sing:
+        name: "Chanter"
+        description: "Vous chantez une chanson"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_buy:
+        name: "Acheter"
+        description: "Vous achetez"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_follow_instructions:
+        name: "Suivre les indications"
+        description: "Vous suivez les indications qui vous ont été données"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_no_possible_action:
+        name: "Vous ne pouvez rien faire !"
+        description: "Dans cette situation, vous ne pouvez malheureusement rien faire..."
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
+    action_drink:
+        name: "Boire"
+        description: "Vous buvez"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
         

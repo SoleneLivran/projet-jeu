@@ -6,12 +6,12 @@ App\Entity\Place:
       addPlaceType: '@placetype_nature'
     place_oasis:
       name: "Oasis"
-      description: "Vous entrez dans un Oasis"
+      description: "Vous entrez dans une oasis"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
-    place_dune:
+    place_dunes:
       name: "Dunes"
-      description: "Vous montez sur une Dune"
+      description: "Vous êtes au milieu des dunes"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
     place_lake:
@@ -34,13 +34,33 @@ App\Entity\Place:
       description: "Vous entrez dans la taverne"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
-    place_caravan:
+    place_caravanserail:
       name: "Caravansérail"
       description: "Vous arrivez dans un caravansérail"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
+    place_city:
+      name: "Ville"
+      description: "Vous arrivez dans une ville"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_city'
+    place_village:
+      name: "Village"
+      description: "Vous arrivez dans un village"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_city'
+    place_future_city:
+      name: "Ville futuriste"
+      description: "Vous arrivez dans une ville"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_city'
     place_black_hole:
       name: "Trou noir"
       description: "Vous arrivez dans un trou noir"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_space'
+    place_temple:
+      name: "Temple"
+      description: "Vous êtes dans un temple"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'

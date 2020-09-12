@@ -2,6 +2,9 @@ App\Entity\EventType:
   eventtype_encouter:
     name: "Rencontre"
     updatedAt: <dateTime()>
+  eventtype_animal:
+    name: "Animal"
+    updatedAt: <dateTime()>
   eventtype_crossroads:
     name: "Carrefour"
     updatedAt: <dateTime()>
@@ -15,9 +18,12 @@ App\Entity\EventType:
     name: "Mort"
     updatedAt: <dateTime()>
   eventtype_state:
-    name: "Etat"
+    name: "État"
     updatedAt: <dateTime()>
   eventtype_event:
-    name: "Evènement"
+    name: "Événement"
+    updatedAt: <dateTime()>
+  eventtype_arrive_to_place:
+    name: "Endroit"
     updatedAt: <dateTime()>
  
