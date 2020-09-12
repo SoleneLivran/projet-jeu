@@ -8,3 +8,12 @@ App\Entity\Story:
     author: '@appuser_matt'
     category: '@storycategory_adventure'
     firstScene: '@scene_a'
+  story_b:
+    updatedAt: <dateTime()>
+    publishedAt: <dateTime()>
+    difficulty: 5
+    title: "Quand t'es dans le désert"
+    synopsis: "Perdu dans le desert, malgré le calme apparent, de nombreux dangers guettent parmi les dunes... Saurez-vous survivre et échapper aux sables ? Trouverez-vous le trésor dont la rumeur vous a attiré dans ce lieu maudit ? Quel sera votre destin ?"
+    author: '@appuser_titi'
+    category: '@storycategory_adventure'
+    firstScene: '@scene_l'
