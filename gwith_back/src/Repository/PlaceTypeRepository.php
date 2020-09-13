@@ -19,32 +19,18 @@ class PlaceTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, PlaceType::class);
     }
 
-    // /**
-    //  * @return PlaceType[] Returns an array of PlaceType objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllOrderByName()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        // de base ma requete ressemble à : SELECT * FROM place
+        $queryBuilder = $this->createQueryBuilder('placeType');
 
-    /*
-    public function findOneBySomeField($value): ?PlaceType
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+         // je personnalise ma requete (ordonné par titre)
+         $queryBuilder->addOrderBy('placeType.name');
+
+         // j'éxécute ma requête
+         $query = $queryBuilder->getQuery();
+
+        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        return $query->getResult();
     }
-    */
 }
