@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Event;
 use App\Repository\EventRepository;
+use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/api/events")
  */
@@ -14,15 +15,22 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="events_list", methods={"GET"})
      */
-    public function list(EventRepository $repository)
+    public function list(EventRepository $repository, Request $request)
     {
+       // query ?
+       if ($request->query->has('event_type')) {
+        $eventType = $request->query->get('event_type');
+        $events = $repository->findAllByType($eventType);
+    } else {
         $events = $repository->findAllOrderByName();
-        return $this->json(
-            $events,
-            200,
-            [],
-            ["groups" => ["events:list"]]
-        );
+    }
+
+    return $this->json(
+        $events,
+        200,
+        [],
+        ["groups" => ["events:list"]]
+    );
     }
 
     /**

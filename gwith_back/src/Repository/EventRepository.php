@@ -38,4 +38,21 @@ class EventRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAllByType($typeId)
+    {
+        $queryBuilder = $this->createQueryBuilder('event');
+        // join the actionType table
+        // first arg : foreign key / relation we want to follow
+        // 2nd arg : alias
+        $queryBuilder->leftJoin('event.eventType', 'eventType');
+        // where action.type.id == typeId
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('eventType.id', $typeId)
+        );
+         $queryBuilder->addOrderBy('event.name');
+         $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+
 }
