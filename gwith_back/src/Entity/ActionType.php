@@ -18,13 +18,13 @@ class ActionType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"story:view", "next_scene","action_type:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Groups({"actions:list", "action:view", "story:view", "next_scene", "action_type:list"})
      */
     private $name;
 

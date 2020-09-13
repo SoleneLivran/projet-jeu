@@ -19,32 +19,14 @@ class ActionTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, ActionType::class);
     }
 
-    // /**
-    //  * @return ActionType[] Returns an array of ActionType objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllOrderByName()
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->createQueryBuilder('actionType');
 
-    /*
-    public function findOneBySomeField($value): ?ActionType
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+         $queryBuilder->addOrderBy('actionType.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
     }
-    */
 }
