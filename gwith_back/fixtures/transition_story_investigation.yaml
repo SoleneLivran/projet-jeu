@@ -1,0 +1,291 @@
+App\Entity\Transition:
+  transition_ac:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_a'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_c'
+  transition_ab:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_a'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_b'
+  transition_ad:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_a'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_d'
+  transition_ai:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_a'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_i'
+  transition_aj:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_a'
+    action: '@action_examine'
+    nextScene: '@scene_story_investigation_j'
+  transition_ik:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_i'
+    action: '@action_open'
+    nextScene: '@scene_story_investigation_k'
+  transition_ja:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_j'
+    action: '@action_eat'
+    nextScene: '@scene_story_investigation_a'
+  transition_ja2:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_j'
+    action: '@action_do_nothing'
+    nextScene: '@scene_story_investigation_a'
+  transition_ka:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_k'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_a'
+  transition_bl:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_b'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_l'
+  transition_bc:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_b'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_c'
+  transition_bd:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_b'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_d'
+  transition_ba:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_b'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_a'
+  transition_bm:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_b'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_m'
+  transition_mn:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_m'
+    action: '@action_open'
+    nextScene: '@scene_story_investigation_n'
+  transition_nf:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_n'
+    action: '@action_take'
+    nextScene: '@scene_story_investigation_f'
+  transition_fl:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_f'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_l'
+  transition_fg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_f'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_g'
+  transition_fh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_f'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_h'
+  transition_fe:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_f'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_e'
+  transition_cp:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_c'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_p'
+  transition_cb:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_c'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_b'
+  transition_cd:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_c'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_d'
+  transition_ca:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_c'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_a'
+  transition_cq:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_c'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_q'
+  transition_qc:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_q'
+    action: '@action_admire'
+    nextScene: '@scene_story_investigation_c'
+  transition_dr:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_d'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_r'
+  transition_ds:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_d'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_s'
+  transition_dc:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_d'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_c'
+  transition_db:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_d'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_b'
+  transition_da:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_d'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_a'
+  transition_sd:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_s'
+    action: '@action_eat'
+    nextScene: '@scene_story_investigation_d'
+  transition_sd2:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_s'
+    action: '@action_do_nothing'
+    nextScene: '@scene_story_investigation_d'
+  transition_eg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_e'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_g'
+  transition_ef:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_e'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_f'
+  transition_eh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_e'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_h'
+  transition_et:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_e'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_t'
+  transition_eu:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_e'
+    action: '@action_examine'
+    nextScene: '@scene_story_investigation_u'
+  transition_tw:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_t'
+    action: '@action_open'
+    nextScene: '@scene_story_investigation_w'
+  transition_ue:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_u'
+    action: '@action_eat'
+    nextScene: '@scene_story_investigation_e'
+  transition_ue2:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_u'
+    action: '@action_do_nothing'
+    nextScene: '@scene_story_investigation_e'
+  transition_wx:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_w'
+    action: '@action_read'
+    nextScene: '@scene_story_investigation_x'
+  transition_xg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_x'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_g'
+  transition_xf:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_x'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_f'
+  transition_xh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_x'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_h'
+  transition_gy:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_g'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_y'
+  transition_gf:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_g'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_f'
+  transition_gh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_g'
+    action: '@action_go_to_living_room'
+    nextScene: '@scene_story_investigation_h'
+  transition_ge:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_g'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_e'
+  transition_gz:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_g'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_z'
+  transition_zg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_z'
+    action: '@action_admire'
+    nextScene: '@scene_story_investigation_g'
+  transition_haa:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_h'
+    action: '@action_accuse'
+    nextScene: '@scene_story_investigation_aa'
+  transition_hbb:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_h'
+    action: '@action_observe'
+    nextScene: '@scene_story_investigation_bb'
+  transition_hg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_h'
+    action: '@action_go_to_veranda'
+    nextScene: '@scene_story_investigation_g'
+  transition_hf:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_h'
+    action: '@action_go_to_kitchen'
+    nextScene: '@scene_story_investigation_f'
+  transition_he:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_h'
+    action: '@action_go_to_office'
+    nextScene: '@scene_story_investigation_e'
+  transition_bbh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_bb'
+    action: '@action_eat'
+    nextScene: '@scene_story_investigation_h'
+  transition_bbh2:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_story_investigation_bb'
+    action: '@action_do_nothing'
+    nextScene: '@scene_story_investigation_h'

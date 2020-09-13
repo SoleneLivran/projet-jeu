@@ -64,3 +64,38 @@ App\Entity\Place:
       description: "Vous êtes dans un temple"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+    place_living_room:
+      name: "Salon"
+      description: "Vous êtes dans un salon"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_kitchen:
+      name: "Cuisine"
+      description: "Vous êtes dans une cuisine"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_veranda:
+      name: "Véranda"
+      description: "Vous êtes dans une véranda"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_office:
+      name: "Bureau"
+      description: "Vous êtes dans un bureau"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_bedroom:
+      name: "Chambre"
+      description: "Vous êtes dans une chambre"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_garden:
+      name: "Jardin"
+      description: "Vous êtes dans un jardin"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'
+    place_written_document_content:
+      name: "Message"
+      description: "Vous lisez le contenu du document"
+      updatedAt: <dateTime()>
+      addPlaceType: '@placetype_inside'

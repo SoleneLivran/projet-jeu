@@ -184,4 +184,70 @@ App\Entity\Action:
         description: "Vous buvez"
         updatedAt: <dateTime()>
         actionType: '@action_self'
+    action_eat:
+        name: "Manger"
+        description: "Vous mangez"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
+    action_accuse:
+        name: "Accuser"
+        description: "Vous accusez cette personne"
+        updatedAt: <dateTime()>
+        actionType: '@action_interaction'
+    action_observe:
+        name: "Observer"
+        description: "Vous observez les environs"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
+    action_do_nothing:
+        name: "Ne rien faire"
+        description: "Vous ne faites rien de particulier"
+        updatedAt: <dateTime()>
+        actionType: '@action_self'
+    action_examine:
+        name: "Examiner"
+        description: "Vous examinez attentivement ce que vous voyez"
+        updatedAt: <dateTime()>
+        actionType: '@action_item'
+    action_admire:
+        name: "Admirer"
+        description: "Vous admirez ce que vous voyez"
+        updatedAt: <dateTime()>
+        actionType: '@action_item'
+    action_go_to_office:
+        name: "Aller dans le bureau"
+        description: "Vous allez dans le bureau"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_living_room:
+        name: "Aller dans le salon"
+        description: "Vous allez dans le salon"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_kitchen:
+        name: "Aller dans la cuisine"
+        description: "Vous allez dans la cuisine"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_veranda:
+        name: "Aller dans la veranda"
+        description: "Vous allez dans la veranda"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_bedroom:
+        name: "Aller dans la chambre"
+        description: "Vous allez dans la chambre"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_go_to_garden:
+        name: "Aller dans le jardin"
+        description: "Vous allez dans le jardin"
+        updatedAt: <dateTime()>
+        actionType: '@action_move'
+    action_read:
+        name: "Lire"
+        description: "Vous lisez"
+        updatedAt: <dateTime()>
+        actionType: '@action_item'
+        
         

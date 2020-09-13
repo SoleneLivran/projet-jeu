@@ -1,40 +1,4 @@
 App\Entity\Scene:
-  scene_a:
-    updatedAt: <dateTime()>
-    place: '@place_tavern'
-    event: '@event_nothing_special'
-  scene_b:
-    updatedAt: <dateTime()>
-    place: '@place_tavern'
-    event: '@event_drunk'
-  scene_c:
-    updatedAt: <dateTime()>
-    place: '@place_forest'
-    event: '@event_bear'
-  scene_d:
-    updatedAt: <dateTime()>
-    place: '@place_forest'
-    event: '@event_death'
-  scene_e:
-    updatedAt: <dateTime()>
-    place: '@place_forest'
-    event: '@event_bear'
-  scene_f:
-    updatedAt: <dateTime()>
-    place: '@place_spaceship'
-    event: '@event_alien'
-  scene_g:
-    updatedAt: <dateTime()>
-    place: '@place_spaceship'
-    event: '@event_wedding'
-  scene_h:
-    updatedAt: <dateTime()>
-    place: '@place_black_hole'
-    event: '@event_death'
-  scene_i:
-    updatedAt: <dateTime()>
-    place: '@place_spaceship'
-    event: '@event_gameEnd'
   scene_l:
     updatedAt: <dateTime()>
     place: '@place_dunes'

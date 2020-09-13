@@ -59,6 +59,18 @@ App\Entity\Event:
       name: "Coffre en pierre"
       description: "Vous êtes face à un coffre en pierre"
       eventType: '@eventtype_item'
+    event_drawer:
+      name: "Tiroir"
+      description: "Vous remarquez un tiroir"
+      eventType: '@eventtype_item'
+    event_key:
+      name: "Clé"
+      description: "Vous trouvez une clé"
+      eventType: '@eventtype_item'
+    event_painting:
+      name: "Tableau"
+      description: "Il y a un tableau au mur"
+      eventType: '@eventtype_item'
     event_strange_box:
       name: "Boîte étrange"
       description: "Vous êtes face à une boîte étrange"
@@ -99,3 +111,35 @@ App\Entity\Event:
       description: "Vous avez gagné"
       isEnd: true
       eventType: '@eventtype_end'
+    event_mayor:
+      name: "Maire"
+      description: "Voici le maire"
+      eventType: '@eventtype_encouter'
+    event_home_owner_woman:
+      name: "Maitresse de maison"
+      description: "Voici la maitresse de maison"
+      eventType: '@eventtype_encouter'
+    event_home_owner_man:
+      name: "Maitresse de maison"
+      description: "Voici maitre de maison"
+      eventType: '@eventtype_encouter'
+    event_butler:
+      name: "Majordome"
+      description: "Voici le majordome"
+      eventType: '@eventtype_encouter'
+    event_painter:
+      name: "Peintre"
+      description: "Vous rencontrez un peintre"
+      eventType: '@eventtype_encouter'
+    event_caramels:
+      name: "Caramels"
+      description: "Vous trouvez une boite de caramels"
+      eventType: '@eventtype_food'
+    event_locked:
+      name: "Verrouillé"
+      description: "C'est verrouillé"
+      eventType: '@eventtype_opening'
+    event_last_will:
+      name: "Testament"
+      description: "Vous trouvez un testament"
+      eventType: '@eventtype_written_document'

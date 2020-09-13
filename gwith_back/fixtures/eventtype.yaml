@@ -26,4 +26,16 @@ App\Entity\EventType:
   eventtype_arrive_to_place:
     name: "Endroit"
     updatedAt: <dateTime()>
+  eventtype_written_document:
+    name: "Document écrit"
+    updatedAt: <dateTime()>
+  eventtype_food:
+    name: "Nourriture"
+    updatedAt: <dateTime()>
+  eventtype_drink:
+    name: "Boisson"
+    updatedAt: <dateTime()>
+  eventtype_opening:
+    name: "Ouverture"
+    updatedAt: <dateTime()>
  
