@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
- * @Route("/api/event_type")
+ * @Route("/api/event_types")
  */
 class EventTypeController extends AbstractController
 {
     /**
-     * @Route("/", name="event_type_list", methods={"GET"})
+     * @Route("/", name="event_types_list", methods={"GET"})
      */
     public function list(EventTypeRepository $repository)
     {
@@ -23,7 +23,7 @@ class EventTypeController extends AbstractController
             $eventType,
             200,
             [],
-            ["groups" => ["event_type:list"]]
+            ["groups" => ["event_types:list"]]
         );
     }
 
