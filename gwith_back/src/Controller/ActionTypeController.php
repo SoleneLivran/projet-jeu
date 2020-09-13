@@ -8,12 +8,12 @@ use App\Repository\ActionTypeRepository;
 
 
 /**
- * @Route("/api/action_type")
+ * @Route("/api/action_types")
  */
 class ActionTypeController extends AbstractController
 {
     /**
-     * @Route("/", name="action_type_list", methods={"GET"})
+     * @Route("/", name="action_types_list", methods={"GET"})
      */
     public function list(ActionTypeRepository $repository)
     {
@@ -22,7 +22,7 @@ class ActionTypeController extends AbstractController
             $eventType,
             200,
             [],
-            ["groups" => ["action_type:list"]]
+            ["groups" => ["action_types:list"]]
         );
     }
 }
