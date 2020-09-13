@@ -41,11 +41,9 @@ class PlaceRepository extends ServiceEntityRepository
     public function findAllByType($typeId)
     {
         $queryBuilder = $this->createQueryBuilder('place');
-        // join the actionType table
-        // first arg : foreign key / relation we want to follow
-        // 2nd arg : alias
+      
         $queryBuilder->leftJoin('place.placeType', 'placeType');
-        // where action.type.id == typeId
+        
         $queryBuilder->where(
             $queryBuilder->expr()->eq('placeType.id', $typeId)
         );
