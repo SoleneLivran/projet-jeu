@@ -47,7 +47,7 @@ class Action
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"action:view", "next_scene"})
+     * @Groups({"story:view", "action:view", "next_scene"})
      */
     private $soundFile = "";
 
