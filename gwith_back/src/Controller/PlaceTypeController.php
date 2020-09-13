@@ -21,7 +21,7 @@ class PlaceTypeController extends AbstractController
             $placeType,
             200,
             [],
-            ["groups" => ["placeTypes:list"]]
+            ["groups" => ["place_types:list"]]
         );
     }
 }

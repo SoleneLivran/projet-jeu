@@ -21,16 +21,9 @@ class PlaceTypeRepository extends ServiceEntityRepository
 
     public function findAllOrderByName()
     {
-        // de base ma requete ressemble à : SELECT * FROM place
         $queryBuilder = $this->createQueryBuilder('placeType');
-
-         // je personnalise ma requete (ordonné par titre)
-         $queryBuilder->addOrderBy('placeType.name');
-
-         // j'éxécute ma requête
-         $query = $queryBuilder->getQuery();
-
-        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        $queryBuilder->addOrderBy('placeType.name');
+        $query = $queryBuilder->getQuery();
         return $query->getResult();
     }
 }
