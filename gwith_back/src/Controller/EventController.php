@@ -17,7 +17,6 @@ class EventController extends AbstractController
      */
     public function list(EventRepository $repository, Request $request)
     {
-       // query ?
        if ($request->query->has('event_type')) {
         $eventType = $request->query->get('event_type');
         $events = $repository->findAllByType($eventType);
