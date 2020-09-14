@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/api/event_types")
+ * @IsGranted("ROLE_USER")
  */
 class EventTypeController extends AbstractController
 {

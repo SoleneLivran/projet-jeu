@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/api")
+ * @IsGranted("ROLE_USER")
  */
 class SceneController extends AbstractController
 {

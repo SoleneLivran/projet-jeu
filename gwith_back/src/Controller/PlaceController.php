@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/api/places")
+ * @IsGranted("ROLE_USER")
  */
 class PlaceController extends AbstractController
 {

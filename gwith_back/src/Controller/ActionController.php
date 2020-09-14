@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/api/actions")
+ * @IsGranted("ROLE_USER")
  */
 class ActionController extends AbstractController
 {

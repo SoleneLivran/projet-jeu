@@ -8,6 +8,7 @@ use App\Repository\PlaceTypeRepository;
 
 /**
  * @Route("/api/place_types")
+ * @IsGranted("ROLE_USER")
  */
 class PlaceTypeController extends AbstractController
 {

@@ -62,6 +62,7 @@ class StoryController extends AbstractController
 
     /**
      * @Route("/{id}", name="story_view", methods={"GET"}, requirements={"id"="\d+"})
+     * @IsGranted("ROLE_USER")
      */
     public function view(Story $story)
     {

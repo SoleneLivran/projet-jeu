@@ -9,6 +9,7 @@ use App\Repository\ActionTypeRepository;
 
 /**
  * @Route("/api/action_types")
+ * @IsGranted("ROLE_USER")
  */
 class ActionTypeController extends AbstractController
 {

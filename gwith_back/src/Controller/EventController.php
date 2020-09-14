@@ -9,6 +9,7 @@ use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/api/events")
+ * @IsGranted("ROLE_USER")
  */
 class EventController extends AbstractController
 {
