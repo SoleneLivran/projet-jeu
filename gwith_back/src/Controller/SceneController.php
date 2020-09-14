@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Transition;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/api")
+ * @IsGranted("ROLE_USER")
  */
 class SceneController extends AbstractController
 {

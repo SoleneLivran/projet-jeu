@@ -7,8 +7,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Event;
 use App\Repository\EventRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/api/events")
+ * @IsGranted("ROLE_USER")
  */
 class EventController extends AbstractController
 {
