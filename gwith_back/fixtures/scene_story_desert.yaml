@@ -1,0 +1,121 @@
+App\Entity\Scene:
+  scene_l:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_nothing_special'
+  scene_m:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_nothing_special'
+  scene_n:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_nothing_special'
+  scene_o:
+    updatedAt: <dateTime()>
+    place: '@place_caravanserail'
+    event: '@event_trader'
+  scene_p:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_crocodile'
+  scene_q:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_temple'
+  scene_r:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_lion'
+  scene_s:
+    updatedAt: <dateTime()>
+    place: '@place_caravanserail'
+    event: '@event_death'
+  scene_t:
+    updatedAt: <dateTime()>
+    place: '@place_caravanserail'
+    event: '@event_camel'
+  scene_u:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_death'
+  scene_v:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_death'
+  scene_w:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_snake'
+  scene_x:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_stone_chest'
+  scene_y:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_death'
+  scene_z:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_camel'
+  scene_aa:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_death'
+  scene_bb:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_gameWon'
+  scene_cc:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_mysterious_map'
+  scene_dd:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_trap'
+  scene_ee:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_treasure'
+  scene_ff:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_death'
+  scene_gg:
+    updatedAt: <dateTime()>
+    place: '@place_city'
+    event: '@event_gameEnd'
+  scene_hh:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_death'
+  scene_ii:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_thirst'
+  scene_jj:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_gameWon'
+  scene_kk:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_lost'
+  scene_ll:
+    updatedAt: <dateTime()>
+    place: '@place_dunes'
+    event: '@event_death'
+  scene_mm:
+    updatedAt: <dateTime()>
+    place: '@place_temple'
+    event: '@event_death'
+  scene_nn:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_camel'
+  scene_oo:
+    updatedAt: <dateTime()>
+    place: '@place_oasis'
+    event: '@event_trader'
