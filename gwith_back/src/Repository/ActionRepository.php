@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Action;
+use App\Entity\ActionType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -33,4 +34,28 @@ class ActionRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+
+    public function findAllByType($typeId)
+    {
+        $queryBuilder = $this->createQueryBuilder('action');
+
+        // join the actionType table
+        // first arg : foreign key / relation we want to follow
+        // 2nd arg : alias
+        $queryBuilder->leftJoin('action.actionType', 'actionType');
+
+        // where action.type.id == typeId
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('actionType.id', $typeId)
+        );
+
+         $queryBuilder->addOrderBy('action.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
+
 }
