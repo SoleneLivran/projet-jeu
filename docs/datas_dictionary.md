@@ -46,9 +46,12 @@
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|story ID|
 | status | TINYINT(1) | NOT NULL, DEFAULT 2 | story status: playable(1), editing(2) |
-| rating | TINYINT(1) | NOT NULL, DEFAULT 0 | story rating out of 5 |
+| rating | TINYINT(1) | NOT NULL, DEFAULT 0 | average of story ratings out of 5 |
+| title | VARCHAR(255) | NOT NULL, DEFAULT "HISTOIRE SANS TITRE" | story title |
 | synopsis | TEXT | NULL | story synopsis |
-| difficulty | TINYINT(1) | NULL | story difficulty |
+| first_scene_id | ENTITY | FOREIGN KEY, NOT NULL | story synopsis |
+| difficulty | TINYINT(1) | NOT NULL, DEFAULT | story's illustration |
+| picture_file | VARCHAR(255) | NULL | story difficulty |
 | created_at | TIMESTAMP | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Created time for story |
 | updated_at | TIMESTAMP | NULL | Updated time for story |
 | author_id | ENTITY | FOREIGN KEY, NOT NULL | data about author (user)|

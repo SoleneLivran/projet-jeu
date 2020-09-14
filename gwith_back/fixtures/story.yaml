@@ -1,5 +1,5 @@
 App\Entity\Story:
-  story_a:
+  story_abba:
     updatedAt: <dateTime()>
     publishedAt: <dateTime()>
     difficulty: 1
@@ -8,3 +8,21 @@ App\Entity\Story:
     author: '@appuser_matt'
     category: '@storycategory_adventure'
     firstScene: '@scene_a'
+  story_desert:
+    updatedAt: <dateTime()>
+    publishedAt: <dateTime()>
+    difficulty: 5
+    title: "Quand t'es dans le désert"
+    synopsis: "Perdu dans le desert, malgré le calme apparent, de nombreux dangers guettent parmi les dunes... Saurez-vous survivre et échapper aux sables ? Trouverez-vous le trésor dont la rumeur vous a attiré dans ce lieu maudit ? Quel sera votre destin ?"
+    author: '@appuser_titi'
+    category: '@storycategory_adventure'
+    firstScene: '@scene_l'
+  story_investigation:
+    updatedAt: <dateTime()>
+    publishedAt: <dateTime()>
+    difficulty: 5
+    title: "Qui a tué le maire ?"
+    synopsis: "Enquêtrice talentueuse et renommée, vous êtes invitée chez le maire pour souper. Mais à peine arrivée à la porte, un cri retentit : le maire est mort ! Observez bien les lieux et trouvez la clé du mystère. Dans la maison, vous trouvez la femme du maire, le majordome, ainsi qu'un peintre lui aussi invité au dîner. À vous de mener l’enquête, pour capturer l'assassin !  Attention, n'accusez pas d'innocent, vous n'avez qu'une seule chance."
+    author: '@appuser_titi'
+    category: '@storycategory_investigation'
+    firstScene: '@scene_story_investigation_d'

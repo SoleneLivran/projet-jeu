@@ -38,4 +38,18 @@ class PlaceRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAllByType($typeId)
+    {
+        $queryBuilder = $this->createQueryBuilder('place');
+      
+        $queryBuilder->leftJoin('place.placeType', 'placeType');
+        
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('placeType.id', $typeId)
+        );
+         $queryBuilder->addOrderBy('place.name');
+         $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
 }

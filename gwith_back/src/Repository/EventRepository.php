@@ -25,17 +25,23 @@ class EventRepository extends ServiceEntityRepository
 
     public function findAllOrderByName()
     {
-        // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('event');
-
-         // je personnalise ma requete (ordonné par titre)
          $queryBuilder->addOrderBy('event.name');
-
-         // j'éxécute ma requête
          $query = $queryBuilder->getQuery();
-
-        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
         return $query->getResult();
     }
+
+    public function findAllByType($typeId)
+    {
+        $queryBuilder = $this->createQueryBuilder('event');
+        $queryBuilder->leftJoin('event.eventType', 'eventType');
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('eventType.id', $typeId)
+        );
+         $queryBuilder->addOrderBy('event.name');
+         $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
 
 }
