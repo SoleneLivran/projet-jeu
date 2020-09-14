@@ -19,32 +19,11 @@ class PlaceTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, PlaceType::class);
     }
 
-    // /**
-    //  * @return PlaceType[] Returns an array of PlaceType objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllOrderByName()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('placeType');
+        $queryBuilder->addOrderBy('placeType.name');
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?PlaceType
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
