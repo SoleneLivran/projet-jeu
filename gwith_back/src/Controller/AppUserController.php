@@ -38,7 +38,7 @@ class AppUserController extends AbstractController
             $appUser,
             200,
             [],
-            ["groups" => ["app_users:view"]]
+            ["groups" => ["app_user:view"]]
         );
     }
 }
