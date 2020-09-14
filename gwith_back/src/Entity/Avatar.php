@@ -16,6 +16,7 @@ class Avatar
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $id;
 
@@ -32,6 +33,7 @@ class Avatar
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $pictureFile = "";
 

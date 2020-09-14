@@ -19,18 +19,19 @@ class AppUser implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $mail;
 
@@ -41,6 +42,7 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\Column(type="smallint", options={"default": 1})
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $role = 1;
 
@@ -57,6 +59,7 @@ class AppUser implements UserInterface
     /**
    
      * @ORM\Column(type="integer", options={"default": 0})
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $storiesPlayed = 0;
 
@@ -67,6 +70,7 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity=Avatar::class)
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $avatar;
 

@@ -19,4 +19,14 @@ class AppUserRepository extends ServiceEntityRepository
         parent::__construct($registry, AppUser::class);
     }
 
+    public function findAllOrderByName()
+    {
+        $queryBuilder = $this->createQueryBuilder('appUser');
+
+         $queryBuilder->addOrderBy('appUser.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 }
