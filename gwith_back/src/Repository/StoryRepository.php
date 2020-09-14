@@ -38,6 +38,23 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAllByCategory($categoryId)
+    {
+        $queryBuilder = $this->createQueryBuilder('story');
+
+        $queryBuilder->leftJoin('story.category', 'storyCategory');
+
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('storyCategory.id', $categoryId)
+        );
+
+        $queryBuilder->addOrderBy('story.title');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
     /**
     * @return Story[] Returns an array of Story objects
     */

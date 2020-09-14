@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Story;
 use App\Repository\StoryRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/api/stories")
@@ -15,9 +16,14 @@ class StoryController extends AbstractController
     /**
      * @Route("/", name="stories_list", methods={"GET"})
      */
-    public function list(StoryRepository $repository)
+    public function list(StoryRepository $repository, Request $request)
     {
-        $stories = $repository->findAllOrderByTitle();
+        if ($request->query->has('story_category')) {
+            $storyCategory = $request->query->get('story_category');
+            $stories = $repository->findAllByCategory($storyCategory);
+        } else {
+            $stories = $repository->findAllOrderByTitle();
+        }
         return $this->json(
             $stories,
             200,
