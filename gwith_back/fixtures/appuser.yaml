@@ -2,20 +2,20 @@ App\Entity\AppUser:
   appuser_toto:
     name: "Toto"
     mail: "toto@gmail.com"
-    password: toto
+    password: W3L6VSBF76vgM
     updatedAt: <dateTime()>
     avatar: '@avatar_knight'
   appuser_titi:
     name: "Titi"
     mail: "titi@gmail.com"
-    password: titi
+    password: 64eXu7c2FPZ9M
     role: 2
     updatedAt: <dateTime()>
     avatar: '@avatar_witch'
   appuser_tata:
     name: "Tata"
     mail: "tata@gmail.com"
-    password: tata
+    password: q5jvxKi44uFiQ	
     role: 2
     updatedAt: <dateTime()>
     storiesPlayed: 3
@@ -23,7 +23,7 @@ App\Entity\AppUser:
   appuser_matt:
     name: "Matt"
     mail: "matt@gmail.com"
-    password: matt
+    password: 26zJCSm9winYI
     role: 3
     updatedAt: <dateTime()>
     avatar: '@avatar_mage'
