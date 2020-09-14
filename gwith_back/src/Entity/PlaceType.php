@@ -18,7 +18,7 @@ class PlaceType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"places:list", "place:view", "story:view", "next_scene"})
      */
     private $id;
 

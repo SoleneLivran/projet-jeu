@@ -52,7 +52,7 @@ class Place
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"places:list", "story:view", "next_scene"})
+     * @Groups({"place:view", "story:view", "next_scene"})
      */
     private $soundFile = "";
 

@@ -6,6 +6,7 @@ use App\Entity\Place;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PlaceRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/api/places")
@@ -15,9 +16,14 @@ class PlaceController extends AbstractController
     /**
      * @Route("/", name="places_list", methods={"GET"})
      */
-    public function list(PlaceRepository $repository)
+    public function list(PlaceRepository $repository, Request $request)
     {
-        $places = $repository->findAllOrderByName();
+        if ($request->query->has('place_type')) {
+            $placeType = $request->query->get('place_type');
+            $places = $repository->findAllByType($placeType);
+        } else {
+            $places = $repository->findAllOrderByName();
+        }
         return $this->json(
             $places,
             200,
