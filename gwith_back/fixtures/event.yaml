@@ -2,7 +2,7 @@ App\Entity\Event:
     event_crocodile:
       name: "Crocodile"
       description: "Vous faites face à un crocodile"
-      eventType: '@eventtype_encouter'
+      eventType: '@eventtype_animal'
     event_nothing_special:
       name: "Rien de spécial"
       description: "Il ne se passe rien de spécial"
@@ -11,10 +11,18 @@ App\Entity\Event:
       name: "Ivresse"
       description: "Vous êtes ivre"
       eventType: '@eventtype_state'
+    event_thirst:
+      name: "Soif"
+      description: "Vous avez très soif"
+      eventType: '@eventtype_state'
+    event_lost:
+      name: "Perdu"
+      description: "Vous êtes complètement perdu"
+      eventType: '@eventtype_state'
     event_bear:
       name: "Ours"
       description: "Vous êtes face à un ours"
-      eventType: '@eventtype_encouter'
+      eventType: '@eventtype_animal'
     event_alien:
       name: "Alien"
       description: "Vous êtes face à un alien"
@@ -26,31 +34,63 @@ App\Entity\Event:
     event_snake:
       name: "Serpent"
       description: "Vous faites face à un serpent"
-      eventType: '@eventtype_encouter'
+      eventType: '@eventtype_animal'
     event_camel:
       name: "Chameau"
-      description: "Vous faites face à un Chameau"
-      eventType: '@eventtype_encouter'
+      description: "Vous faites face à un chameau"
+      eventType: '@eventtype_animal'
     event_trader:
       name: "Marchand"
       description: "Vous rencontrez un marchand"
       eventType: '@eventtype_encouter'
     event_lion:
       name: "Lion"
-      description: "Vous faites face à un Lion"
-      eventType: '@eventtype_encouter'
+      description: "Vous faites face à un lion"
+      eventType: '@eventtype_animal'
     event_crossroads:
       name: "Carrefour"
       description: "Plusieurs routes s'étendent devant vous"
       eventType: '@eventtype_crossroads'
     event_wooden_chest:
-      name: "Coffre"
+      name: "Coffre en bois"
       description: "Vous êtes face à un coffre en bois"
+      eventType: '@eventtype_item'
+    event_stone_chest:
+      name: "Coffre en pierre"
+      description: "Vous êtes face à un coffre en pierre"
+      eventType: '@eventtype_item'
+    event_drawer:
+      name: "Tiroir"
+      description: "Vous remarquez un tiroir"
+      eventType: '@eventtype_item'
+    event_key:
+      name: "Clé"
+      description: "Vous trouvez une clé"
+      eventType: '@eventtype_item'
+    event_painting:
+      name: "Tableau"
+      description: "Il y a un tableau au mur"
       eventType: '@eventtype_item'
     event_strange_box:
       name: "Boîte étrange"
       description: "Vous êtes face à une boîte étrange"
       eventType: '@eventtype_item'
+    event_mysterious_map:
+      name: "Carte mystérieuse"
+      description: "Voici une carte mystérieuse"
+      eventType: '@eventtype_item'
+    event_treasure:
+      name: "Trésor"
+      description: "Vous trouvez un trésor !"
+      eventType: '@eventtype_item'
+    event_trap:
+      name: "Piège"
+      description: "Vous allez tomber dans un piège !"
+      eventType: '@eventtype_item'
+    event_temple:
+      name: "Temple"
+      description: "Un temple se dresse devant vous"
+      eventType: '@eventtype_arrive_to_place'
     event_death:
       name: "Mort"
       description: "Vous êtes...mort"
@@ -66,3 +106,40 @@ App\Entity\Event:
       description: "Vous avez perdu"
       isEnd: true
       eventType: '@eventtype_end'
+    event_gameWon:
+      name: "Jeu gagné"
+      description: "Vous avez gagné"
+      isEnd: true
+      eventType: '@eventtype_end'
+    event_mayor:
+      name: "Maire"
+      description: "Voici le maire"
+      eventType: '@eventtype_encouter'
+    event_home_owner_woman:
+      name: "Maitresse de maison"
+      description: "Voici la maitresse de maison"
+      eventType: '@eventtype_encouter'
+    event_home_owner_man:
+      name: "Maitresse de maison"
+      description: "Voici maitre de maison"
+      eventType: '@eventtype_encouter'
+    event_butler:
+      name: "Majordome"
+      description: "Voici le majordome"
+      eventType: '@eventtype_encouter'
+    event_painter:
+      name: "Peintre"
+      description: "Vous rencontrez un peintre"
+      eventType: '@eventtype_encouter'
+    event_caramels:
+      name: "Caramels"
+      description: "Vous trouvez une boite de caramels"
+      eventType: '@eventtype_food'
+    event_locked:
+      name: "Verrouillé"
+      description: "C'est verrouillé"
+      eventType: '@eventtype_opening'
+    event_last_will:
+      name: "Testament"
+      description: "Vous trouvez un testament"
+      eventType: '@eventtype_written_document'

@@ -19,5 +19,15 @@ class EventTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, EventType::class);
     }
 
-    
+    public function findAllOrderByName()
+    {
+        $queryBuilder = $this->createQueryBuilder('eventType');
+
+         $queryBuilder->addOrderBy('eventType.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
 }

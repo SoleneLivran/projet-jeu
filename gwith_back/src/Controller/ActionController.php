@@ -6,6 +6,7 @@ use App\Entity\Action;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ActionRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/api/actions")
@@ -15,9 +16,15 @@ class ActionController extends AbstractController
     /**
      * @Route("/", name="actions_list", methods={"GET"})
      */
-    public function list(ActionRepository $repository)
+    public function list(ActionRepository $repository, Request $request)
     {
-        $actions = $repository->findAllOrderByName();
+        if ($request->query->has('action_type')) {
+            $actionTypes = $request->query->get('action_type');
+            $actions = $repository->findAllByType($actionTypes);
+
+        } else {
+            $actions = $repository->findAllOrderByName();
+        }
         return $this->json(
             $actions,
             200,

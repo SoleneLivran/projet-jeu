@@ -1,0 +1,105 @@
+App\Entity\Scene: 
+  scene_story_investigation_a:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_mayor'
+  scene_story_investigation_b:
+    updatedAt: <dateTime()>
+    place: '@place_kitchen'
+    event: '@event_butler'
+  scene_story_investigation_c:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_painter'
+  scene_story_investigation_d:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_home_owner_woman'
+  scene_story_investigation_e:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_mayor'
+  scene_story_investigation_f:
+    updatedAt: <dateTime()>
+    place: '@place_kitchen'
+    event: '@event_butler'
+  scene_story_investigation_g:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_painter'
+  scene_story_investigation_h:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_home_owner_woman'
+  scene_story_investigation_i:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_strange_box'
+  scene_story_investigation_j:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_caramels'
+  scene_story_investigation_k:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_locked'
+  scene_story_investigation_l:
+    updatedAt: <dateTime()>
+    place: '@place_kitchen'
+    event: '@event_gameWon'
+  scene_story_investigation_m:
+    updatedAt: <dateTime()>
+    place: '@place_kitchen'
+    event: '@event_drawer'
+  scene_story_investigation_n:
+    updatedAt: <dateTime()>
+    place: '@place_kitchen'
+    event: '@event_key'
+  scene_story_investigation_p:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_gameLost'
+  scene_story_investigation_q:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_painting'
+  scene_story_investigation_r:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_gameLost'
+  scene_story_investigation_s:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_caramels'
+  scene_story_investigation_t:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_strange_box'
+  scene_story_investigation_u:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_caramels'
+  scene_story_investigation_w:
+    updatedAt: <dateTime()>
+    place: '@place_office'
+    event: '@event_last_will'
+  scene_story_investigation_x:
+    updatedAt: <dateTime()>
+    place: '@place_written_document_content'
+    event: '@event_butler'
+  scene_story_investigation_y:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_gameLost'
+  scene_story_investigation_z:
+    updatedAt: <dateTime()>
+    place: '@place_veranda'
+    event: '@event_painting'
+  scene_story_investigation_aa:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_gameLost'
+  scene_story_investigation_bb:
+    updatedAt: <dateTime()>
+    place: '@place_living_room'
+    event: '@event_caramels'

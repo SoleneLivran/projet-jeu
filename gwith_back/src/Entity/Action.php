@@ -18,7 +18,7 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"actions:list", "action:view","story:view", "next_scene"})
+     * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Action
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"actions:list", "action:view","story:view", "next_scene"})
+     * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
      */
     private $description;
 
