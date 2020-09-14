@@ -1,0 +1,151 @@
+App\Entity\Transition:
+  transition_m:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_l'
+    action: '@action_go_south'
+    nextScene: '@scene_m'
+  transition_n:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_l'
+    action: '@action_go_north'
+    nextScene: '@scene_n'
+  transition_o:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_l'
+    action: '@action_go_west'
+    nextScene: '@scene_o'
+  transition_p:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_m'
+    action: '@action_rest'
+    nextScene: '@scene_p'
+  transition_q:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_n'
+    action: '@action_go_north'
+    nextScene: '@scene_q'
+  transition_r:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_n'
+    action: '@action_go_east'
+    nextScene: '@scene_r'
+  transition_s:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_o'
+    action: '@action_attack'
+    nextScene: '@scene_s'
+  transition_t:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_o'
+    action: '@action_negociate'
+    nextScene: '@scene_t'
+  transition_u:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_p'
+    action: '@action_tame'
+    nextScene: '@scene_u'
+  transition_v:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_p'
+    action: '@action_attack'
+    nextScene: '@scene_v'
+  transition_w:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_q'
+    action: '@action_enter'
+    nextScene: '@scene_w'
+  transition_x:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_r'
+    action: '@action_pet'
+    nextScene: '@scene_y'
+  transition_y:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_r'
+    action: '@action_get_around'
+    nextScene: '@scene_z'
+  transition_z:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_r'
+    action: '@action_attack'
+    nextScene: '@scene_aa'
+  transition_aa:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_t'
+    action: '@action_flee'
+    nextScene: '@scene_bb'
+  transition_bb:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_w'
+    action: '@action_attack'
+    nextScene: '@scene_mm'
+  transition_cc:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_w'
+    action: '@action_sing'
+    nextScene: '@scene_x'
+  transition_dd:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_z'
+    action: '@action_buy'
+    nextScene: '@scene_nn'
+  transition_ee:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_z'
+    action: '@action_steal'
+    nextScene: '@scene_oo'
+  transition_ff:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_x'
+    action: '@action_open'
+    nextScene: '@scene_cc'
+  transition_gg:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_x'
+    action: '@action_go_forward'
+    nextScene: '@scene_dd'
+  transition_hh:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_nn'
+    action: '@action_flee'
+    nextScene: '@scene_gg'
+  transition_ii:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_oo'
+    action: '@action_attack'
+    nextScene: '@scene_hh'
+  transition_jj:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_oo'
+    action: '@action_apologize'
+    nextScene: '@scene_ii'
+  transition_kk:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_cc'
+    action: '@action_follow_instructions'
+    nextScene: '@scene_ee'
+  transition_ll:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_ee'
+    action: '@action_take'
+    nextScene: '@scene_jj'
+  transition_mm:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_dd'
+    action: '@action_no_possible_action'
+    nextScene: '@scene_ff'
+  transition_nn:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_ii'
+    action: '@action_drink'
+    nextScene: '@scene_p'
+  transition_oo:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_ii'
+    action: '@action_go_east'
+    nextScene: '@scene_kk'
+  transition_pp:
+    updatedAt: <dateTime()>
+    currentScene: '@scene_kk'
+    action: '@action_cry'
+    nextScene: '@scene_ll'
