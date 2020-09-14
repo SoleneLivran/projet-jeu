@@ -18,4 +18,20 @@ class StoryCategoryRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, StoryCategory::class);
     }
+
+    /**
+    * @return StoryCategory[] Returns an array of StoryCategory objects
+    */
+
+    public function findAllOrderByName()
+    {
+        $queryBuilder = $this->createQueryBuilder('storyCategory');
+
+         $queryBuilder->addOrderBy('storyCategory.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
 }
