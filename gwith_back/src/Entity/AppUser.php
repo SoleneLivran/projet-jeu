@@ -42,7 +42,6 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\Column(type="smallint", options={"default": 1})
-     * @Groups({"app_users:list", "app_user:view"})
      */
     private $role = 1;
 
