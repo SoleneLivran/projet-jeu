@@ -23,8 +23,6 @@ class StoryManager
     }
 
     public function createScenes(Story $story, array $scenesData) {
-        // var_dump($scenesData); die;
-
         //===========SCENES===============
         // array to keep track of the scenes we are about to create
         $scenes = [];
@@ -60,8 +58,8 @@ class StoryManager
         // for each scene...
         foreach ($scenesData as $sceneData) {
             // ...we iterate over its transitions
-            // for each transition, we create a Transition entity
             foreach ($sceneData['transitions'] as $transitionData) {
+                // for each transition, we create a Transition entity
                 $transition = new Transition();
 
                 // get the action and set it in the transition

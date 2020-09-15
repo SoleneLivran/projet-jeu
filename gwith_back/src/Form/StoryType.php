@@ -17,7 +17,7 @@ class StoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // StoryType = sert a definir comment sont configurees les donnees
+        // StoryType = defines how the data is configured/organized
 
         $builder->add(
             'title',
@@ -71,8 +71,8 @@ class StoryType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Story::class,
             // https://symfony.com/doc/3.4/form/csrf_protection.html
-            // par default les forms ont une protection CSRF qu'il faut desactiver (champs hidden qui va tout casser si on est pas full Symfony):
-            // on a deja la protection des tokens
+            // by default forms have a CSRF protection with a hidden field, we have to deactivate it (it's made for symfony but if it's not a "full symfony" project we risk some errors)
+            // in our project we have this protection with the tokens
             'csrf_protection' => false,
             "allow_extra_fields" => true
         ]);

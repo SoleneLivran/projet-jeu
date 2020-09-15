@@ -99,7 +99,7 @@ class StoryController extends AbstractController
      */
     public function create(Request $request)
     {
-        // traitement des donnees de la request par le "processing form" de Symfo
+        // we are treating the data from the request with symfony's "processing form" 
         // https://symfony.com/doc/current/forms.html#processing-forms
 
         // get the data submitted by the front
