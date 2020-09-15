@@ -19,32 +19,19 @@ class StoryCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, StoryCategory::class);
     }
 
-    // /**
-    //  * @return StoryCategory[] Returns an array of StoryCategory objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    /**
+    * @return StoryCategory[] Returns an array of StoryCategory objects
     */
 
-    /*
-    public function findOneBySomeField($value): ?StoryCategory
+    public function findAllOrderByName()
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('storyCategory');
+
+         $queryBuilder->addOrderBy('storyCategory.name');
+
+         $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
     }
-    */
+
 }
