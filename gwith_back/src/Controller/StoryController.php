@@ -73,6 +73,23 @@ class StoryController extends AbstractController
             ["groups" => ["story:view"]]
         );
     }
+
+    /**
+     * @Route("/", name="story_create", methods={"POST"})
+     */
+    public function create(Story $story)
+    {
+        // traitement des donnees de la request par le "processing form" de Symfo
+        // https://symfony.com/doc/current/forms.html#processing-forms
+
+        // on cree un objet Story
+        $story = new Story();
+
+        // mapped va permettre, dans le story type, de dire quelles datas on ne met pas tout de suite dans la story (les traiter d'abord) = les "raw scenes" envoyees par le front
+        // https://symfony.com/doc/current/reference/forms/types/form.html#mapped
+
+        $form = $this->createForm(StoryType::class, $story);
+    }
 }
 
 
