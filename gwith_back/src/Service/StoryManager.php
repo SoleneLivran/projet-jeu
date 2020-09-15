@@ -88,13 +88,4 @@ class StoryManager
             }
         }
     }
-
-    public function createTransitions() {
-
-
-
-        // get all the transitions sent by the Front
-        // register them in DB
-    }
-
 }
