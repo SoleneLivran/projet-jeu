@@ -7,6 +7,8 @@ use App\Repository\AppUserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/api/app_users")
@@ -15,7 +17,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AppUserController extends AbstractController
 {
     /**
+     * @var Security
+     */
+    private $security;
+
+    public function __construct(Security $security)
+    {
+       $this->security = $security;
+    }
+
+    /**
      * @Route("/", name="app_users_list", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function list(AppUserRepository $repository)
     {
@@ -34,11 +47,22 @@ class AppUserController extends AbstractController
      */
     public function view(AppUser $appUser)
     {
-        return $this->json(
-            $appUser,
-            200,
-            [],
-            ["groups" => ["app_user:view"]]
-        );
+        $connectedUser = $this->security->getUser();
+
+        if ($connectedUser->getId() == $appUser->getId()) {
+            return $this->json(
+                $appUser,
+                200,
+                [],
+                ["groups" => ["app_user:view"]]
+            );
+        } else {
+            return $this->json(
+                [
+                "success" => false
+                ],
+                Response::HTTP_FORBIDDEN
+            );
+        }
     }
 }
