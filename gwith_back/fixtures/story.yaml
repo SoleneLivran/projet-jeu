@@ -2,6 +2,7 @@ App\Entity\Story:
   story_abba:
     updatedAt: <dateTime()>
     publishedAt: <dateTime()>
+    status: 1
     difficulty: 1
     title: "ABBA"
     synopsis: "Amour, Bière, Bagarre, Alien"
@@ -11,6 +12,7 @@ App\Entity\Story:
   story_desert:
     updatedAt: <dateTime()>
     publishedAt: <dateTime()>
+    status: 1
     difficulty: 5
     title: "Quand t'es dans le désert"
     synopsis: "Perdu dans le desert, malgré le calme apparent, de nombreux dangers guettent parmi les dunes... Saurez-vous survivre et échapper aux sables ? Trouverez-vous le trésor dont la rumeur vous a attiré dans ce lieu maudit ? Quel sera votre destin ?"
