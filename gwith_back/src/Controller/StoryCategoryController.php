@@ -8,8 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/api/story_categories")
- * @IsGranted("ROLE_USER")
+ * @Route("/api/public/story_categories")
  */
 class StoryCategoryController extends AbstractController
 {

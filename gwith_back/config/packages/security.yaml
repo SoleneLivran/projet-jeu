@@ -22,8 +22,8 @@ security:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-        stories:
-            pattern:  ^/api/stories
+        public:
+            pattern:  ^/api/public
             stateless: true
             anonymous: true          
         register:
@@ -57,11 +57,10 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/stories, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/public, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: ROLE_USER }
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN]
-        #ROLE_ADMIN: [ROLE_USER]
     

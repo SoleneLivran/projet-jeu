@@ -3,103 +3,129 @@ App\Entity\Scene:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_mayor'
+    story: '@story_investigation'
   scene_story_investigation_b:
     updatedAt: <dateTime()>
     place: '@place_kitchen'
     event: '@event_butler'
+    story: '@story_investigation'
   scene_story_investigation_c:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_painter'
+    story: '@story_investigation'
   scene_story_investigation_d:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_home_owner_woman'
+    story: '@story_investigation'
   scene_story_investigation_e:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_mayor'
+    story: '@story_investigation'
   scene_story_investigation_f:
     updatedAt: <dateTime()>
     place: '@place_kitchen'
     event: '@event_butler'
+    story: '@story_investigation'
   scene_story_investigation_g:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_painter'
+    story: '@story_investigation'
   scene_story_investigation_h:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_home_owner_woman'
+    story: '@story_investigation'
   scene_story_investigation_i:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_strange_box'
+    story: '@story_investigation'
   scene_story_investigation_j:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_caramels'
+    story: '@story_investigation'
   scene_story_investigation_k:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_locked'
+    story: '@story_investigation'
   scene_story_investigation_l:
     updatedAt: <dateTime()>
     place: '@place_kitchen'
     event: '@event_gameWon'
+    story: '@story_investigation'
   scene_story_investigation_m:
     updatedAt: <dateTime()>
     place: '@place_kitchen'
     event: '@event_drawer'
+    story: '@story_investigation'
   scene_story_investigation_n:
     updatedAt: <dateTime()>
     place: '@place_kitchen'
     event: '@event_key'
+    story: '@story_investigation'
   scene_story_investigation_p:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_gameLost'
+    story: '@story_investigation'
   scene_story_investigation_q:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_painting'
+    story: '@story_investigation'
   scene_story_investigation_r:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_gameLost'
+    story: '@story_investigation'
   scene_story_investigation_s:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_caramels'
+    story: '@story_investigation'
   scene_story_investigation_t:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_strange_box'
+    story: '@story_investigation'
   scene_story_investigation_u:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_caramels'
+    story: '@story_investigation'
   scene_story_investigation_w:
     updatedAt: <dateTime()>
     place: '@place_office'
     event: '@event_last_will'
+    story: '@story_investigation'
   scene_story_investigation_x:
     updatedAt: <dateTime()>
     place: '@place_written_document_content'
     event: '@event_butler'
+    story: '@story_investigation'
   scene_story_investigation_y:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_gameLost'
+    story: '@story_investigation'
   scene_story_investigation_z:
     updatedAt: <dateTime()>
     place: '@place_veranda'
     event: '@event_painting'
+    story: '@story_investigation'
   scene_story_investigation_aa:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_gameLost'
+    story: '@story_investigation'
   scene_story_investigation_bb:
     updatedAt: <dateTime()>
     place: '@place_living_room'
     event: '@event_caramels'
+    story: '@story_investigation'

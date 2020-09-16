@@ -65,5 +65,4 @@ class AppUserController extends AbstractController
             );
         }
     }
-
 }
