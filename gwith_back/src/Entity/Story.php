@@ -96,7 +96,7 @@ class Story
 
     /**
      * @ORM\OneToOne(targetEntity=Scene::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      * @Groups({"story:view"})
      */
     private $firstScene;

@@ -39,6 +39,9 @@ class StoryManager
             $event = $this->manager->getReference(Event::class, $sceneData['event']);
             $scene->setEvent($event);
 
+            // set the story property for the scene = id of the current story
+            $scene->setStory($story);
+
             // now we have all we need for one scene : persist
             $this->manager->persist($scene);
 

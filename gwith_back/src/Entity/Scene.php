@@ -54,7 +54,7 @@ class Scene
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="scenes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $story;
 
