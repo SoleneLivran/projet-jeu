@@ -23,10 +23,10 @@ class UserAccountController extends AbstractController
     {
         $user = new AppUser();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $user = json_decode($request->getContent(), true);
+        $form->handleRequest($request);
         
-        if($form->isValid()) {
-            $plainPassword = $user->get('password')->getData();
+        if($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $form->get('password')->getData();
             $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword);
             $user->setPassword($encodedPassword);
 
@@ -53,7 +53,7 @@ class UserAccountController extends AbstractController
     }
 
      /**
-     * @Route("/account/delete", name="account_delete", requirements={"id"="\d+"})
+     * @Route("/account/delete", name="account_delete")
      */
     public function delete()
     {
@@ -73,24 +73,22 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/change_password", name ="account_change_password")
+     * @Route("/account/password_update", name ="account_password_update")
      */
-    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function passwordUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
-        /** @var User $user */
+        /** @var AppUser $user */
         $user = $this->getUser();
         $form = $this->createForm(UserPasswordUpdateType::class, $user);
-        $user = json_decode($request->getContent(), true);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()) {
 
-        if($form->isValid()) {
-
-            $plainPassword = $form->get('password')->getData();
+            $plainPassword = $form->get('newPassword')->getData();
             $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
             $user->setPassword($encodedPassword);
 
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($user);
-            $manager->flush();
+            $this->getDoctrine()->getManager()->flush();
 
             return $this->json(
                 [
@@ -104,6 +102,41 @@ class UserAccountController extends AbstractController
             [
                 "success" => false,
                 "errors" => "Une erreur s'est produite lors du changement de mot de passe"
+            ],
+            Response::HTTP_BAD_REQUEST
+        );
+    }
+
+    /**
+     * @Route("/account/user_name_update", name ="user_name_update")
+     */
+    public function userNameUpdate(Request $request)
+    {
+        // $user->getToken(); je me demande si je ne dois pas plutot recupe le token... 
+        /** @var AppUser $user */
+        $user = $this->getUser();
+        $form = $this->createForm(UserNameUpdateType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+
+            $newName = $form->get('newName')->getData();
+            $user->setName($newName);
+
+            $this->getDoctrine()->getManager()->flush();
+            
+            return $this->json(
+                [
+                    "success" => true
+                ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            [
+                "success" => false,
+                "errors" => "Une erreur s'est produite lors du changement de nom"
             ],
             Response::HTTP_BAD_REQUEST
         );
