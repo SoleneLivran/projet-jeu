@@ -251,13 +251,10 @@ class AppUser implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-<<<<<<< HEAD
     
     public function __toString()
     {
         return $this->name;
     }
-=======
 
->>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
 }
