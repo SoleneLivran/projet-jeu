@@ -4,6 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\AppUser;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+
 
 class AppUserCrudController extends AbstractCrudController
 {
@@ -20,7 +24,15 @@ class AppUserCrudController extends AbstractCrudController
             'mail',
             'role',
             'stories_played',
-            
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt'),
+            AssociationField::new('avatar'),
         ];
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDateTimeFormat('long', 'short');
+        ;
     }
 }

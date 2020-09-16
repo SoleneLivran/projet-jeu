@@ -51,26 +51,26 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             // yield MenuItem::linkToCrud('The Label', 'icon class', EntityClass::class);
             MenuItem::section('Create'),
-            MenuItem::linkToCrud('Places', 'fa fa-tags', Place::class),
-            MenuItem::linkToCrud('Events', 'fa fa-file-text', Event::class),
-            MenuItem::linkToCrud('Actions', 'fa fa-file-text', Action::class),
+            MenuItem::linkToCrud('Places', 'fas fa-globe-americas', Place::class),
+            MenuItem::linkToCrud('Events', 'fas fa-fighter-jet', Event::class),
+            MenuItem::linkToCrud('Actions', 'fas fa-bicycle', Action::class),
 
             MenuItem::section('Users'),
-            MenuItem::linkToCrud('AppUsers', 'fa fa-comment', AppUser::class),
-            MenuItem::linkToCrud('Avatars', 'fa fa-comment', Avatar::class),
+            MenuItem::linkToCrud('AppUsers', 'fas fa-user', AppUser::class),
+            MenuItem::linkToCrud('Avatars', 'fas fa-image', Avatar::class),
 
             MenuItem::section('Stories'),
-            MenuItem::linkToCrud('Stories', 'fa fa-comment', Story::class),
-            MenuItem::linkToCrud('Scenes', 'fa fa-comment', Scene::class),
-            MenuItem::linkToCrud('Transitions', 'fa fa-comment', Transition::class),
-            MenuItem::linkToCrud('Ratings', 'fa fa-comment', Rating::class),
+            MenuItem::linkToCrud('Stories', 'fa fa-book-open', Story::class),
+            MenuItem::linkToCrud('Scenes', 'fa fa-video', Scene::class),
+            MenuItem::linkToCrud('Transitions', 'fa fa-forward', Transition::class),
+            MenuItem::linkToCrud('Ratings', 'fa fa-star-half-alt', Rating::class),
             
 
             MenuItem::section('Filtres'),
-            MenuItem::linkToCrud('Story Categories', 'fa fa-comment', StoryCategory::class),
-            MenuItem::linkToCrud('Action Types', 'fa fa-comment', ActionType::class),
-            MenuItem::linkToCrud('Event Types', 'fa fa-comment', EventType::class),
-            MenuItem::linkToCrud('Place Types', 'fa fa-comment', Placetype::class),
+            MenuItem::linkToCrud('Story Categories', 'fa fa-book-dead', StoryCategory::class),
+            MenuItem::linkToCrud('Action Types', 'fas fa-skiing', ActionType::class),
+            MenuItem::linkToCrud('Event Types', 'fas fa-cloud-moon-rain', EventType::class),
+            MenuItem::linkToCrud('Place Types', 'fas fa-map-marked-alt', Placetype::class),
 
             
         ];

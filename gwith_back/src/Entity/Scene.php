@@ -141,4 +141,11 @@ class Scene
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $place = $this->getPlace();
+        $placeName = $place->getName();
+         return $this->$placeName;
+    }
 }

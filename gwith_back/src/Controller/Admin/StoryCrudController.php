@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Story;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class StoryCrudController extends AbstractCrudController
 {
@@ -21,7 +24,20 @@ class StoryCrudController extends AbstractCrudController
             'picture_file',
             'rating',
             'difficulty',
-            'synopsys',
+            'synopsis',
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt'),
+            DateTimeField::new('publishedAt'),
+            AssociationField::new('firstScene'),
+            AssociationField::new('author'),
+            AssociationField::new('category'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDateTimeFormat('long', 'short');
+        ;
     }
 }

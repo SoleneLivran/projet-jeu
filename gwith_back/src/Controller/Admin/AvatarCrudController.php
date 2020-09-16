@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Avatar;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class AvatarCrudController extends AbstractCrudController
 {
@@ -17,6 +19,15 @@ class AvatarCrudController extends AbstractCrudController
         return [
             'id',
             'picture_file',
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt'),
         ];
+    }
+    
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDateTimeFormat('long', 'short');
+        ;
     }
 }

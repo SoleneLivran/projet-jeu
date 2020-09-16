@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\ActionType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class ActionTypeCrudController extends AbstractCrudController
 {
@@ -17,7 +19,16 @@ class ActionTypeCrudController extends AbstractCrudController
         return [
             'id',
             'name',
-            
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt'),
         ];
     }
+    
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDateTimeFormat('long', 'short');
+        ;
+    }
+
 }
