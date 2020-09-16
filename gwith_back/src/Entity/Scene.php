@@ -52,6 +52,12 @@ class Scene
      */
     private $event;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="scenes")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    private $story;
+
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
@@ -142,10 +148,23 @@ class Scene
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         $place = $this->getPlace();
         $placeName = $place->getName();
          return $this->$placeName;
+=======
+    public function getStory(): ?Story
+    {
+        return $this->story;
+    }
+
+    public function setStory(?Story $story): self
+    {
+        $this->story = $story;
+
+        return $this;
+>>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
     }
 }

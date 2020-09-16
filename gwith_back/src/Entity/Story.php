@@ -96,16 +96,22 @@ class Story
 
     /**
      * @ORM\OneToOne(targetEntity=Scene::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      * @Groups({"story:view"})
      */
     private $firstScene;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
+     */
+    private $scenes;
 
    
     public function __construct()
     {
         $this->createdAt = new DateTime();
         $this->ratings = new ArrayCollection();
+        $this->scenes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -288,9 +294,41 @@ class Story
         return $this;
     }
 
+<<<<<<< HEAD
     public function __toString()
     {
         return $this->title;
+=======
+    /**
+     * @return Collection|Scene[]
+     */
+    public function getScenes(): Collection
+    {
+        return $this->scenes;
+    }
+
+    public function addScene(Scene $scene): self
+    {
+        if (!$this->scenes->contains($scene)) {
+            $this->scenes[] = $scene;
+            $scene->setStory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScene(Scene $scene): self
+    {
+        if ($this->scenes->contains($scene)) {
+            $this->scenes->removeElement($scene);
+            // set the owning side to null (unless already changed)
+            if ($scene->getStory() === $this) {
+                $scene->setStory(null);
+            }
+        }
+
+        return $this;
+>>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
     }
 
 }

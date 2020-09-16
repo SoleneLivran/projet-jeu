@@ -19,13 +19,13 @@ class StoryCategory
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "story_categories:list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "story_categories:list"})
      */
     private $name;
 

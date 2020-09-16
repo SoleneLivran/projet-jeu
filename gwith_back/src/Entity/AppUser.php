@@ -7,11 +7,13 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AppUserRepository::class)
+ * @UniqueEntity(fields={"name"}, message="There is already an account with this name")
  */
 class AppUser implements UserInterface
 {
@@ -19,18 +21,19 @@ class AppUser implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $mail;
 
@@ -57,6 +60,7 @@ class AppUser implements UserInterface
     /**
    
      * @ORM\Column(type="integer", options={"default": 0})
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $storiesPlayed = 0;
 
@@ -67,6 +71,7 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity=Avatar::class)
+     * @Groups({"app_users:list", "app_user:view"})
      */
     private $avatar;
 
@@ -246,9 +251,13 @@ class AppUser implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+<<<<<<< HEAD
     
     public function __toString()
     {
         return $this->name;
     }
+=======
+
+>>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
 }

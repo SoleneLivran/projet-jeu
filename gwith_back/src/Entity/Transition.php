@@ -34,11 +34,13 @@ class Transition
 
     /**
      * @ORM\ManyToOne(targetEntity=Scene::class, inversedBy="transitions")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $currentScene;
 
     /**
      * @ORM\ManyToOne(targetEntity=Scene::class)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $nextScene;
 

@@ -3,35 +3,44 @@ App\Entity\Scene:
     updatedAt: <dateTime()>
     place: '@place_tavern'
     event: '@event_nothing_special'
+    story: '@story_abba'
   scene_b:
     updatedAt: <dateTime()>
     place: '@place_tavern'
     event: '@event_drunk'
+    story: '@story_abba'
   scene_c:
     updatedAt: <dateTime()>
     place: '@place_forest'
     event: '@event_bear'
+    story: '@story_abba'
   scene_d:
     updatedAt: <dateTime()>
     place: '@place_forest'
     event: '@event_death'
+    story: '@story_abba'
   scene_e:
     updatedAt: <dateTime()>
     place: '@place_forest'
     event: '@event_bear'
+    story: '@story_abba'
   scene_f:
     updatedAt: <dateTime()>
     place: '@place_spaceship'
     event: '@event_alien'
+    story: '@story_abba'
   scene_g:
     updatedAt: <dateTime()>
     place: '@place_spaceship'
     event: '@event_wedding'
+    story: '@story_abba'
   scene_h:
     updatedAt: <dateTime()>
     place: '@place_black_hole'
     event: '@event_death'
+    story: '@story_abba'
   scene_i:
     updatedAt: <dateTime()>
     place: '@place_spaceship'
     event: '@event_gameEnd'
+    story: '@story_abba'
