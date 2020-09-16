@@ -143,7 +143,46 @@ class StoryController extends AbstractController
             $this->storyManager->createScenes($story, $scenesData);
 
             // the storyManager has set all the missing data we need in the DB to create a functionnal story
-            // TODO suppr la version precedente de l'histoire si elle existe deja en BDD ?
+            $manager->flush();
+
+            return $this->json(
+                ["success" => true],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            $form->getErrors(true),
+            Response::HTTP_BAD_REQUEST,
+        );
+    }
+
+    /**
+     * @Route("/stories/{id}", name="story_create", methods={"PUT"}, requirements={"id"="\d+"})
+     */
+    public function update(Story $story, Request $request)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t edit another author\'s story!');
+        }
+
+        $submittedData = json_decode($request->getContent(), true);
+        $form = $this->createForm(StoryType::class, $story);
+
+        // TODO : asserts
+
+        $form->submit($submittedData, false);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($story);
+
+            $scenesData = $submittedData['scenes'];
+
+            // TODO : remove all currently registered scenes (create a method in the story repository ?)
+            // https://symfony.com/doc/current/doctrine.html#deleting-an-object
+            
+            $this->storyManager->createScenes($story, $scenesData);
             $manager->flush();
 
             return $this->json(
