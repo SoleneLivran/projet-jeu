@@ -294,6 +294,11 @@ class Story
         return $this;
     }
 
+<<<<<<< HEAD
+    public function __toString()
+    {
+        return $this->title;
+=======
     /**
      * @return Collection|Scene[]
      */
@@ -323,6 +328,7 @@ class Story
         }
 
         return $this;
+>>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
     }
 
 }

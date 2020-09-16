@@ -148,6 +148,13 @@ class Scene
         return $this;
     }
 
+<<<<<<< HEAD
+    public function __toString()
+    {
+        $place = $this->getPlace();
+        $placeName = $place->getName();
+         return $this->$placeName;
+=======
     public function getStory(): ?Story
     {
         return $this->story;
@@ -158,5 +165,6 @@ class Scene
         $this->story = $story;
 
         return $this;
+>>>>>>> 200fcc57f51138e55aff37b1ae3484f7c56322bb
     }
 }
