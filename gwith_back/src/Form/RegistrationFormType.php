@@ -19,34 +19,24 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Name')
+            ->add('name')
             
-            ->add('Password', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les deux mot de passe ne sont pas identiques',
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Repeter le mot de passe'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Vous devez entrer un mot de passe',
-                    ]),
+                    new NotBlank(),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} characteres',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
             ->add(
                 'mail',
-                EmailType::class,
-                [
-                    "label" => "Adresse email"
-                ]
+                EmailType::class
             )
             /* ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

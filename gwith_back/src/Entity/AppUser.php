@@ -75,11 +75,6 @@ class AppUser implements UserInterface
      */
     private $avatar;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
-
     public function __construct()
     {
         $this->stories = new ArrayCollection();
@@ -257,15 +252,4 @@ class AppUser implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
 }
