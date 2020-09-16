@@ -32,6 +32,9 @@
             "public/.htaccess"
         ]
     },
+    "symfony/orm-pack": {
+        "version": "v2.0.0"
+    },
     "symfony/profiler-pack": {
         "version": "v1.0.5"
     },
@@ -48,5 +51,8 @@
             "config/packages/test/web_profiler.yaml",
             "config/routes/dev/web_profiler.yaml"
         ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.0.0"
     }
 }

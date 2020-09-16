@@ -29,7 +29,8 @@ security:
         register:
             pattern:  ^/api/register
             stateless: true
-            anonymous: true          
+            anonymous: true  
+                    
         api:
             # celui qui permet de mettre en place l'autorisation d'accès pour les routes /api (uniquement pour les users avec token)
             pattern:   ^/api
