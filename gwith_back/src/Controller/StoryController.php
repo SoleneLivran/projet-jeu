@@ -42,7 +42,12 @@ class StoryController extends AbstractController
         if ($request->query->has('story_category')) {
             $storyCategory = $request->query->get('story_category');
             $stories = $repository->findAllByCategory($storyCategory);
-        } else {
+        } 
+        elseif ($request->query->has('story_difficulty')) {
+                $storyDifficulty = $request->query->get('story_difficulty');
+                $stories = $repository->findAllByDifficulty($storyDifficulty);
+        }
+        else {
             $stories = $repository->findAllOrderByTitle();
         }
         return $this->json(
