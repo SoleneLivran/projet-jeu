@@ -15,6 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Story
 {
+    const STATUS_PUBLISHED = 1;
+    const STATUS_DRAFT = 2;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -116,6 +116,8 @@ class StoryController extends AbstractController
         // set the author of the story = connected user
         $story->setAuthor($this->security->getUser());
 
+        $story->setStatus(Story::STATUS_DRAFT);
+
         // instanciate the form = specifies what data we are supposed to get for the Story
         $form = $this->createForm(StoryType::class, $story);
 
@@ -172,6 +174,9 @@ class StoryController extends AbstractController
         }
 
         $submittedData = json_decode($request->getContent(), true);
+
+        $story->setStatus(Story::STATUS_DRAFT);
+
         $form = $this->createForm(StoryType::class, $story);
 
         // TODO : asserts
