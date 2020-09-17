@@ -81,4 +81,5 @@ class Rating
     {
         return $this->name;
     }
+
 }

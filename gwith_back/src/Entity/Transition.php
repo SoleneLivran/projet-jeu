@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TransitionRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Transition
 {
@@ -121,10 +122,17 @@ class Transition
         return $this;
     }
 
-    public function __toString()
+
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
     {
-        $action = $this->getAction();
-        $actionName = $action->getName();
-         return $this->$actionName;
-    }
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
 }

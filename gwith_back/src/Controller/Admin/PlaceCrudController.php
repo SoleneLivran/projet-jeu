@@ -7,6 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PlaceCrudController extends AbstractCrudController
 {
@@ -18,13 +20,13 @@ class PlaceCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'id',
-            'name',
-            'description',
-            'sound_file',
-            'picture_file',
-            DateTimeField::new('createdAt'),
-            DateTimeField::new('updatedAt'),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('name'),
+            TextField::new('description'),
+            TextField::new('sound_file'), //or null
+            TextField::new('picture_file'),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
             AssociationField::new('placeType'),
         ];
     }
