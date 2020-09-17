@@ -73,10 +73,11 @@ class StoryManager
                 // get the front id of the nextscene
                 $nextSceneFrontId = $transitionData['nextScene'];
                 // in the array with all the scenes (front scenes), select the relevant scene by its front id
-                $nextScene = $scenes[$nextSceneFrontId];
-                // set this scene as transition's nextScene
-                $transition->setNextScene($nextScene);
-
+                if (isset($scenes[$nextSceneFrontId])) {
+                    $nextScene = $scenes[$nextSceneFrontId];
+                    // set this scene as transition's nextScene
+                    $transition->setNextScene($nextScene);
+                }
                 // currentScene :
                 // get the front id of the current scene (the one we are iterating on)
                 $currentSceneFrontId = $sceneData['id'];
