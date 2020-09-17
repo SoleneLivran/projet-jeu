@@ -106,6 +106,7 @@ class Story
 
     /**
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
+     * @Groups({"story:editable"})
      */
     private $scenes;
    

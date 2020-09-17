@@ -161,6 +161,20 @@ class StoryController extends AbstractController
             Response::HTTP_BAD_REQUEST,
         );
     }
+
+    /**
+     * @Route("/stories/{id}/editable", name="story_editable", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function loadEditableStory(StoryRepository $repository, Story $story)
+    {
+        $editableStory = $repository->find($story);
+        return $this->json(
+            $editableStory,
+            200,
+            [],
+            ["groups" => ["story:editable"]]
+        );
+    }
 }
 
 
