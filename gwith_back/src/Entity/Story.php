@@ -106,7 +106,6 @@ class Story
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
      */
     private $scenes;
-
    
     public function __construct()
     {

@@ -55,6 +55,21 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAllByDifficulty($storyDifficulty)
+    {
+        $queryBuilder = $this->createQueryBuilder('story');
+
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('story.difficulty', $storyDifficulty)
+        );
+
+        $queryBuilder->addOrderBy('story.title');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
     /**
     * @return Story[] Returns an array of Story objects
     */

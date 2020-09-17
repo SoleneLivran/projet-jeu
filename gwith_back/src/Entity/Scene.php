@@ -59,6 +59,11 @@ class Scene
      */
     private $story;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $frontReference;
+
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
@@ -181,5 +186,17 @@ class Scene
         $placeName = $this->getPlace()->getName();
         $eventName = $this->getEvent()->getName();
         return "#" . $sceneId . " " . $placeName . " + " . $eventName;
+    }
+
+    public function getFrontReference(): ?int
+    {
+        return $this->frontReference;
+    }
+
+    public function setFrontReference(?int $frontReference): self
+    {
+        $this->frontReference = $frontReference;
+
+        return $this;
     }
 }

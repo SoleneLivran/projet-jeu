@@ -28,19 +28,18 @@
 |`/api/app_users`|`GET`|`AppUserController`|`list`|||Get all users||
 |`/api/app_users/{id}`|`GET`|`AppUserController`|`view`|||Get one user by its ID||
 |`/api/app_users/{id}`|`PUT`|`AppUserController`|``|||Edit a user||
-|`/api/register`|`POST`|`SecurityController`|``|||Create a user||
+|`/api/register`|`POST`|`SecurityController`|`createAccount`|||Create a user||
+|`/api/account/delete`|`DELETE ?`|`UserAccountController`|`delete`|||Delete the user's account||
+|`/api/account/password_update`|`PUT ?`|`UserAccountController`|`passwordUpdate`|||Update the user's password||
+|`/api/account/user_name_update`|`PUT ?`|`UserAccountController`|`userNameUpdate`|||Update the user's name||
 |`/api/login`|`POST`|`SecurityController`|``|||Login validation||
 |`/api/avatars`|`GET`|`AvatarController`|`list`|||Get all avatars||
 |`/api/avatars/{id}`|`GET`|`AvatarController`|`view`|||Get one avatar by its ID||
-|`/api/stories`|`GET`|`StoryController`|`list`|||Get all stories||
-|`/api/stories/latest_ten`|`GET`|`StoryController`|`listLatestTen`|||Get the 10 latest published stories||
-|`/api/stories/top_ten`|`GET`|`StoryController`|`listTopTen`|||Get the 10 best rated stories||
-|`/api/stories/{id}`|`GET`|`StoryController`|`view`|||Get one story by its ID||
+|`/api/public/stories`|`GET`|`StoryController`|`list`|||Get all stories||
+|`/api/public/stories/latest_ten`|`GET`|`StoryController`|`listLatestTen`|||Get the 10 latest published stories||
+|`/api/public/stories/top_ten`|`GET`|`StoryController`|`listTopTen`|||Get the 10 best rated stories||
+|`/api/public/stories/{id}`|`GET`|`StoryController`|`view`|||Get one story by its ID||
 |`/api/transitions/{id}/next_scene`|`GET`|`SceneController`|`getNextScene`|||Get next scene from a transition||
 |`/api/stories`|`POST`|`StoryController`|``|||Create a story ||
 |`/api/stories/{id}`|`PUT`|`StoryController`|``|||Edit a Story||
-|`/api/story_categories`|`GET`|`StoryCategoryController`|`list`|||Get all story categories||
-|`/api/stories/{id}/scenes`|`POST`|`SceneController`|``|||Create a scene (with a place and event)||
-|`/api/stories/{id}/scenes/{id}`|`PUT`|`SceneController`|``|||Edit a scene (with a place and event)||
-|`/api/stories/{id}/transitions`|`POST`|`TransitionController`|``|||Create a transition (with a scene and action)||
-|`/api/stories/{id}/transitions/{id}`|`PUT`|`TransitionController`|``|||Edit a transition specified by its ID (with a scene and action)||
+|`/api/public/story_categories`|`GET`|`StoryCategoryController`|`list`|||Get all story categories||
