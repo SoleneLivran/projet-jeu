@@ -151,7 +151,7 @@ class StoryController extends AbstractController
             $manager->flush();
 
             return $this->json(
-                [ 'id' => $story->getId() ],
+                [ 'story_id' => $story->getId() ],
                 Response::HTTP_OK
             );
         }
@@ -187,7 +187,7 @@ class StoryController extends AbstractController
             $manager->flush();
 
             return $this->json(
-                [ 'id' => $story->getId() ],
+                [ 'story_id' => $story->getId() ],
                 Response::HTTP_OK
             );
         }
