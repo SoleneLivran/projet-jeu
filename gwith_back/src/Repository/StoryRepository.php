@@ -27,12 +27,14 @@ class StoryRepository extends ServiceEntityRepository
     {
         // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
+        
+        $queryBuilder->where('story.status = 1');
 
-         // je personnalise ma requete (ordonné par titre)
-         $queryBuilder->addOrderBy('story.title');
+        // je personnalise ma requete (ordonné par titre)
+        $queryBuilder->addOrderBy('story.title');
 
-         // j'éxécute ma requête
-         $query = $queryBuilder->getQuery();
+           // j'éxécute ma requête
+        $query = $queryBuilder->getQuery();
 
         // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
         return $query->getResult();
@@ -42,10 +44,29 @@ class StoryRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('story');
 
+        $queryBuilder->where('story.status = 1');
+
         $queryBuilder->leftJoin('story.category', 'storyCategory');
 
         $queryBuilder->where(
             $queryBuilder->expr()->eq('storyCategory.id', $categoryId)
+        );
+
+        $queryBuilder->addOrderBy('story.title');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
+
+    public function findAllByDifficulty($storyDifficulty)
+    {
+        $queryBuilder = $this->createQueryBuilder('story');
+
+        $queryBuilder->where('story.status = 1');
+
+        $queryBuilder->where(
+            $queryBuilder->expr()->eq('story.difficulty', $storyDifficulty)
         );
 
         $queryBuilder->addOrderBy('story.title');
@@ -64,6 +85,8 @@ class StoryRepository extends ServiceEntityRepository
         // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
 
+        $queryBuilder->where('story.status = 1');
+
          // je personnalise ma requete (ici max 10 résultats et ordonné par rating)
          $queryBuilder->setMaxResults(10);
          $queryBuilder->addOrderBy('story.rating');
@@ -81,6 +104,8 @@ class StoryRepository extends ServiceEntityRepository
         // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
 
+        $queryBuilder->where('story.status = 1');
+        
          // je personnalise ma requete (ici max 10 résultats et ordonné par date de publication)
          $queryBuilder->setMaxResults(10);
          $queryBuilder->addOrderBy('story.publishedAt');
