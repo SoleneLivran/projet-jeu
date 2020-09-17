@@ -7,6 +7,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
 class RatingCrudController extends AbstractCrudController
 {
@@ -18,10 +20,9 @@ class RatingCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'id',
-            'note',
-            'story',
-            DateTimeField::new('createdAt'),
+            IdField::new('id')->hideOnForm(),
+            IntegerField::new('note'),
+            DateTimeField::new('createdAt')->hideOnForm(),
             AssociationField::new('story'),
         ];
     }

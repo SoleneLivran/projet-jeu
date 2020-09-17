@@ -6,6 +6,8 @@ use App\Entity\StoryCategory;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class StoryCategoryCrudController extends AbstractCrudController
 {
@@ -17,10 +19,10 @@ class StoryCategoryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'id',
-            'name',
-            DateTimeField::new('createdAt'),
-            DateTimeField::new('updatedAt'),
+            IdField::new('id')->hideOnForm()->hideOnForm(),
+            TextField::new('name'),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
         ];
     }
 
