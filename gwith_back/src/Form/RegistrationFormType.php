@@ -20,12 +20,9 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            
-            ->add('password', RepeatedType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
+
+            ->add('password', PasswordType::class, [
                 'mapped' => false,
-                'type' => PasswordType::class,
                 'constraints' => [
                     new NotBlank(),
                     new Length([
@@ -34,6 +31,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            
             ->add(
                 'mail',
                 EmailType::class
@@ -52,6 +50,8 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => AppUser::class,
+            'csrf_protection' => false,
+            "allow_extra_fields" => true,
         ]);
     }
 }
