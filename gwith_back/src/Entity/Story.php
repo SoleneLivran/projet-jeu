@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Story
 {
@@ -18,48 +19,50 @@ class Story
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @Groups({"stories:view_user_stories"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      *
      */
     private $publishedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"stories:view_user_stories"})
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 2})
-     * @Groups({"story:view"})
+     * @Groups({"story:view", "stories:view_user_stories"})
      */
     private $status = 2;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $rating = 0;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $difficulty;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"story:view"})
+     * @Groups({"story:view", "stories:view_user_stories"})
      */
     private $synopsis;
 
@@ -72,7 +75,7 @@ class Story
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $category;
 
@@ -84,13 +87,13 @@ class Story
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $title = "Sans Titre";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"stories:list", "story:view"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
      */
     private $pictureFile = "";
 
@@ -105,7 +108,6 @@ class Story
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
      */
     private $scenes;
-
    
     public function __construct()
     {
@@ -294,10 +296,7 @@ class Story
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->title;
-    }
+  
     /**
      * @return Collection|Scene[]
      */
@@ -328,5 +327,22 @@ class Story
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
+    {
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
 
 }

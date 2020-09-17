@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SceneRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Scene
 {
@@ -57,6 +58,11 @@ class Scene
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $story;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $frontReference;
 
     public function __construct()
     {
@@ -148,12 +154,7 @@ class Scene
         return $this;
     }
 
-    public function __toString()
-    {
-        $place = $this->getPlace();
-        $placeName = $place->getName();
-        return $this->$placeName;
-    }
+    
     
     public function getStory(): ?Story
     {
@@ -163,6 +164,38 @@ class Scene
     public function setStory(?Story $story): self
     {
         $this->story = $story;
+
+        return $this;
+    }
+    
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
+    {
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
+
+    public function __toString()
+    {
+        $sceneId = $this->getId();
+        $placeName = $this->getPlace()->getName();
+        $eventName = $this->getEvent()->getName();
+        return "#" . $sceneId . " " . $placeName . " + " . $eventName;
+    }
+
+    public function getFrontReference(): ?int
+    {
+        return $this->frontReference;
+    }
+
+    public function setFrontReference(?int $frontReference): self
+    {
+        $this->frontReference = $frontReference;
 
         return $this;
     }
