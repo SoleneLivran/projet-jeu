@@ -180,7 +180,6 @@ class StoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($story);
 
             $scenesData = $submittedData['scenes'];
             
