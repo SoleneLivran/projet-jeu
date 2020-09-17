@@ -11,6 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Story
 {
@@ -105,7 +106,6 @@ class Story
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
      */
     private $scenes;
-
    
     public function __construct()
     {
@@ -294,10 +294,7 @@ class Story
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->title;
-    }
+  
     /**
      * @return Collection|Scene[]
      */
@@ -328,5 +325,22 @@ class Story
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
+    {
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
 
 }

@@ -21,9 +21,10 @@ class UserAccountController extends AbstractController
      */
     public function createAccount(request $request, UserPasswordEncoderInterface $passwordEncoder )
     {
+        $userData = json_decode($request->getContent(), true);
         $user = new AppUser();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $form->submit($userData, true);
         
         if($form->isSubmitted() && $form->isValid()) {
             $plainPassword = $form->get('password')->getData();

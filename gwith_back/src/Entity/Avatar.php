@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=AvatarRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Avatar
 {
@@ -87,4 +88,16 @@ class Avatar
     {
         return $this->pictureFile;
     }
+
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
+    {
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
 }

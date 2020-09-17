@@ -42,7 +42,12 @@ class StoryController extends AbstractController
         if ($request->query->has('story_category')) {
             $storyCategory = $request->query->get('story_category');
             $stories = $repository->findAllByCategory($storyCategory);
-        } else {
+        } 
+        elseif ($request->query->has('story_difficulty')) {
+                $storyDifficulty = $request->query->get('story_difficulty');
+                $stories = $repository->findAllByDifficulty($storyDifficulty);
+        }
+        else {
             $stories = $repository->findAllOrderByTitle();
         }
         return $this->json(
@@ -143,11 +148,10 @@ class StoryController extends AbstractController
             $this->storyManager->createScenes($story, $scenesData);
 
             // the storyManager has set all the missing data we need in the DB to create a functionnal story
-            // TODO suppr la version precedente de l'histoire si elle existe deja en BDD ?
             $manager->flush();
 
             return $this->json(
-                ["success" => true],
+                $story->getId(),
                 Response::HTTP_OK
             );
         }
