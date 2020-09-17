@@ -58,6 +58,11 @@ class Scene
      */
     private $story;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $frontReference;
+
     public function __construct()
     {
         $this->transitions = new ArrayCollection();
@@ -163,6 +168,18 @@ class Scene
     public function setStory(?Story $story): self
     {
         $this->story = $story;
+
+        return $this;
+    }
+
+    public function getFrontReference(): ?int
+    {
+        return $this->frontReference;
+    }
+
+    public function setFrontReference(?int $frontReference): self
+    {
+        $this->frontReference = $frontReference;
 
         return $this;
     }
