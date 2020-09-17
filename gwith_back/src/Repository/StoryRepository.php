@@ -91,4 +91,5 @@ class StoryRepository extends ServiceEntityRepository
         // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
         return $query->getResult();
     }
+
 }
