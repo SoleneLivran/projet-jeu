@@ -163,7 +163,7 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/stories/{id}", name="story_create", methods={"PUT"}, requirements={"id"="\d+"})
+     * @Route("/stories/{id}", name="story_update", methods={"PUT"}, requirements={"id"="\d+"})
      */
     public function update(Story $story, Request $request)
     {
@@ -183,9 +183,6 @@ class StoryController extends AbstractController
             $manager->persist($story);
 
             $scenesData = $submittedData['scenes'];
-
-            // TODO : remove all currently registered scenes (create a method in the story repository ?)
-            // https://symfony.com/doc/current/doctrine.html#deleting-an-object
             
             $this->storyManager->createScenes($story, $scenesData);
             $manager->flush();
