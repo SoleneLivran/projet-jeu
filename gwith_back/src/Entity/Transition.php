@@ -120,4 +120,11 @@ class Transition
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $action = $this->getAction();
+        $actionName = $action->getName();
+         return $this->$actionName;
+    }
 }
