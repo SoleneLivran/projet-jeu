@@ -15,6 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Story
 {
+    const STATUS_PUBLISHED = 1;
+    const STATUS_DRAFT = 2;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -43,10 +46,10 @@ class Story
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="smallint", options={"default": 2})
+     * @ORM\Column(type="smallint", options={"default": App\Entity\Story::STATUS_DRAFT})
      * @Groups({"story:view", "stories:view_user_stories"})
      */
-    private $status = 2;
+    private $status = self::STATUS_DRAFT;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})

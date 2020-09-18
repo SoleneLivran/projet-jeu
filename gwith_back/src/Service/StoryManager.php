@@ -24,6 +24,12 @@ class StoryManager
 
     public function createScenes(Story $story, array $scenesData) {
         //===========SCENES===============
+        // delete previously registered scenes, if any, for the Story update
+        $previousVersionScenes = $story->getScenes();
+        foreach ($previousVersionScenes as $previousVersionScene) {
+            $this->manager->remove($previousVersionScene);
+        }
+
         // array to keep track of the scenes we are about to create
         $scenes = [];
 

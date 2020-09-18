@@ -156,6 +156,8 @@ class StoryController extends AbstractController
         // set the author of the story = connected user
         $story->setAuthor($this->security->getUser());
 
+        $story->setStatus(Story::STATUS_DRAFT);
+
         // instanciate the form = specifies what data we are supposed to get for the Story
         $form = $this->createForm(StoryType::class, $story);
 
@@ -191,7 +193,46 @@ class StoryController extends AbstractController
             $manager->flush();
 
             return $this->json(
-                [ 'id' => $story->getId() ],
+                [ 'story_id' => $story->getId() ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            $form->getErrors(true),
+            Response::HTTP_BAD_REQUEST,
+        );
+    }
+
+    /**
+     * @Route("/stories/{id}", name="story_update", methods={"PUT"}, requirements={"id"="\d+"})
+     */
+    public function update(Story $story, Request $request)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t edit another author\'s story!');
+        }
+
+        $submittedData = json_decode($request->getContent(), true);
+
+        $story->setStatus(Story::STATUS_DRAFT);
+
+        $form = $this->createForm(StoryType::class, $story);
+
+        // TODO : asserts
+
+        $form->submit($submittedData, false);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+
+            $scenesData = $submittedData['scenes'];
+            
+            $this->storyManager->createScenes($story, $scenesData);
+            $manager->flush();
+
+            return $this->json(
+                [ 'story_id' => $story->getId() ],
                 Response::HTTP_OK
             );
         }
@@ -205,7 +246,7 @@ class StoryController extends AbstractController
     /**
      * @Route("/stories/{id}", name="story_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
-    public function update(Story $story)
+    public function delete(Story $story)
     {
         if ($story->getAuthor() !== $this->getUser()) {
             throw $this->createAccessDeniedException('You can\'t delete another author\'s story!');
