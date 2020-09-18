@@ -52,6 +52,11 @@ class Transition
      */
     private $action;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nextSceneRef;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
@@ -122,8 +127,6 @@ class Transition
         return $this;
     }
 
-
-
     /**
     * @ORM\PrePersist
     * @ORM\PreUpdate
@@ -134,5 +137,17 @@ class Transition
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    public function getNextSceneRef(): ?int
+    {
+        return $this->nextSceneRef;
+    }
+
+    public function setNextSceneRef(?int $nextSceneRef): self
+    {
+        $this->nextSceneRef = $nextSceneRef;
+
+        return $this;
     } 
 }
