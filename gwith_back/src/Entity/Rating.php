@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RatingRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -26,7 +27,7 @@ class Rating
     private $note;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -36,6 +37,11 @@ class Rating
      */
     private $story;
 
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
