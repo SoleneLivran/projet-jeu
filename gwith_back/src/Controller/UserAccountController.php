@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserAccountController extends AbstractController
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="register", methods={"POST"})
      */
     public function createAccount(request $request, UserPasswordEncoderInterface $passwordEncoder )
     {
@@ -54,7 +54,7 @@ class UserAccountController extends AbstractController
     }
 
      /**
-     * @Route("/account/delete", name="account_delete")
+     * @Route("/account", name="account", methods={"DELETE"})
      */
     public function delete()
     {
@@ -74,7 +74,7 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/user_account_update", name ="user_account_update")
+     * @Route("/account", name ="account", methods={"PUT"})
      */
     public function userAccountUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {

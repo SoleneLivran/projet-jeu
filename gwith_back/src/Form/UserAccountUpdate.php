@@ -17,49 +17,40 @@ class UserAccountUpdateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('oldName', TextType::class)
-            ->add('newName', TextType::class)
+            ->add('newName', TextType::class, [
+                'required' => false
+            ])
         ;
 
         $builder
-            ->add(
-                'oldPassword',
-                PasswordType::class,
-                [
-                    "mapped" => false,
-                    "constraints" => [
-                        new UserPassword()
-                    ]
-                ]
-            )
-            ->add(
-                'newPassword', 
-                RepeatedType::class, 
-                [
-                    "mapped" => false,
-                    'type' => PasswordType::class,
-                    'constraints' => [
-                        new NotBlank(),
-                        new Length([
-                            'min' => 6,
-                            'max' => 4096,
-                        ]),
-                    ],
-                ]
-            );
+            ->add('newPassword', PasswordType::class, [
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank(),
+                    new Length([
+                        'min' => 6,
+                        'max' => 4096,
+                    ]),
+                ],
+            ]);
 
         $builder
-            ->add('oldMail',EmailType::class)
-            ->add('newMail',EmailType::class);
+            ->add('newMail',EmailType::class, [
+                'required' => false
+            ]);
 
         $builder
-            ->add('avatar', TextType::class);
+            ->add('avatar', TextType::class, [
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => AppUser::class,
+            'csrf_protection' => false,
         ]);
     }
 }
