@@ -18,7 +18,13 @@ class UserAccountUpdateType extends AbstractType
     {
         $builder
             ->add('newName', TextType::class, [
-                'required' => false
+                'required' => false,
+                'constraints' => [
+                    new Length([
+                        'min' => 2,
+                        'max' => 4096,
+                    ]),
+                ],
             ])
         ;
 
