@@ -42,9 +42,13 @@ class Transition
     /**
      * @ORM\ManyToOne(targetEntity=Scene::class)
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-     * @Groups({"story:editable"})
      */
     private $nextScene;
+
+    /**
+     * @Groups({"story:editable"})
+     */
+    private $nextSceneRef;
 
     /**
      * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="transitions")
@@ -102,6 +106,11 @@ class Transition
     public function getNextScene(): ?Scene
     {
         return $this->nextScene;
+    }
+
+    public function getNextSceneRef(): ?int
+    {
+        return $this->getNextScene() ? $this->getNextScene()->getFrontReference() : null;
     }
 
     public function setNextScene(?Scene $nextScene): self

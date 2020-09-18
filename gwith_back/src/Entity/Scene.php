@@ -63,7 +63,7 @@ class Scene
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"story:editable"})
      */
-    private $frontReference;
+    private $reference;
 
     public function __construct()
     {
