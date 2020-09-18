@@ -24,7 +24,7 @@ class Transition
     private $id;
 
     /**
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -46,16 +46,17 @@ class Transition
     private $nextScene;
 
     /**
-     * @Groups({"story:editable"})
-     */
-    private $nextSceneRef;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="transitions")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"story:view", "next_scene", "story:editable"})
      */
     private $action;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"story:editable"})
+     */
+    private $nextSceneRef;
 
     public function __construct()
     {
@@ -108,11 +109,6 @@ class Transition
         return $this->nextScene;
     }
 
-    public function getNextSceneRef(): ?int
-    {
-        return $this->getNextScene() ? $this->getNextScene()->getFrontReference() : null;
-    }
-
     public function setNextScene(?Scene $nextScene): self
     {
         $this->nextScene = $nextScene;
@@ -132,8 +128,6 @@ class Transition
         return $this;
     }
 
-
-
     /**
     * @ORM\PrePersist
     * @ORM\PreUpdate
@@ -144,5 +138,17 @@ class Transition
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    public function getNextSceneRef(): ?int
+    {
+        return $this->nextSceneRef;
+    }
+
+    public function setNextSceneRef(?int $nextSceneRef): self
+    {
+        $this->nextSceneRef = $nextSceneRef;
+
+        return $this;
     } 
 }

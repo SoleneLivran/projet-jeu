@@ -20,7 +20,7 @@ class StoryCategory
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view", "story_categories:list"})
+     * @Groups({"stories:list", "story:view", "story_categories:list", "story:editable"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class StoryCategory
     private $name;
 
     /**
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      *
      */
     private $createdAt;

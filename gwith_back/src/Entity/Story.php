@@ -15,6 +15,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Story
 {
+    const STATUS_PUBLISHED = 1;
+    const STATUS_DRAFT = 2;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,7 +27,7 @@ class Story
     private $id;
 
     /**
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      * @Groups({"stories:view_user_stories"})
      */
     private $createdAt;
@@ -43,10 +46,10 @@ class Story
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="smallint", options={"default": 2})
+     * @ORM\Column(type="smallint", options={"default": App\Entity\Story::STATUS_DRAFT})
      * @Groups({"story:view", "stories:view_user_stories"})
      */
-    private $status = 2;
+    private $status = self::STATUS_DRAFT;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
@@ -56,13 +59,13 @@ class Story
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $difficulty;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"story:view", "stories:view_user_stories"})
+     * @Groups({"story:view", "stories:view_user_stories", "story:editable"})
      */
     private $synopsis;
 
@@ -75,7 +78,7 @@ class Story
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $category;
 
@@ -87,13 +90,13 @@ class Story
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $title = "Sans Titre";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $pictureFile = "";
 

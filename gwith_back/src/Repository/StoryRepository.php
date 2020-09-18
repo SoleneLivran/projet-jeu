@@ -40,6 +40,10 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    /**
+    * @return Story[] Returns an array of Story objects
+    */
+
     public function findAllByCategory($categoryId)
     {
         $queryBuilder = $this->createQueryBuilder('story');
@@ -98,6 +102,9 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    /**
+    * @return Story[] Returns an array of Story objects
+    */
 
     public function findLatestTen()
     {

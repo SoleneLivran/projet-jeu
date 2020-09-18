@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserAccountController extends AbstractController
 {
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", name="register", methods={"POST"})
      */
     public function createAccount(request $request, UserPasswordEncoderInterface $passwordEncoder )
     {
@@ -54,7 +54,7 @@ class UserAccountController extends AbstractController
     }
 
      /**
-     * @Route("/account/delete", name="account_delete")
+     * @Route("/account", name="account", methods={"DELETE"})
      */
     public function delete()
     {
@@ -74,55 +74,29 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/password_update", name ="account_password_update")
+     * @Route("/account", name ="account", methods={"PUT"})
      */
-    public function passwordUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function userAccountUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         /** @var AppUser $user */
         $user = $this->getUser();
-        $form = $this->createForm(UserPasswordUpdateType::class, $user);
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $plainPassword = $form->get('newPassword')->getData();
-            $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
-            $user->setPassword($encodedPassword);
-
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->json(
-                [
-                    "success" => true
-                ],
-                Response::HTTP_OK
-            );
-        }
-
-        return $this->json(
-            [
-                "success" => false,
-                "errors" => "Une erreur s'est produite lors du changement de mot de passe"
-            ],
-            Response::HTTP_BAD_REQUEST
-        );
-    }
-
-    /**
-     * @Route("/account/user_name_update", name ="user_name_update")
-     */
-    public function userNameUpdate(Request $request)
-    {
-        // $user->getToken(); je me demande si je ne dois pas plutot recupe le token... 
-        /** @var AppUser $user */
-        $user = $this->getUser();
-        $form = $this->createForm(UserNameUpdateType::class, $user);
+        $form = $this->createForm(UserAccountUpdateType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
 
             $newName = $form->get('newName')->getData();
             $user->setName($newName);
+
+            $newMail = $form->get('newMail')->getData();
+            $user->setMail($newMail);
+
+            $avatar = $form->get('avatar')->getData();
+            $user->setAvatar($avatar);
+
+            $plainPassword = $form->get('newPassword')->getData();
+            $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
+            $user->setPassword($encodedPassword);
 
             $this->getDoctrine()->getManager()->flush();
             
@@ -137,7 +111,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors du changement de nom"
+                "errors" => "Une erreur s'\est produite lors de la mise à jour"
             ],
             Response::HTTP_BAD_REQUEST
         );

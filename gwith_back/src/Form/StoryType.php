@@ -45,11 +45,6 @@ class StoryType extends AbstractType
         );
 
         $builder->add(
-            'status',
-            IntegerType::class
-        );
-
-        $builder->add(
             'difficulty',
             IntegerType::class,
             [
