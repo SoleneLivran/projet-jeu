@@ -14,6 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=AppUserRepository::class)
  * @UniqueEntity(fields={"name"}, message="There is already an account with this name")
+ * @ORM\HasLifecycleCallbacks
  */
 class AppUser implements UserInterface
 {
@@ -257,4 +258,15 @@ class AppUser implements UserInterface
         return $this->name;
     }
 
+    /**
+    * @ORM\PrePersist
+    * @ORM\PreUpdate
+    */
+    public function updatedTimestamps(): void
+    {
+    $this->setUpdatedAt(new \DateTime('now'));
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTime('now'));
+        }
+    } 
 }

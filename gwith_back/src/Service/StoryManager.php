@@ -31,6 +31,10 @@ class StoryManager
         foreach ($scenesData as $sceneData) {
             $scene = new Scene();
 
+            // get the front ID and set it in the scene
+            $frontId = $sceneData['id'];
+            $scene->setFrontReference($frontId);
+
             // get the place and set it in the scene
             $place = $this->manager->getReference(Place::class, $sceneData['place']);
             $scene->setPlace($place);
@@ -73,10 +77,11 @@ class StoryManager
                 // get the front id of the nextscene
                 $nextSceneFrontId = $transitionData['nextScene'];
                 // in the array with all the scenes (front scenes), select the relevant scene by its front id
-                $nextScene = $scenes[$nextSceneFrontId];
-                // set this scene as transition's nextScene
-                $transition->setNextScene($nextScene);
-
+                if (isset($scenes[$nextSceneFrontId])) {
+                    $nextScene = $scenes[$nextSceneFrontId];
+                    // set this scene as transition's nextScene
+                    $transition->setNextScene($nextScene);
+                }
                 // currentScene :
                 // get the front id of the current scene (the one we are iterating on)
                 $currentSceneFrontId = $sceneData['id'];

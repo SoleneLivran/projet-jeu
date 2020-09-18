@@ -6,6 +6,8 @@ use App\Entity\Avatar;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class AvatarCrudController extends AbstractCrudController
 {
@@ -17,10 +19,10 @@ class AvatarCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            'id',
-            'picture_file',
-            DateTimeField::new('createdAt'),
-            DateTimeField::new('updatedAt'),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('picture_file'),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
         ];
     }
     
