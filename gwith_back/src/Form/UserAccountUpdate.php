@@ -6,20 +6,19 @@ use App\Entity\AppUser;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class UserAccountUpdateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add('newName', TextType::class, [
+                'required' => false,
                 'constraints' => [
                     new Length([
                         'min' => 2,
@@ -27,8 +26,11 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+        ;
 
-            ->add('password', PasswordType::class, [
+        $builder
+            ->add('newPassword', PasswordType::class, [
+                'required' => false,
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank(),
@@ -37,20 +39,17 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-            
-            ->add(
-                'mail',
-                EmailType::class
-            )
-            /* ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])*/; 
+            ]);
+
+        $builder
+            ->add('newMail',EmailType::class, [
+                'required' => false
+            ]);
+
+        $builder
+            ->add('avatar', TextType::class, [
+                'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -58,7 +57,6 @@ class RegistrationFormType extends AbstractType
         $resolver->setDefaults([
             'data_class' => AppUser::class,
             'csrf_protection' => false,
-            "allow_extra_fields" => true,
         ]);
     }
 }
