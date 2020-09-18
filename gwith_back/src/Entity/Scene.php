@@ -62,7 +62,7 @@ class Scene
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $frontReference;
+    private $reference;
 
     public function __construct()
     {
@@ -188,14 +188,14 @@ class Scene
         return "#" . $sceneId . " " . $placeName . " + " . $eventName;
     }
 
-    public function getFrontReference(): ?int
+    public function getReference(): ?int
     {
-        return $this->frontReference;
+        return $this->reference;
     }
 
-    public function setFrontReference(?int $frontReference): self
+    public function setReference(?int $reference): self
     {
-        $this->frontReference = $frontReference;
+        $this->reference = $reference;
 
         return $this;
     }
