@@ -32,8 +32,8 @@ class StoryManager
             $scene = new Scene();
 
             // get the front ID and set it in the scene
-            $frontId = $sceneData['id'];
-            $scene->setFrontReference($frontId);
+            $frontId = $sceneData['reference'];
+            $scene->setReference($frontId);
 
             // get the place and set it in the scene
             $place = $this->manager->getReference(Place::class, $sceneData['place']);
@@ -50,7 +50,7 @@ class StoryManager
             $this->manager->persist($scene);
 
             // keep track of the created scene and their front id
-            $key = $sceneData['id'];
+            $key = $sceneData['reference'];
             $scenes[$key] = $scene;
             // = array containing the scene id (front id) as key and the scene as value
         }
@@ -69,13 +69,17 @@ class StoryManager
                 // for each transition, we create a Transition entity
                 $transition = new Transition();
 
+                // Register the transitions' nextSceneRef
+                $nextSceneRef = $transitionData['nextSceneRef'];
+                $transition->setNextSceneRef($nextSceneRef);
+
                 // get the action and set it in the transition
                 $action = $this->manager->getReference(Action::class, $transitionData['action']);
                 $transition->setAction($action);
 
                 // nextScene :
                 // get the front id of the nextscene
-                $nextSceneFrontId = $transitionData['nextScene'];
+                $nextSceneFrontId = $transitionData['nextSceneRef'];
                 // in the array with all the scenes (front scenes), select the relevant scene by its front id
                 if (isset($scenes[$nextSceneFrontId])) {
                     $nextScene = $scenes[$nextSceneFrontId];
@@ -84,7 +88,7 @@ class StoryManager
                 }
                 // currentScene :
                 // get the front id of the current scene (the one we are iterating on)
-                $currentSceneFrontId = $sceneData['id'];
+                $currentSceneFrontId = $sceneData['reference'];
                 // in the array with all the scenes (front scenes), select the relevant scene by its front id
                 $currentScene = $scenes[$currentSceneFrontId];
                 // set this scene as transition's currentScene

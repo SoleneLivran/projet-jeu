@@ -24,7 +24,7 @@ class Transition
     private $id;
 
     /**
-     * @ORM\Column(name="createdAt", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $createdAt;
 
@@ -51,6 +51,11 @@ class Transition
      * @Groups({"story:view", "next_scene"})
      */
     private $action;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nextSceneRef;
 
     public function __construct()
     {
@@ -122,8 +127,6 @@ class Transition
         return $this;
     }
 
-
-
     /**
     * @ORM\PrePersist
     * @ORM\PreUpdate
@@ -134,5 +137,17 @@ class Transition
         if ($this->getCreatedAt() === null) {
             $this->setCreatedAt(new \DateTime('now'));
         }
+    }
+
+    public function getNextSceneRef(): ?int
+    {
+        return $this->nextSceneRef;
+    }
+
+    public function setNextSceneRef(?int $nextSceneRef): self
+    {
+        $this->nextSceneRef = $nextSceneRef;
+
+        return $this;
     } 
 }
