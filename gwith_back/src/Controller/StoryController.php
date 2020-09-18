@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Rating;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Story;
+use App\Form\StoryRatingType;
 use App\Form\StoryType;
 use App\Repository\StoryRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -97,6 +99,44 @@ class StoryController extends AbstractController
             [],
             ["groups" => ["story:view"]]
         );
+    }
+
+    /**
+     * @Route("/stories/{id}/rating", methods={"POST"}, requirements={"id"="\d+"})
+     */
+    public function storyRating(Request $request, Story $story)
+    {
+        $ratingData = json_decode($request->getContent(), true);
+        $rating = new Rating();
+        $rating->setStory($story);
+        
+        $form = $this->createForm(StoryRatingType::class, $rating);
+        // if false, sets the value of a data to null into the database
+        $form->submit($ratingData, false);
+
+         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $manager = $this->getDoctrine()->getManager();
+            
+            $manager->persist($rating);
+            $manager->flush();
+        
+            return $this->json(
+                [
+                    "success" => true
+                ],
+                Response::HTTP_OK
+            ); 
+        }
+
+        return $this->json(
+            [
+                "success" => false,
+                "errors" => "Une erreur s'est produite lors de l'affectation d'une note à l'histoire"
+            ],
+            Response::HTTP_BAD_REQUEST
+        );
+        
     }
 
     /**
