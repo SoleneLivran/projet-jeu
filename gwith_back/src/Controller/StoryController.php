@@ -161,6 +161,26 @@ class StoryController extends AbstractController
             Response::HTTP_BAD_REQUEST,
         );
     }
+
+    /**
+     * @Route("/stories/{id}", name="story_delete", methods={"DELETE"}, requirements={"id"="\d+"})
+     */
+    public function update(Story $story)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t delete another author\'s story!');
+        }
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($story);
+
+        $manager->flush();
+
+        return $this->json(
+            [ "success" => true ],
+            Response::HTTP_OK
+        );
+    }
 }
 
 
