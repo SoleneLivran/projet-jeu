@@ -22,7 +22,8 @@ class StoryManager
        $this->manager = $manager;
     }
 
-    public function createScenes(Story $story, array $scenesData) {
+    public function createScenes(Story $story, array $scenesData)
+    {
         //===========SCENES===============
         // delete previously registered scenes, if any, for the Story update
         $previousVersionScenes = $story->getScenes();
@@ -103,5 +104,18 @@ class StoryManager
                 $this->manager->persist($transition);
             }
         }
+    }
+
+    public function storyErrors() : array
+    {
+        $errors = [];
+
+        // if a firstSceneId is null => error
+        // if a transition has no nextSceneId => error
+        // if a scene with event isEnd=false doesn't have a transition => error
+        // if not at least one isEnd event => error
+
+        return $errors;
+
     }
 }
