@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Story;
 use App\Entity\Rating;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,37 +16,35 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RatingRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var EntityManagerInterface
+     */
+    private $manager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
     {
         parent::__construct($registry, Rating::class);
+        $this->manager = $manager;
     }
 
-    // /**
-    //  * @return Rating[] Returns an array of Rating objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function ratingAverage($story)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $queryBuilder = $this->createQueryBuilder('rating');
 
-    /*
-    public function findOneBySomeField($value): ?Rating
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder->select("avg(rating.note)");
+        $queryBuilder->join('rating.story', 'story');
+        $queryBuilder->where('rating.story = :story');
+        $queryBuilder->setParameter('story', $story);
+
+        $query = $queryBuilder->getQuery();
+
+        $result = $query->getOneOrNullResult();
+
+        $rating = $result[1];
+        $storyRating = $story->setRating($rating);
+        $this->manager->persist($storyRating);
+        $this->manager->flush();
+
+        return $result;
     }
-    */
 }
