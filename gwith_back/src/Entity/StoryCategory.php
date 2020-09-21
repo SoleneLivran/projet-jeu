@@ -20,7 +20,7 @@ class StoryCategory
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"stories:list", "story:view", "story_categories:list"})
+     * @Groups({"stories:list", "story:view", "story_categories:list", "story:editable"})
      */
     private $id;
 

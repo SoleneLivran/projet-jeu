@@ -244,6 +244,24 @@ class StoryController extends AbstractController
     }
 
     /**
+     * @Route("/stories/{id}/editable", name="story_editable", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function loadEditableStory(StoryRepository $repository, Story $story)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t get another author\'s story\'s work file!');
+        }
+
+        $editableStory = $repository->find($story);
+        return $this->json(
+            $editableStory,
+            200,
+            [],
+            ["groups" => ["story:editable"]]
+        );
+    }
+
+    /**
      * @Route("/stories/{id}", name="story_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Story $story)

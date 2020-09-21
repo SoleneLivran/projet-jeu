@@ -19,7 +19,7 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"events:list", "event:view", "story:view", "next_scene"})
+     * @Groups({"events:list", "event:view", "story:view", "next_scene", "story:editable"})
      */
     private $id;
 
