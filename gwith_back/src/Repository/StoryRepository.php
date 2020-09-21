@@ -124,8 +124,6 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-<<<<<<< HEAD
-=======
     public function storyErrors(Story $story) : array
     {
         $errors = [];
@@ -187,5 +185,4 @@ class StoryRepository extends ServiceEntityRepository
 
         return $errors;
     }
->>>>>>> 4448f07757c1bf3daa375e8ba8a8cb269e4af850
 }
