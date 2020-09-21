@@ -79,7 +79,7 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/{id}", name ="account_update", methods={"PUT"}, requirements={"id"="\d+"})
+     * @Route("/account/{id}", name="account_update", methods={"PUT"}, requirements={"id"="\d+"})
      */
     public function userAccountUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder, UserInterface $user)
     {
