@@ -25,18 +25,18 @@ class StoryRepository extends ServiceEntityRepository
 
     public function findAllOrderByTitle()
     {
-        // de base ma requete ressemble à : SELECT * FROM story
+        // my request here looks like : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
         
         $queryBuilder->where('story.status = 1');
 
-        // je personnalise ma requete (ordonné par titre)
+        // customization of the request (ordered by title)
         $queryBuilder->addOrderBy('story.title');
 
-           // j'éxécute ma requête
+           // execute request
         $query = $queryBuilder->getQuery();
 
-        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        // I expect many results, so : getResult() and not getOneOrNullResult()
         return $query->getResult();
     }
 
@@ -86,7 +86,7 @@ class StoryRepository extends ServiceEntityRepository
 
     public function findTopFive()
     {
-        // de base ma requete ressemble à : SELECT * FROM story
+        // my request here looks like : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
 
         $queryBuilder->where('story.status = 1');
@@ -95,10 +95,10 @@ class StoryRepository extends ServiceEntityRepository
          $queryBuilder->setMaxResults(5);
          $queryBuilder->addOrderBy('story.rating');
 
-         // j'éxécute ma requête
+         // execute the request
          $query = $queryBuilder->getQuery();
 
-        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        // I expect many results, so : getResult() and not getOneOrNullResult()
         return $query->getResult();
     }
 
@@ -108,7 +108,7 @@ class StoryRepository extends ServiceEntityRepository
 
     public function findLatestFive()
     {
-        // de base ma requete ressemble à : SELECT * FROM story
+        // my request here looks like : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
 
         $queryBuilder->where('story.status = 1');
@@ -117,10 +117,72 @@ class StoryRepository extends ServiceEntityRepository
          $queryBuilder->setMaxResults(5);
          $queryBuilder->addOrderBy('story.publishedAt');
 
-         // j'éxécute ma requête
+         // execute the request
          $query = $queryBuilder->getQuery();
 
-        // je m'attends à plusieurs resultats, donc : getResult() et non getOneOrNullResult()
+        // I expect many results, so : getResult() and not getOneOrNullResult()
         return $query->getResult();
+    }
+
+    public function storyErrors(Story $story) : array
+    {
+        $errors = [];
+
+        // ===========  if a transition in the story has no nextSceneId => error ================
+        // we check the transitions of the current story
+        $queryBuilder = $this->createQueryBuilder('story');
+        $queryBuilder->join('story.scenes', 'scene');
+        $queryBuilder->join('scene.transitions', 'transition');
+
+        $queryBuilder->where('story = :story');
+        // find null nextScene
+        $queryBuilder->andWhere('transition.nextScene is NULL');
+
+        $queryBuilder->setParameter('story', $story);
+
+        // execute request
+        $query = $queryBuilder->getQuery();
+
+        // echo $query->getSQL();die;
+
+        $result = $query->getResult();
+
+        if (count($result) > 0) {
+            $errors[] = "Au moins une transition n'a pas de nextScene";
+        }
+
+        // ============= if a scene with event isEnd=false doesn't have a transition => error ===============
+        // foreach
+
+
+        // ============= if not at least one isEnd event => error =============
+        // we check the events of the current story
+        $queryBuilder = $this->createQueryBuilder('story');
+        $queryBuilder->join('story.scenes', 'scene');
+        $queryBuilder->join('scene.event', 'event');
+
+
+        $queryBuilder->where('story = :story');
+        // find isEnd = true
+        $queryBuilder->andWhere('event.isEnd = true');
+
+        $queryBuilder->setParameter('story', $story);
+
+        // execute request
+        $query = $queryBuilder->getQuery();
+        $result = $query->getResult();
+
+        if (count($result) <= 0) {
+            $errors[] = "L'histoire doit avoir au moins une fin";
+        }
+
+        // ============= if a firstSceneId is null => error ==============
+        if ($story->getFirstScene() == null) {
+            // should not happen. If it does, only send this error at first to correct it before seeing if something else is broken
+            $errors = [];
+            $errors[] = "L'histoire n'a pas de scene de debut";
+        }
+
+        return $errors;
     }
 }
