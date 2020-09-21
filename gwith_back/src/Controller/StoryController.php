@@ -9,6 +9,7 @@ use App\Entity\Story;
 use App\Form\StoryRatingType;
 use App\Form\StoryType;
 use App\Repository\StoryRepository;
+use App\Repository\RatingRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
@@ -104,7 +105,7 @@ class StoryController extends AbstractController
     /**
      * @Route("/stories/{id}/rating", methods={"POST"}, requirements={"id"="\d+"})
      */
-    public function storyRating(Request $request, Story $story)
+    public function storyRating(Request $request, Story $story, RatingRepository $repository)
     {
         $ratingData = json_decode($request->getContent(), true);
         $rating = new Rating();
@@ -120,6 +121,9 @@ class StoryController extends AbstractController
             
             $manager->persist($rating);
             $manager->flush();
+
+            $average = $repository->ratingAverage($story);
+            
         
             return $this->json(
                 [
