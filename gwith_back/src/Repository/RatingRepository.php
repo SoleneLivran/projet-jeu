@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Story;
 use App\Entity\Rating;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -15,27 +16,34 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class RatingRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var EntityManagerInterface
+     */
+    private $manager;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
     {
         parent::__construct($registry, Rating::class);
+        $this->manager = $manager;
     }
 
     public function ratingAverage($story)
     {
         $queryBuilder = $this->createQueryBuilder('rating');
 
-        $queryBuilder->select("avg(rating.note)")->where(
-            $queryBuilder->expr()->eq('rating.story', $story)
-        );
-
-        $queryBuilder->leftJoin('story.name', 'story');
-        $queryBuilder->addSelect('story');
+        $queryBuilder->select("avg(rating.note)");
+        $queryBuilder->join('rating.story', 'story');
+        $queryBuilder->where('rating.story = :story');
+        $queryBuilder->setParameter('story', $story);
 
         $query = $queryBuilder->getQuery();
 
         $result = $query->getOneOrNullResult();
 
-        $story->setRating($result);
+        $rating = $result[1];
+        $storyRating = $story->setRating($rating);
+        $this->manager->persist($storyRating);
+        $this->manager->flush();
 
         return $result;
     }
