@@ -55,7 +55,7 @@ class StoryController extends AbstractController
         }
         return $this->json(
             $stories,
-            200,
+            Response::HTTP_OK,
             [],
             ["groups" => ["stories:list"]]
         );
@@ -69,7 +69,7 @@ class StoryController extends AbstractController
         $stories = $repository->findLatestFive();
         return $this->json(
             $stories,
-            200,
+            Response::HTTP_OK,
             [],
             ["groups" => ["stories:list"]]
         );
@@ -83,7 +83,7 @@ class StoryController extends AbstractController
         $stories = $repository->findTopFive();
         return $this->json(
             $stories,
-            200,
+            Response::HTTP_OK,
             [],
             ["groups" => ["stories:list"]]
         );
@@ -96,7 +96,7 @@ class StoryController extends AbstractController
     {
         return $this->json(
             $story,
-            200,
+            Response::HTTP_OK,
             [],
             ["groups" => ["story:view"]]
         );
@@ -259,7 +259,7 @@ class StoryController extends AbstractController
         $editableStory = $repository->find($story);
         return $this->json(
             $editableStory,
-            200,
+            Response::HTTP_OK,
             [],
             ["groups" => ["story:editable"]]
         );
@@ -294,12 +294,13 @@ class StoryController extends AbstractController
             throw $this->createAccessDeniedException('You can\'t publish another author\'s story!');
         }
 
-        $errors = $repository->storyErrors($story);
+        $errors = $this->storyManager->checkStory($story);
 
         if (empty($errors)) {
             $manager = $this->getDoctrine()->getManager();
 
             $story->setStatus(Story::STATUS_PUBLISHED);
+            $story->setPublishedAt(new \DateTime('now'));
 
             $manager->flush();
 
