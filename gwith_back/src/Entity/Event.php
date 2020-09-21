@@ -59,7 +59,7 @@ class Event
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
-     * @Groups({"event:view", "story:view", "next_scene"})
+     * @Groups({"events:list", "event:view", "story:view", "next_scene"})
      */
     private $isEnd = false;
 
