@@ -152,15 +152,14 @@ class StoryRepository extends ServiceEntityRepository
         }
 
         // ============= if a scene with event isEnd=false doesn't have a transition => error ===============
-        // foreach
         foreach ($story->getScenes() as $scene) {
-            foreach ($scene->getEvent() as $event) {
-                if ($event->getIsEnd) {
-                    // if ()
+            if (!$scene->getEvent()->getIsEnd()) {
+                if ($scene->getTransitions()->count() <= 0) {
+                    $errors[] = "Toutes les scenes qui ne sont pas la fin de l'histoire doivent avoir une transition";
+                    break;
                 }
             }
         }
-
 
         // ============= if not at least one isEnd event => error =============
         // we check the events of the current story

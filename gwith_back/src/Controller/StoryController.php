@@ -291,7 +291,6 @@ class StoryController extends AbstractController
         }
 
         $errors = $repository->storyErrors($story);
-        // var_dump($errors); die;
 
         if (empty($errors)) {
             $manager = $this->getDoctrine()->getManager();
