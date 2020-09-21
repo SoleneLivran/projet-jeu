@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/api")
@@ -54,10 +55,14 @@ class UserAccountController extends AbstractController
     }
 
      /**
-     * @Route("/account", name="account", methods={"DELETE"})
+     * @Route("/account/{id}", name="account_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
-    public function delete()
+    public function delete(UserInterface $user)
     {
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t delete another person\'s account!');
+        }
+
         /** @var AppUser $user */
         $user = $this->getUser();
         $manager = $this->getDoctrine()->getManager();
@@ -74,10 +79,15 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account", name ="account", methods={"PUT"})
+     * @Route("/account/{id}", name="account_update", methods={"PUT"}, requirements={"id"="\d+"})
      */
-    public function userAccountUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function userAccountUpdate(Request $request, UserPasswordEncoderInterface $passwordEncoder, UserInterface $user)
     {
+
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t update another person\'s account!');
+        }
+
         /** @var AppUser $user */
         $user = $this->getUser();
         $form = $this->createForm(UserAccountUpdateType::class, $user);

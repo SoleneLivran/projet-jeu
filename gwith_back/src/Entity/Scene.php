@@ -35,21 +35,21 @@ class Scene
 
     /**
      * @ORM\OneToMany(targetEntity=Transition::class, mappedBy="currentScene")
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"story:view", "next_scene", "story:editable"})
      */
     private $transitions;
 
     /**
      * @ORM\ManyToOne(targetEntity=Place::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"story:view", "next_scene", "story:editable"})
      */
     private $place;
 
     /**
      * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="scenes")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"story:view", "next_scene", "story:editable"})
      */
     private $event;
 
@@ -61,6 +61,7 @@ class Scene
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"story:editable"})
      */
     private $reference;
 

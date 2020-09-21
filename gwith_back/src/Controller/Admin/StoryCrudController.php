@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
+
 class StoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -44,4 +45,5 @@ class StoryCrudController extends AbstractCrudController
             ->setDateTimeFormat('long', 'short');
         ;
     }
+  
 }

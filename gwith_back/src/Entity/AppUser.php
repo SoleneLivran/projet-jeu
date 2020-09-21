@@ -44,9 +44,9 @@ class AppUser implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="smallint", options={"default": 1})
+     * @ORM\Column(type="json")
      */
-    private $role = 1;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
@@ -123,14 +123,21 @@ class AppUser implements UserInterface
         return $this;
     }
 
-    public function getRole(): ?int
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->role;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setRole(int $role): self
+    public function setRoles(array $roles): self
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -212,18 +219,6 @@ class AppUser implements UserInterface
         $this->avatar = $avatar;
 
         return $this;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = [$this->role];
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
     }
 
     /**

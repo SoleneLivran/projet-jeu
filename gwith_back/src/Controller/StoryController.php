@@ -62,11 +62,11 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/public/stories/latest_ten", name="stories_latest_ten", methods={"GET"})
+     * @Route("/public/stories/latest_five", name="stories_latest_five", methods={"GET"})
      */
-    public function listLatestTen(StoryRepository $repository)
+    public function listLatestFive(StoryRepository $repository)
     {
-        $stories = $repository->findLatestTen();
+        $stories = $repository->findLatestFive();
         return $this->json(
             $stories,
             200,
@@ -76,11 +76,11 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/public/stories/top_ten", name="stories_top_ten", methods={"GET"})
+     * @Route("/public/stories/top_five", name="stories_top_five", methods={"GET"})
      */
-    public function listTopTen(StoryRepository $repository)
+    public function listTopFive(StoryRepository $repository)
     {
-        $stories = $repository->findTopTen();
+        $stories = $repository->findTopFive();
         return $this->json(
             $stories,
             200,
@@ -160,6 +160,8 @@ class StoryController extends AbstractController
         // set the author of the story = connected user
         $story->setAuthor($this->security->getUser());
 
+        $story->setStatus(Story::STATUS_DRAFT);
+
         // instanciate the form = specifies what data we are supposed to get for the Story
         $form = $this->createForm(StoryType::class, $story);
 
@@ -195,7 +197,7 @@ class StoryController extends AbstractController
             $manager->flush();
 
             return $this->json(
-                [ 'id' => $story->getId() ],
+                [ 'story_id' => $story->getId() ],
                 Response::HTTP_OK
             );
         }
@@ -207,9 +209,66 @@ class StoryController extends AbstractController
     }
 
     /**
+     * @Route("/stories/{id}", name="story_update", methods={"PUT"}, requirements={"id"="\d+"})
+     */
+    public function update(Story $story, Request $request)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t edit another author\'s story!');
+        }
+
+        $submittedData = json_decode($request->getContent(), true);
+
+        $story->setStatus(Story::STATUS_DRAFT);
+
+        $form = $this->createForm(StoryType::class, $story);
+
+        // TODO : asserts
+
+        $form->submit($submittedData, false);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+
+            $scenesData = $submittedData['scenes'];
+            
+            $this->storyManager->createScenes($story, $scenesData);
+            $manager->flush();
+
+            return $this->json(
+                [ 'story_id' => $story->getId() ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            $form->getErrors(true),
+            Response::HTTP_BAD_REQUEST,
+        );
+    }
+
+    /**
+     * @Route("/stories/{id}/editable", name="story_editable", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function loadEditableStory(StoryRepository $repository, Story $story)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t get another author\'s story\'s work file!');
+        }
+
+        $editableStory = $repository->find($story);
+        return $this->json(
+            $editableStory,
+            200,
+            [],
+            ["groups" => ["story:editable"]]
+        );
+    }
+
+    /**
      * @Route("/stories/{id}", name="story_delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
-    public function update(Story $story)
+    public function delete(Story $story)
     {
         if ($story->getAuthor() !== $this->getUser()) {
             throw $this->createAccessDeniedException('You can\'t delete another author\'s story!');
@@ -223,6 +282,40 @@ class StoryController extends AbstractController
         return $this->json(
             [ 'id' => $story->getId() ],
             Response::HTTP_OK
+        );
+    }
+
+    /**
+     * @Route("/stories/{id}/publish", name="story_publish", methods={"PATCH"}, requirements={"id"="\d+"})
+     */
+    public function publish(Story $story, StoryRepository $repository)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t publish another author\'s story!');
+        }
+
+        $errors = $repository->storyErrors($story);
+        // var_dump($errors); die;
+
+        if (empty($errors)) {
+            $manager = $this->getDoctrine()->getManager();
+
+            $story->setStatus(Story::STATUS_PUBLISHED);
+
+            $manager->flush();
+
+            return $this->json(
+                [ 'id' => $story->getId() ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            [
+                "success" => false,
+                "errors" => $errors
+            ],
+            Response::HTTP_BAD_REQUEST
         );
     }
 }

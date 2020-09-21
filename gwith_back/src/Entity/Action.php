@@ -19,7 +19,7 @@ class Action
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Groups({"actions:list", "action:view", "story:view", "next_scene", "story:editable"})
      */
     private $id;
 
