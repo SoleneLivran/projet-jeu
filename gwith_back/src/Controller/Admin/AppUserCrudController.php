@@ -12,6 +12,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 
 class AppUserCrudController extends AbstractCrudController
@@ -43,6 +45,24 @@ class AppUserCrudController extends AbstractCrudController
             //->setEntityPermission('ROLE_SUPER_ADMIN')
         ;
     }
+
+   /*  public function getFields(string $action): iterable
+    {
+    return [
+        ArrayField::new('roles')->setPermission('ROLE_ADMIN'),
+    ];
+
+    } */
+
+      public function configureActions(Actions $actions): Actions
+    {
+        // This method is used to create the permissions according to roles for the CRUD methods
+        return $actions
+        ->setPermission(Action::NEW, 'ROLE_SUPER_ADMIN')
+        ->setPermission(Action::EDIT, 'ROLE_SUPER_ADMIN')
+        ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN')
+    ;
+    }  
 
 }
 
