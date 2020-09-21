@@ -126,6 +126,10 @@ class StoryManager
             $errors[] = "Toutes les scènes qui ne sont pas la fin de l'histoire doivent avoir une transition";
         }
 
+        if(!$this->repository->doTransitionsHaveNextScene($story)) {
+            $errors[] = "Au moins une transition n'a pas de nextScene";
+        }
+
         return $errors;
     }
 }
