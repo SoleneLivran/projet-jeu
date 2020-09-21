@@ -61,11 +61,11 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/public/stories/latest_ten", name="stories_latest_ten", methods={"GET"})
+     * @Route("/public/stories/latest_five", name="stories_latest_five", methods={"GET"})
      */
-    public function listLatestTen(StoryRepository $repository)
+    public function listLatestFive(StoryRepository $repository)
     {
-        $stories = $repository->findLatestTen();
+        $stories = $repository->findLatestFive();
         return $this->json(
             $stories,
             200,
@@ -75,11 +75,11 @@ class StoryController extends AbstractController
     }
 
     /**
-     * @Route("/public/stories/top_ten", name="stories_top_ten", methods={"GET"})
+     * @Route("/public/stories/top_five", name="stories_top_five", methods={"GET"})
      */
-    public function listTopTen(StoryRepository $repository)
+    public function listTopFive(StoryRepository $repository)
     {
-        $stories = $repository->findTopTen();
+        $stories = $repository->findTopFive();
         return $this->json(
             $stories,
             200,
@@ -240,6 +240,24 @@ class StoryController extends AbstractController
         return $this->json(
             $form->getErrors(true),
             Response::HTTP_BAD_REQUEST,
+        );
+    }
+
+    /**
+     * @Route("/stories/{id}/editable", name="story_editable", methods={"GET"}, requirements={"id"="\d+"})
+     */
+    public function loadEditableStory(StoryRepository $repository, Story $story)
+    {
+        if ($story->getAuthor() !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t get another author\'s story\'s work file!');
+        }
+
+        $editableStory = $repository->find($story);
+        return $this->json(
+            $editableStory,
+            200,
+            [],
+            ["groups" => ["story:editable"]]
         );
     }
 

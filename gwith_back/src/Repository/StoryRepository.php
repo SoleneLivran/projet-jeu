@@ -84,7 +84,7 @@ class StoryRepository extends ServiceEntityRepository
     * @return Story[] Returns an array of Story objects
     */
 
-    public function findTopTen()
+    public function findTopFive()
     {
         // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
@@ -92,7 +92,7 @@ class StoryRepository extends ServiceEntityRepository
         $queryBuilder->where('story.status = 1');
 
          // je personnalise ma requete (ici max 10 résultats et ordonné par rating)
-         $queryBuilder->setMaxResults(10);
+         $queryBuilder->setMaxResults(5);
          $queryBuilder->addOrderBy('story.rating');
 
          // j'éxécute ma requête
@@ -106,7 +106,7 @@ class StoryRepository extends ServiceEntityRepository
     * @return Story[] Returns an array of Story objects
     */
 
-    public function findLatestTen()
+    public function findLatestFive()
     {
         // de base ma requete ressemble à : SELECT * FROM story
         $queryBuilder = $this->createQueryBuilder('story');
@@ -114,7 +114,7 @@ class StoryRepository extends ServiceEntityRepository
         $queryBuilder->where('story.status = 1');
         
          // je personnalise ma requete (ici max 10 résultats et ordonné par date de publication)
-         $queryBuilder->setMaxResults(10);
+         $queryBuilder->setMaxResults(5);
          $queryBuilder->addOrderBy('story.publishedAt');
 
          // j'éxécute ma requête

@@ -48,12 +48,13 @@ class Transition
     /**
      * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="transitions")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"story:view", "next_scene"})
+     * @Groups({"story:view", "next_scene", "story:editable"})
      */
     private $action;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"story:editable"})
      */
     private $nextSceneRef;
 

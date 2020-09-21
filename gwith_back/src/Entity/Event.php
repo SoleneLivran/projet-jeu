@@ -19,7 +19,7 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"events:list", "event:view", "story:view", "next_scene"})
+     * @Groups({"events:list", "event:view", "story:view", "next_scene", "story:editable"})
      */
     private $id;
 
@@ -59,7 +59,7 @@ class Event
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
-     * @Groups({"event:view", "story:view", "next_scene"})
+     * @Groups({"events:list", "event:view", "story:view", "next_scene"})
      */
     private $isEnd = false;
 

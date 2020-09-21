@@ -59,13 +59,13 @@ class Story
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $difficulty;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"story:view", "stories:view_user_stories"})
+     * @Groups({"story:view", "stories:view_user_stories", "story:editable"})
      */
     private $synopsis;
 
@@ -78,7 +78,7 @@ class Story
 
     /**
      * @ORM\ManyToOne(targetEntity=StoryCategory::class, inversedBy="stories")
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $category;
 
@@ -90,13 +90,13 @@ class Story
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $title = "Sans Titre";
 
     /**
      * @ORM\Column(type="string", length=255, options={"default": ""})
-     * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      */
     private $pictureFile = "";
 
@@ -109,6 +109,7 @@ class Story
 
     /**
      * @ORM\OneToMany(targetEntity=Scene::class, mappedBy="story", orphanRemoval=true)
+     * @Groups({"story:editable"})
      */
     private $scenes;
    
