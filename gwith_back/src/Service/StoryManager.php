@@ -105,17 +105,4 @@ class StoryManager
             }
         }
     }
-
-    public function storyErrors() : array
-    {
-        $errors = [];
-
-        // if a firstSceneId is null => error
-        // if a transition has no nextSceneId => error
-        // if a scene with event isEnd=false doesn't have a transition => error
-        // if not at least one isEnd event => error
-
-        return $errors;
-
-    }
 }

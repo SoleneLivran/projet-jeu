@@ -284,16 +284,19 @@ class StoryController extends AbstractController
     /**
      * @Route("/stories/{id}/publish", name="story_publish", methods={"PATCH"}, requirements={"id"="\d+"})
      */
-    public function publish(Story $story)
+    public function publish(Story $story, StoryRepository $repository)
     {
         if ($story->getAuthor() !== $this->getUser()) {
             throw $this->createAccessDeniedException('You can\'t publish another author\'s story!');
         }
 
-        if ($this->storyManager->storyErrors($story) <= 0) {
+        $errors = $repository->storyErrors($story);
+        // var_dump($errors); die;
 
+        if (empty($errors)) {
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($story); // ??
+
+            $story->setStatus(Story::STATUS_PUBLISHED);
 
             $manager->flush();
 
@@ -306,7 +309,7 @@ class StoryController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "The story contains errors and cannot be published"
+                "errors" => $errors
             ],
             Response::HTTP_BAD_REQUEST
         );
