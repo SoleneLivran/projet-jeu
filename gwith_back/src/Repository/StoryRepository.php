@@ -154,8 +154,27 @@ class StoryRepository extends ServiceEntityRepository
         // ============= if a scene with event isEnd=false doesn't have a transition => error ===============
         // foreach
 
+
         // ============= if not at least one isEnd event => error =============
-        // 
+        // we check the events of the current story
+        $queryBuilder = $this->createQueryBuilder('story');
+        $queryBuilder->join('story.scenes', 'scene');
+        $queryBuilder->join('scene.event', 'event');
+
+
+        $queryBuilder->where('story = :story');
+        // find isEnd = true
+        $queryBuilder->andWhere('event.isEnd = true');
+
+        $queryBuilder->setParameter('story', $story);
+
+        // execute request
+        $query = $queryBuilder->getQuery();
+        $result = $query->getResult();
+
+        if (count($result) <= 0) {
+            $errors[] = "L'histoire doit avoir au moins une fin";
+        }
 
         // ============= if a firstSceneId is null => error ==============
         if ($story->getFirstScene() == null) {
