@@ -52,7 +52,7 @@ class StoryRepository extends ServiceEntityRepository
 
         $queryBuilder->leftJoin('story.category', 'storyCategory');
 
-        $queryBuilder->where(
+        $queryBuilder->andWhere(
             $queryBuilder->expr()->eq('storyCategory.id', $categoryId)
         );
 
@@ -69,7 +69,7 @@ class StoryRepository extends ServiceEntityRepository
 
         $queryBuilder->where('story.status = 1');
 
-        $queryBuilder->where(
+        $queryBuilder->andWhere(
             $queryBuilder->expr()->eq('story.difficulty', $storyDifficulty)
         );
 
