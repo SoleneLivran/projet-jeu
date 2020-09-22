@@ -44,12 +44,7 @@ class UserAccountUpdateType extends AbstractType
         $builder
             ->add('newMail',EmailType::class, [
                 'required' => false
-            ]);
-
-        $builder
-            ->add('avatar', TextType::class, [
-                'required' => false
-            ]);
+            ]);       
     }
 
     public function configureOptions(OptionsResolver $resolver)

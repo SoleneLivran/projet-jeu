@@ -101,15 +101,50 @@ class UserAccountController extends AbstractController
             $newMail = $form->get('newMail')->getData();
             $user->setMail($newMail);
 
-            $avatar = $form->get('avatar')->getData();
-            $user->setAvatar($avatar);
-
             $plainPassword = $form->get('newPassword')->getData();
             $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
             $user->setPassword($encodedPassword);
 
             $this->getDoctrine()->getManager()->flush();
             
+            return $this->json(
+                [
+                    "success" => true
+                ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            [
+                "success" => false,
+                "errors" => "Une erreur s'\est produite lors de la mise à jour"
+            ],
+            Response::HTTP_BAD_REQUEST
+        );
+    }
+
+    /**
+     * @Route("/account/avatar", name="avatar", methods={"PUT"})
+     */
+    public function avatar(Request $request, UserInterface $user)
+    {
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t update another person\'s account!');
+        }
+
+        /** @var AppUser $user */
+        $user = $this->getUser();
+        $form = $this->createForm(AvatarType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $avatar = $form->get('avatar')->getData();
+            $user->setAvatar($avatar);
+
+            $this->getDoctrine()->getManager()->flush();
+
             return $this->json(
                 [
                     "success" => true
