@@ -45,7 +45,6 @@ class UserAccountUpdateType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'constraints' => [
-                    new NotBlank(),
                     new Length([
                         'min' => 6,
                         'max' => 4096,
