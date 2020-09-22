@@ -27,6 +27,11 @@ class PlaceType
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"places:list", "place:view", "story:view", "next_scene", "place_types:list"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * ) 
      * @Assert\Length(
      * min = 2,
      * max = 60,

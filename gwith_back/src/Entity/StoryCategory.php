@@ -28,6 +28,18 @@ class StoryCategory
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"stories:list", "story:view", "story_categories:list"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
+     * @Assert\Length(
+     * min = 2,
+     * max = 200,
+     * minMessage = "The name must be at least {{ limit }} characters long",
+     * maxMessage = "The name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $name;
 

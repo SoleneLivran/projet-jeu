@@ -27,6 +27,11 @@ class Action
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      * @Assert\Length(
      * min = 2,
      * max = 50,
@@ -40,6 +45,11 @@ class Action
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      */
     private $description;
 

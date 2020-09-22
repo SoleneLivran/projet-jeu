@@ -82,6 +82,11 @@ class Story
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"story:view", "stories:view_user_stories", "story:editable"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      */
     private $synopsis;
 
@@ -107,6 +112,11 @@ class Story
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
      * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      * @Assert\Length(
      * min = 2,
      * max = 200,

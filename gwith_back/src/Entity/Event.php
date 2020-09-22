@@ -27,6 +27,11 @@ class Event
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"events:list", "event:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      * @Assert\Length(
      * min = 2,
      * max = 60,
@@ -40,6 +45,11 @@ class Event
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"events:list", "event:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * ) 
      * @Assert\Length(
      * min = 2,
      * max = 2000,

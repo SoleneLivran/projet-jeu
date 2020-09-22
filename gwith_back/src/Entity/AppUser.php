@@ -30,6 +30,11 @@ class AppUser implements UserInterface
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9éèàêâôùëö]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      * @Assert\Length(
      * min = 2,
      * max = 50,
