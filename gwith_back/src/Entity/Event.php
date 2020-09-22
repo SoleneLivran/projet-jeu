@@ -75,7 +75,7 @@ class Event
      * @Groups({"events:list", "event:view", "story:view", "next_scene"})
      * @Assert\Length(
      * min = 2,
-     * max = 2000,
+     * max = 80,
      * minMessage = "The pictureFile must be at least {{ limit }} characters long",
      * maxMessage = "The pictureFile cannot be longer than {{ limit }} characters",
      * allowEmptyString = false
@@ -88,7 +88,7 @@ class Event
      * @Groups({"event:view", "story:view", "next_scene"})
      * @Assert\Length(
      * min = 2,
-     * max = 2000,
+     * max = 80,
      * minMessage = "The soundFile must be at least {{ limit }} characters long",
      * maxMessage = "The soundFile cannot be longer than {{ limit }} characters",
      * allowEmptyString = false

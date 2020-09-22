@@ -57,7 +57,7 @@ class PlaceType
      * @Groups({"story:view", "next_scene", "place_types:list"})
      * @Assert\Length(
      * min = 2,
-     * max = 2000,
+     * max = 80,
      * minMessage = "The pictureFile must be at least {{ limit }} characters long",
      * maxMessage = "The pictureFile cannot be longer than {{ limit }} characters",
      * allowEmptyString = false

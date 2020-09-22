@@ -132,7 +132,7 @@ class Story
      * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
      * @Assert\Length(
      * min = 2,
-     * max = 200,
+     * max = 80,
      * minMessage = "The pictureFile must be at least {{ limit }} characters long",
      * maxMessage = "The pictureFile cannot be longer than {{ limit }} characters",
      * allowEmptyString = false

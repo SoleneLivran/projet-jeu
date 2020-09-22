@@ -69,7 +69,7 @@ class Action
      * @Groups({"story:view", "action:view", "next_scene"})
      * @Assert\Length(
      * min = 2,
-     * max = 2000,
+     * max = 80,
      * minMessage = "The soundFile must be at least {{ limit }} characters long",
      * maxMessage = "The soundFile cannot be longer than {{ limit }} characters",
      * allowEmptyString = false

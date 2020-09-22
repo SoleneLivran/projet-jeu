@@ -39,7 +39,7 @@ class Avatar
      * @Groups({"app_users:list", "app_user:view", "avatars:list", "avatar:view"})
      * @Assert\Length(
      * min = 2,
-     * max = 70,
+     * max = 80,
      * minMessage = "The avatar name must be at least {{ limit }} characters long",
      * maxMessage = "The avatar name cannot be longer than {{ limit }} characters",
      * allowEmptyString = false
