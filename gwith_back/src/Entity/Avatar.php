@@ -6,6 +6,8 @@ use App\Repository\AvatarRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=AvatarRepository::class)
@@ -33,10 +35,17 @@ class Avatar
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": "default_avatar"})
      * @Groups({"app_users:list", "app_user:view", "avatars:list", "avatar:view"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 70,
+     * minMessage = "The avatar name must be at least {{ limit }} characters long",
+     * maxMessage = "The avatar name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
-    private $pictureFile = "";
+    private $pictureFile = "default_avatar";
 
     public function __construct()
     {

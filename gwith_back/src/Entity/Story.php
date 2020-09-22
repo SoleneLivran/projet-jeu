@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
@@ -48,18 +49,33 @@ class Story
     /**
      * @ORM\Column(type="smallint", options={"default": App\Entity\Story::STATUS_DRAFT})
      * @Groups({"story:view", "stories:view_user_stories"})
+     * @Assert\Range(
+     * min = 1,
+     * max = 2,
+     * notInRangeMessage = "The status has to be set between {{ min }} and {{ max }}",
+     * )
      */
     private $status = self::STATUS_DRAFT;
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
      * @Groups({"stories:list", "story:view", "stories:view_user_stories"})
+     * @Assert\Range(
+     * min = 0,
+     * max = 5,
+     * notInRangeMessage = "The rating's note has to be set between {{ min }} and {{ max }}",
+     * )
      */
     private $rating = 0;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
      * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
+     * @Assert\Range(
+     * min = 1,
+     * max = 3,
+     * notInRangeMessage = "The difficulty has to be set between {{ min }} and {{ max }}",
+     * )
      */
     private $difficulty;
 
@@ -91,14 +107,28 @@ class Story
     /**
      * @ORM\Column(type="string", length=255, options={"default": "Sans Titre"})
      * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 200,
+     * minMessage = "The title must be at least {{ limit }} characters long",
+     * maxMessage = "The title cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $title = "Sans Titre";
 
     /**
-     * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": "default_story"})
      * @Groups({"stories:list", "story:view", "stories:view_user_stories", "story:editable"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 200,
+     * minMessage = "The pictureFile must be at least {{ limit }} characters long",
+     * maxMessage = "The pictureFile cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
-    private $pictureFile = "";
+    private $pictureFile = "default_story";
 
     /**
      * @ORM\OneToOne(targetEntity=Scene::class, cascade={"persist", "remove"})

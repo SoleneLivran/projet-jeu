@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AppUserRepository::class)
@@ -29,17 +30,34 @@ class AppUser implements UserInterface
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"stories:list", "story:view", "app_users:list", "app_user:view"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 50,
+     * minMessage = "Your name must be at least {{ limit }} characters long",
+     * maxMessage = "Your name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"app_users:list", "app_user:view"})
+     * @Assert\Email(
+     * message = "The email '{{ value }}' is not a valid email."
+     * )
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 6,
+     * max = 50,
+     * minMessage = "Your password must be at least {{ limit }} characters long",
+     * maxMessage = "Your password cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $password;
 
