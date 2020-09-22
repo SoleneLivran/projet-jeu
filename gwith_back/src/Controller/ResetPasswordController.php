@@ -122,7 +122,8 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirect('https://www.google.com/'); // TODO : check where to redirect. To front ? To "ok" page with a link to the front ?
+            // redirection URL parametrable
+            return $this->redirect($this->getParameter('url_redirect_after_password_reset')); // TODO : check where to redirect. To front ? To "ok" page with a link to the front ?
         }
 
         return $this->render('reset_password/reset.html.twig', [
