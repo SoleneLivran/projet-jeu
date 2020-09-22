@@ -3,143 +3,178 @@ App\Entity\Event:
       name: "Crocodile"
       description: "Vous faites face à un crocodile"
       eventType: '@eventtype_animal'
+      pictureFile: "event_crocodile"
     event_nothing_special:
       name: "Rien de spécial"
       description: "Il ne se passe rien de spécial"
       eventType: '@eventtype_event'
+      pictureFile: "event_nothing_special"
     event_drunk:
       name: "Ivresse"
       description: "Vous êtes ivre"
       eventType: '@eventtype_state'
+      pictureFile: "event_drunk"
     event_thirst:
       name: "Soif"
       description: "Vous avez très soif"
       eventType: '@eventtype_state'
+      pictureFile: "event_thirst"
     event_lost:
       name: "Perdu"
       description: "Vous êtes complètement perdu"
       eventType: '@eventtype_state'
+      pictureFile: "event_lost"
     event_bear:
       name: "Ours"
       description: "Vous êtes face à un ours"
       eventType: '@eventtype_animal'
+      pictureFile: "event_bear"
     event_alien:
       name: "Alien"
       description: "Vous êtes face à un alien"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_alien"
     event_wedding:
       name: "Mariage"
       description: "Vous voilà à un mariage"
       eventType: '@eventtype_event'
+      pictureFile: "event_wedding"
     event_snake:
       name: "Serpent"
       description: "Vous faites face à un serpent"
       eventType: '@eventtype_animal'
+      pictureFile: "event_snake"
     event_camel:
       name: "Chameau"
       description: "Vous faites face à un chameau"
       eventType: '@eventtype_animal'
+      pictureFile: "event_camel"
     event_trader:
       name: "Marchand"
       description: "Vous rencontrez un marchand"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_trader"
     event_lion:
       name: "Lion"
       description: "Vous faites face à un lion"
       eventType: '@eventtype_animal'
+      pictureFile: "event_lion"
     event_crossroads:
       name: "Carrefour"
       description: "Plusieurs routes s'étendent devant vous"
       eventType: '@eventtype_crossroads'
+      pictureFile: "event_crossroads"
     event_wooden_chest:
       name: "Coffre en bois"
       description: "Vous êtes face à un coffre en bois"
       eventType: '@eventtype_item'
+      pictureFile: "event_wooden_chest"
     event_stone_chest:
       name: "Coffre en pierre"
       description: "Vous êtes face à un coffre en pierre"
       eventType: '@eventtype_item'
+      pictureFile: "event_stone_chest"
     event_drawer:
       name: "Tiroir"
       description: "Vous remarquez un tiroir"
       eventType: '@eventtype_item'
+      pictureFile: "event_drawer"
     event_key:
       name: "Clé"
       description: "Vous trouvez une clé"
       eventType: '@eventtype_item'
+      pictureFile: "event_key"
     event_painting:
       name: "Tableau"
       description: "Il y a un tableau au mur"
       eventType: '@eventtype_item'
+      pictureFile: "event_painting"
     event_strange_box:
       name: "Boîte étrange"
       description: "Vous êtes face à une boîte étrange"
       eventType: '@eventtype_item'
+      pictureFile: "event_strange_box"
     event_mysterious_map:
       name: "Carte mystérieuse"
       description: "Voici une carte mystérieuse"
       eventType: '@eventtype_item'
+      pictureFile: "event_mysterious_map"
     event_treasure:
       name: "Trésor"
       description: "Vous trouvez un trésor !"
       eventType: '@eventtype_item'
+      pictureFile: "event_treasure"
     event_trap:
       name: "Piège"
       description: "Vous allez tomber dans un piège !"
       eventType: '@eventtype_item'
+      pictureFile: "event_trap"
     event_temple:
       name: "Temple"
       description: "Un temple se dresse devant vous"
       eventType: '@eventtype_arrive_to_place'
+      pictureFile: "event_temple"
     event_death:
       name: "Mort"
       description: "Vous êtes...mort"
       isEnd: true
       eventType: '@eventtype_death'
+      pictureFile: "event_death"
     event_gameEnd:
       name: "Fin"
       description: "Fin du jeu"
       isEnd: true
       eventType: '@eventtype_end'
+      pictureFile: "event_gameEnd"
     event_gameLost:
       name: "Jeu perdu"
       description: "Vous avez perdu"
       isEnd: true
       eventType: '@eventtype_end'
+      pictureFile: "event_gameLost"
     event_gameWon:
       name: "Jeu gagné"
       description: "Vous avez gagné"
       isEnd: true
       eventType: '@eventtype_end'
+      pictureFile: "event_gameWon"
     event_mayor:
       name: "Maire"
       description: "Voici le maire"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_mayor"
     event_home_owner_woman:
       name: "Maitresse de maison"
       description: "Voici la maitresse de maison"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_home_owner_woman"
     event_home_owner_man:
       name: "Maitresse de maison"
       description: "Voici maitre de maison"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_home_owner_man"
     event_butler:
       name: "Majordome"
       description: "Voici le majordome"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_butler"
     event_painter:
       name: "Peintre"
       description: "Vous rencontrez un peintre"
       eventType: '@eventtype_encouter'
+      pictureFile: "event_painter"
     event_caramels:
       name: "Caramels"
       description: "Vous trouvez une boite de caramels"
       eventType: '@eventtype_food'
+      pictureFile: "event_caramels"
     event_locked:
       name: "Verrouillé"
       description: "C'est verrouillé"
       eventType: '@eventtype_opening'
+      pictureFile: "event_locked"
     event_last_will:
       name: "Testament"
       description: "Vous trouvez un testament"
       eventType: '@eventtype_written_document'
+      pictureFile: "event_last_will"
