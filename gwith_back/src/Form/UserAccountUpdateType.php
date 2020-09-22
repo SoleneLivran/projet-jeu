@@ -29,11 +29,22 @@ class UserAccountUpdateType extends AbstractType
         ;
 
         $builder
+            ->add(
+                'oldPassword',
+                PasswordType::class,
+                [
+                    "mapped" => false,
+                    "constraints" => [
+                        new UserPassword()
+                    ]
+                ]
+            );
+
+        $builder
             ->add('newPassword', PasswordType::class, [
                 'required' => false,
                 'mapped' => false,
                 'constraints' => [
-                    new NotBlank(),
                     new Length([
                         'min' => 6,
                         'max' => 4096,

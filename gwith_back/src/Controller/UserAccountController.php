@@ -94,16 +94,22 @@ class UserAccountController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-
+ 
             $newName = $form->get('newName')->getData();
-            $user->setName($newName);
+            if (!empty($newName)) {
+                $user->setName($newName);
+            }
 
             $newMail = $form->get('newMail')->getData();
-            $user->setMail($newMail);
+            if (!empty($newMail)) {
+                $user->setMail($newMail);
+            }
 
             $plainPassword = $form->get('newPassword')->getData();
-            $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
-            $user->setPassword($encodedPassword);
+            if (!empty($plainPassword)) {
+                $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword);
+                $user->setPassword($encodedPassword);
+            }
 
             $this->getDoctrine()->getManager()->flush();
             
