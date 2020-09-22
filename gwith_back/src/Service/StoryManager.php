@@ -8,6 +8,7 @@ use App\Entity\Place;
 use App\Entity\Scene;
 use App\Entity\Story;
 use App\Entity\Transition;
+use App\Repository\StoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class StoryManager
@@ -17,9 +18,12 @@ class StoryManager
      */
     private $manager;
 
-    public function __construct(EntityManagerInterface $manager)
+    private $repository;
+
+    public function __construct(EntityManagerInterface $manager, StoryRepository $repository)
     {
        $this->manager = $manager;
+       $this->repository = $repository;
     }
 
     public function createScenes(Story $story, array $scenesData)
@@ -104,5 +108,28 @@ class StoryManager
                 $this->manager->persist($transition);
             }
         }
+    }
+
+    public function checkStory(Story $story) : array
+    {
+        $errors = [];
+
+        if(!$this->repository->doesStoryHasFirstScene($story)) {
+            $errors[] = "L'histoire n'a pas de scène de début";
+        }
+
+        if(!$this->repository->doesStoryHasEnd($story)) {
+            $errors[] = "L'histoire doit avoir au moins une fin";
+        }
+
+        if(!$this->repository->doNonEndScenesHaveTransitions($story)) {
+            $errors[] = "Toutes les scènes qui ne sont pas la fin de l'histoire doivent avoir une transition";
+        }
+
+        if(!$this->repository->doTransitionsHaveNextScene($story)) {
+            $errors[] = "Au moins une transition n'a pas de nextScene";
+        }
+
+        return $errors;
     }
 }

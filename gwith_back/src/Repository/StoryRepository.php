@@ -124,38 +124,19 @@ class StoryRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function storyErrors(Story $story) : array
+    // ===== Checks : is story playable? =====
+
+    public function doesStoryHasFirstScene(Story $story) : bool
     {
-        $errors = [];
-
-        // ===========  if a transition in the story has no nextSceneId => error ================
-        // we check the transitions of the current story
-        $queryBuilder = $this->createQueryBuilder('story');
-        $queryBuilder->join('story.scenes', 'scene');
-        $queryBuilder->join('scene.transitions', 'transition');
-
-        $queryBuilder->where('story = :story');
-        // find null nextScene
-        $queryBuilder->andWhere('transition.nextScene is NULL');
-
-        $queryBuilder->setParameter('story', $story);
-
-        // execute request
-        $query = $queryBuilder->getQuery();
-
-        // echo $query->getSQL();die;
-
-        $result = $query->getResult();
-
-        if (count($result) > 0) {
-            $errors[] = "Au moins une transition n'a pas de nextScene";
+        if ($story->getFirstScene() == null) {
+            return false;
         }
 
-        // ============= if a scene with event isEnd=false doesn't have a transition => error ===============
-        // foreach
+        return true;
+    }
 
-
-        // ============= if not at least one isEnd event => error =============
+    public function doesStoryHasEnd(Story $story) : bool
+    {
         // we check the events of the current story
         $queryBuilder = $this->createQueryBuilder('story');
         $queryBuilder->join('story.scenes', 'scene');
@@ -172,17 +153,52 @@ class StoryRepository extends ServiceEntityRepository
         $query = $queryBuilder->getQuery();
         $result = $query->getResult();
 
+        // if no isEnd=true found :
         if (count($result) <= 0) {
-            $errors[] = "L'histoire doit avoir au moins une fin";
+            return false;
         }
 
-        // ============= if a firstSceneId is null => error ==============
-        if ($story->getFirstScene() == null) {
-            // should not happen. If it does, only send this error at first to correct it before seeing if something else is broken
-            $errors = [];
-            $errors[] = "L'histoire n'a pas de scene de debut";
+        return true;
+    }
+
+    public function doNonEndScenesHaveTransitions(Story $story) : bool
+    {
+        // For each scene...
+        foreach ($story->getScenes() as $scene) {
+            // if it's not the story's end...
+            if (!$scene->getEvent()->getIsEnd()) {
+                // do we have at least 1 transition?
+                if ($scene->getTransitions()->count() <= 0) {
+                    return false;
+                }
+            }
         }
 
-        return $errors;
+        return true;
+    }
+
+    public function doTransitionsHaveNextScene(Story $story) : bool
+    {
+        // we check the transitions of the current story
+        $queryBuilder = $this->createQueryBuilder('story');
+        $queryBuilder->join('story.scenes', 'scene');
+        $queryBuilder->join('scene.transitions', 'transition');
+
+        $queryBuilder->where('story = :story');
+        // find null nextScene
+        $queryBuilder->andWhere('transition.nextScene is NULL');
+
+        $queryBuilder->setParameter('story', $story);
+
+        // execute request
+        $query = $queryBuilder->getQuery();
+
+        $result = $query->getResult();
+
+        if (count($result) > 0) {
+            return false;
+        }
+
+        return true;
     }
 }
