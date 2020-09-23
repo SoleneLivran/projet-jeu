@@ -130,6 +130,10 @@ class StoryManager
             $errors[] = "Au moins une transition n'a pas de nextScene";
         }
 
+        if(!$this->repository->doesStoryHasCategory($story)) {
+            $errors[] = "Choisir une catégorie pour l'histoire";
+        }
+
         return $errors;
     }
 }
