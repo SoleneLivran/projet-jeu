@@ -201,4 +201,13 @@ class StoryRepository extends ServiceEntityRepository
 
         return true;
     }
+
+    public function doesStoryHasCategory(Story $story) : bool
+    {
+        if ($story->getCategory() == null) {
+            return false;
+        }
+
+        return true;
+    }
 }
