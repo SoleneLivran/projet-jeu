@@ -123,7 +123,7 @@ class ResetPasswordController extends AbstractController
             $this->cleanSessionAfterReset();
 
             // redirection URL parametrable
-            return $this->redirect($this->getParameter('url_redirect_after_password_reset')); // TODO : check where to redirect. To front ? To "ok" page with a link to the front ?
+            return $this->redirect($this->getParameter('url_redirect_after_password_reset'));
         }
 
         return $this->render('reset_password/reset.html.twig', [
