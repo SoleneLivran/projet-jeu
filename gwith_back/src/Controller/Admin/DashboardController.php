@@ -42,7 +42,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('The GWITH Back-end Interface, welcomes you');
+            ->setTitle('➤ The GWITH Back-end Interface, welcomes you 🎮');
     }
 
     public function configureMenuItems(): iterable
@@ -50,23 +50,23 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             // yield MenuItem::linkToCrud('The Label', 'icon class', EntityClass::class);
-            MenuItem::section('Create'),
+            MenuItem::section('― Create', 'fas fa-arrow-alt-circle-down'),
             MenuItem::linkToCrud('Places', 'fas fa-globe-americas', Place::class),
             MenuItem::linkToCrud('Events', 'fas fa-fighter-jet', Event::class),
             MenuItem::linkToCrud('Actions', 'fas fa-bicycle', Action::class),
 
-            MenuItem::section('Users'),
+            MenuItem::section('― Users', 'fas fa-arrow-alt-circle-down'),
             MenuItem::linkToCrud('AppUsers', 'fas fa-user', AppUser::class),
             MenuItem::linkToCrud('Avatars', 'fas fa-image', Avatar::class),
 
-            MenuItem::section('Stories'),
+            MenuItem::section('― Stories', 'fas fa-arrow-alt-circle-down'),
             MenuItem::linkToCrud('Stories', 'fa fa-book-open', Story::class),
             MenuItem::linkToCrud('Scenes', 'fa fa-video', Scene::class),
             MenuItem::linkToCrud('Transitions', 'fa fa-forward', Transition::class),
             MenuItem::linkToCrud('Ratings', 'fa fa-star-half-alt', Rating::class),
             
 
-            MenuItem::section('Filtres'),
+            MenuItem::section('― Filtres', 'fas fa-arrow-alt-circle-down'),
             MenuItem::linkToCrud('Story Categories', 'fa fa-book-dead', StoryCategory::class),
             MenuItem::linkToCrud('Action Types', 'fas fa-skiing', ActionType::class),
             MenuItem::linkToCrud('Event Types', 'fas fa-cloud-moon-rain', EventType::class),
