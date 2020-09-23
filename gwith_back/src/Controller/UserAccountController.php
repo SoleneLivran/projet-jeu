@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 use App\Form\RegistrationFormType;
+use App\Form\UserAccountUpdateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -91,7 +92,10 @@ class UserAccountController extends AbstractController
         /** @var AppUser $user */
         $user = $this->getUser();
         $form = $this->createForm(UserAccountUpdateType::class, $user);
-        $form->handleRequest($request);
+
+        $submittedData = json_decode($request->getContent(), true);
+        // false = clear missing fields
+        $form->submit($submittedData, false);
 
         if($form->isSubmitted() && $form->isValid()) {
  
@@ -124,7 +128,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'\est produite lors de la mise à jour"
+                "errors" => "Une erreur s'est produite lors de la mise à jour"
             ],
             Response::HTTP_BAD_REQUEST
         );

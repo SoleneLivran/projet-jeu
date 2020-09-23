@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\AppUser;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +19,7 @@ class UserAccountUpdateType extends AbstractType
     {
         $builder
             ->add('newName', TextType::class, [
+                'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new Length([
@@ -33,7 +35,7 @@ class UserAccountUpdateType extends AbstractType
                 'oldPassword',
                 PasswordType::class,
                 [
-                    "mapped" => false,
+                    'mapped' => false,
                     "constraints" => [
                         new UserPassword()
                     ]
@@ -54,6 +56,7 @@ class UserAccountUpdateType extends AbstractType
 
         $builder
             ->add('newMail',EmailType::class, [
+                'mapped' => false,
                 'required' => false
             ]);       
     }
