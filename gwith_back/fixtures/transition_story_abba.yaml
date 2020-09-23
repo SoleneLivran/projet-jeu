@@ -16,7 +16,7 @@ App\Entity\Transition:
   # taverne / ivresse -> aller au bar -> taverne / rien de special
     updatedAt: <dateTime()>
     currentScene: '@scene_b'
-    action: '@action_order_beer'
+    action: '@action_go_to_bar'
     nextScene: '@scene_a'
   transition_d:
   # taverne / rien de special -> bagarre -> foret / ours
