@@ -20,3 +20,6 @@ App\Entity\StoryCategory:
   storycategory_absurd:
     name: "Absurde"
     updatedAt: <dateTime()>
+  storycategory_other:
+    name: "Autre"
+    updatedAt: <dateTime()>

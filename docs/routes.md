@@ -16,7 +16,7 @@
 
 | URL | HTTP Method | Controller | Method | Title | Content | Comment | API datas
 |--|--|--|--|--|--|--|--|
-|`/api/places`|`GET`|`PlaceController`|`list`|||Get all places||
+|`/api/places`|`GET`|`PlaceController`|`list`|||Get all places. Use query params for filters.||
 |`/api/places/{id}`|`GET`|`PlaceController`|`view`|||Get one place by its ID||
 |`/api/place_types`|`GET`|`PlaceTypeController`|`list`|||Get all place types||
 |`/api/events`|`GET`|`EventController`|`list`|||Get all events||
@@ -27,19 +27,22 @@
 |`/api/action_types`|`GET`|`ActionTypeController`|`list`|||Get all the action_types||
 |`/api/app_users`|`GET`|`AppUserController`|`list`|||Get all users||
 |`/api/app_users/{id}`|`GET`|`AppUserController`|`view`|||Get one user by its ID||
-|`/api/app_users/{id}`|`PUT`|`AppUserController`|``|||Edit a user||
+|`/api/app_users/{id}/stories`|`GET`|`AppUserController`|`viewStories`|||Get one user by its ID||
+|`/api/account/{id}`|`PUT`|`AppUserController`|`updateAccount`|||Edit a user||
+|`/api/account/{id}`|`DELETE`|`UserAccountController`|`deleteAccount`|||Delete the user's account||
 |`/api/register`|`POST`|`SecurityController`|`createAccount`|||Create a user||
-|`/api/account/delete`|`DELETE ?`|`UserAccountController`|`delete`|||Delete the user's account||
-|`/api/account/password_update`|`PUT ?`|`UserAccountController`|`passwordUpdate`|||Update the user's password||
-|`/api/account/user_name_update`|`PUT ?`|`UserAccountController`|`userNameUpdate`|||Update the user's name||
 |`/api/login`|`POST`|`SecurityController`|``|||Login validation||
 |`/api/avatars`|`GET`|`AvatarController`|`list`|||Get all avatars||
 |`/api/avatars/{id}`|`GET`|`AvatarController`|`view`|||Get one avatar by its ID||
 |`/api/public/stories`|`GET`|`StoryController`|`list`|||Get all stories||
-|`/api/public/stories/latest_ten`|`GET`|`StoryController`|`listLatestTen`|||Get the 10 latest published stories||
-|`/api/public/stories/top_ten`|`GET`|`StoryController`|`listTopTen`|||Get the 10 best rated stories||
+|`/api/public/stories/latest_five`|`GET`|`StoryController`|`listLatestFive`|||Get the 5 latest published stories||
+|`/api/public/stories/top_five`|`GET`|`StoryController`|`listTopFive`|||Get the 5 best rated stories||
 |`/api/public/stories/{id}`|`GET`|`StoryController`|`view`|||Get one story by its ID||
 |`/api/transitions/{id}/next_scene`|`GET`|`SceneController`|`getNextScene`|||Get next scene from a transition||
-|`/api/stories`|`POST`|`StoryController`|``|||Create a story ||
-|`/api/stories/{id}`|`PUT`|`StoryController`|``|||Edit a Story||
+|`/api/stories`|`POST`|`StoryController`|`create`|||Create a story ||
+|`/api/stories/{id}`|`PUT`|`StoryController`|`update`|||Edit a Story||
+|`/api/stories/{id}`|`DELETE`|`StoryController`|`delete`|||Delete a Story||
+|`/api/stories/{id}/publish`|`PATCH`|`StoryController`|`publish`|||Publish a Story (status from draft to published)||
+|`/api/stories/{id}/editable`|`GET`|`StoryController`|`editableStory`|||Get editable version of a Story||
+|`/api/stories/{id}/rating`|`POST`|`StoryController`|`storyRating`|||Post a rating for a Story||
 |`/api/public/story_categories`|`GET`|`StoryCategoryController`|`list`|||Get all story categories||

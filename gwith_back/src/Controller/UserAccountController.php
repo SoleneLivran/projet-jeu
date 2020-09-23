@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 use App\Form\RegistrationFormType;
+use App\Form\UserAccountUpdateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -91,25 +92,69 @@ class UserAccountController extends AbstractController
         /** @var AppUser $user */
         $user = $this->getUser();
         $form = $this->createForm(UserAccountUpdateType::class, $user);
-        $form->handleRequest($request);
+
+        $submittedData = json_decode($request->getContent(), true);
+        // false = clear missing fields
+        $form->submit($submittedData, false);
 
         if($form->isSubmitted() && $form->isValid()) {
-
+ 
             $newName = $form->get('newName')->getData();
-            $user->setName($newName);
+            if (!empty($newName)) {
+                $user->setName($newName);
+            }
 
             $newMail = $form->get('newMail')->getData();
-            $user->setMail($newMail);
+            if (!empty($newMail)) {
+                $user->setMail($newMail);
+            }
+
+            $plainPassword = $form->get('newPassword')->getData();
+            if (!empty($plainPassword)) {
+                $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword);
+                $user->setPassword($encodedPassword);
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+            
+            return $this->json(
+                [
+                    "success" => true
+                ],
+                Response::HTTP_OK
+            );
+        }
+
+        return $this->json(
+            [
+                "success" => false,
+                "errors" => "Une erreur s'est produite lors de la mise à jour"
+            ],
+            Response::HTTP_BAD_REQUEST
+        );
+    }
+
+    /**
+     * @Route("/account/avatar/{id}", name="avatar_update", methods={"PUT"}, requirements={"id"="\d+"})
+     */
+    public function avatar(Request $request, UserInterface $user)
+    {
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException('You can\'t update another person\'s account!');
+        }
+
+        /** @var AppUser $user */
+        $user = $this->getUser();
+        $form = $this->createForm(AvatarType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $avatar = $form->get('avatar')->getData();
             $user->setAvatar($avatar);
 
-            $plainPassword = $form->get('newPassword')->getData();
-            $encodedPassword = $passwordEncoder->encodePassword($user, $plainPassword); 
-            $user->setPassword($encodedPassword);
-
             $this->getDoctrine()->getManager()->flush();
-            
+
             return $this->json(
                 [
                     "success" => true

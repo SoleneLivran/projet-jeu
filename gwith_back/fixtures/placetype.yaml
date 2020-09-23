@@ -2,21 +2,28 @@ App\Entity\PlaceType:
   placetype_nature:
     name: "Nature"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_nature"
   placetype_desert:
     name: "Désert"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_desert"
   placetype_space:
     name: "Espace"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_space"
   placetype_ocean:
     name: "Océan"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_ocean"
   placetype_city:
     name: "Cité"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_city"
   placetype_inside:
     name: "Intérieur"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_inside"
   placetype_air:
     name: "Aérien"
     updatedAt: <dateTime()>
+    pictureFile: "placetype_air"

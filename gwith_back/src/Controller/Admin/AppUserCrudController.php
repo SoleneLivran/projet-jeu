@@ -46,14 +46,6 @@ class AppUserCrudController extends AbstractCrudController
         ;
     }
 
-   /*  public function getFields(string $action): iterable
-    {
-    return [
-        ArrayField::new('roles')->setPermission('ROLE_ADMIN'),
-    ];
-
-    } */
-
       public function configureActions(Actions $actions): Actions
     {
         // This method is used to create the permissions according to roles for the CRUD methods

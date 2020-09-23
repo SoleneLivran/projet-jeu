@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventTypeRepository::class)
@@ -26,6 +27,18 @@ class EventType
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"events:list", "event:view", "story:view", "next_scene", "event_types:list"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
+     * @Assert\Length(
+     * min = 2,
+     * max = 50,
+     * minMessage = "The name must be at least {{ limit }} characters long",
+     * maxMessage = "The name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $name;
 

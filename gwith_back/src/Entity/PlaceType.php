@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PlaceTypeRepository::class)
@@ -26,6 +27,18 @@ class PlaceType
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"places:list", "place:view", "story:view", "next_scene", "place_types:list"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * ) 
+     * @Assert\Length(
+     * min = 2,
+     * max = 60,
+     * minMessage = "The name must be at least {{ limit }} characters long",
+     * maxMessage = "The name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
     private $name;
 
@@ -40,10 +53,17 @@ class PlaceType
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": "default_place_type"})
      * @Groups({"story:view", "next_scene", "place_types:list"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 80,
+     * minMessage = "The pictureFile must be at least {{ limit }} characters long",
+     * maxMessage = "The pictureFile cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
-    private $pictureFile = "";
+    private $pictureFile = "default_place_type";
 
     /**
      * @ORM\ManyToMany(targetEntity=Place::class, mappedBy="placeType")
