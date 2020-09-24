@@ -93,7 +93,7 @@ class StoryRepository extends ServiceEntityRepository
 
          // je personnalise ma requete (ici max 10 résultats et ordonné par rating)
          $queryBuilder->setMaxResults(5);
-         $queryBuilder->addOrderBy('story.rating');
+         $queryBuilder->addOrderBy('story.rating', 'DESC');
 
          // execute the request
          $query = $queryBuilder->getQuery();
