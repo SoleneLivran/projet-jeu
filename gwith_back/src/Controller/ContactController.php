@@ -6,6 +6,7 @@ use App\Form\ContactType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,9 +19,11 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(MailerInterface $mailer)
+    public function contact(request $request, MailerInterface $mailer)
     {
+        $contactData = json_decode($request->getContent(), true);
         $form = $this->createForm(ContactType::class);
+        $form->submit($contactData, true);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
