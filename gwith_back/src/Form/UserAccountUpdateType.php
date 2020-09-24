@@ -18,6 +18,7 @@ class UserAccountUpdateType extends AbstractType
     {
         $builder
             ->add('newName', TextType::class, [
+                'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new Length([
@@ -33,10 +34,10 @@ class UserAccountUpdateType extends AbstractType
                 'oldPassword',
                 PasswordType::class,
                 [
-                    "mapped" => false,
-                    "constraints" => [
+                    'mapped' => false,
+                /*     "constraints" => [
                         new UserPassword()
-                    ]
+                    ] */
                 ]
             );
 
@@ -54,6 +55,7 @@ class UserAccountUpdateType extends AbstractType
 
         $builder
             ->add('newMail',EmailType::class, [
+                'mapped' => false,
                 'required' => false
             ]);       
     }
