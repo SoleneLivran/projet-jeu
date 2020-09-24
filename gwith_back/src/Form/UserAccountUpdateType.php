@@ -36,9 +36,9 @@ class UserAccountUpdateType extends AbstractType
                 PasswordType::class,
                 [
                     'mapped' => false,
-                    "constraints" => [
-                        new UserPassword()
-                    ]
+                /*     "constraints" => [
+                            new UserPassword()
+                    ] */
                 ]
             );
 
