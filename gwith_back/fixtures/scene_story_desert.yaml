@@ -81,7 +81,7 @@ App\Entity\Scene:
     story: '@story_desert'
   scene_bb:
     updatedAt: <dateTime()>
-    place: '@place_dunes'
+    place: '@place_city'
     event: '@event_gameWon'
     story: '@story_desert'
   scene_cc:

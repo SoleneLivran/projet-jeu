@@ -4,98 +4,118 @@ App\Entity\Place:
       description: "Vous entrez dans la forêt"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_nature'
+      pictureFile: "place_forest"
     place_oasis:
       name: "Oasis"
       description: "Vous entrez dans une oasis"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
+      pictureFile: "place_oasis"
     place_dunes:
       name: "Dunes"
       description: "Vous êtes au milieu des dunes"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
+      pictureFile: "place_dunes"
     place_lake:
       name: "Lac"
       description: "Vous arrivez aux abords d'un Lac"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_nature'
+      pictureFile: "place_lake"
     place_raft:
       name: "Radeau"
       description: "Vous montez sur un radeau"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_ocean'
+      pictureFile: "place_raft"
     place_spaceship:
       name: "Vaisseau Spatial"
       description: "Vous entrez dans un vaisseau spatial"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_space'
+      pictureFile: "place_spaceship"
     place_tavern:
       name: "Taverne"
       description: "Vous entrez dans la taverne"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_tavern"
     place_caravanserail:
       name: "Caravansérail"
       description: "Vous arrivez dans un caravansérail"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_desert'
+      pictureFile: "place_caravanserail"
     place_city:
       name: "Ville"
       description: "Vous arrivez dans une ville"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_city'
+      pictureFile: "place_city"
     place_village:
       name: "Village"
       description: "Vous arrivez dans un village"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_city'
+      pictureFile: "place_village"
     place_future_city:
       name: "Ville futuriste"
       description: "Vous arrivez dans une ville"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_city'
+      pictureFile: "place_future_city"
     place_black_hole:
       name: "Trou noir"
       description: "Vous arrivez dans un trou noir"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_space'
+      pictureFile: "place_black_hole"
     place_temple:
       name: "Temple"
       description: "Vous êtes dans un temple"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_temple"
     place_living_room:
       name: "Salon"
       description: "Vous êtes dans un salon"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_living_room"
     place_kitchen:
       name: "Cuisine"
       description: "Vous êtes dans une cuisine"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_kitchen"
     place_veranda:
       name: "Véranda"
       description: "Vous êtes dans une véranda"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_veranda"
     place_office:
       name: "Bureau"
       description: "Vous êtes dans un bureau"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_office"
     place_bedroom:
       name: "Chambre"
       description: "Vous êtes dans une chambre"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_bedroom"
     place_garden:
       name: "Jardin"
       description: "Vous êtes dans un jardin"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_garden"
     place_written_document_content:
       name: "Message"
       description: "Vous lisez le contenu du document"
       updatedAt: <dateTime()>
       addPlaceType: '@placetype_inside'
+      pictureFile: "place_written_document_content"

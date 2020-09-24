@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ActionRepository::class)
@@ -26,12 +27,29 @@ class Action
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
+     * @Assert\Length(
+     * min = 2,
+     * max = 50,
+     * minMessage = "Your name must be at least {{ limit }} characters long",
+     * maxMessage = "Your name cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false 
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"actions:list", "action:view", "story:view", "next_scene"})
+     * @Assert\Regex(
+     *     pattern="/^[\sa-zA-Z0-9ÀÂÇÈÉÊËÎÔÙÛàâçèéêëîôöùû\.\(\)\[\]\'\-,;:\/!\?]+$/",
+     *     match=true,
+     *     message="Les caractères spéciaux ne sont pas autorisés"
+     * )
      */
     private $description;
 
@@ -47,10 +65,17 @@ class Action
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, options={"default": ""})
+     * @ORM\Column(type="string", length=255, options={"default": "default_action"})
      * @Groups({"story:view", "action:view", "next_scene"})
+     * @Assert\Length(
+     * min = 2,
+     * max = 80,
+     * minMessage = "The soundFile must be at least {{ limit }} characters long",
+     * maxMessage = "The soundFile cannot be longer than {{ limit }} characters",
+     * allowEmptyString = false
+     * )
      */
-    private $soundFile = "";
+    private $soundFile = "default_action";
 
     /**
      * @ORM\ManyToOne(targetEntity=ActionType::class, inversedBy="actions")
