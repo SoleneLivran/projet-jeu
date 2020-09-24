@@ -22,6 +22,10 @@ security:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
         public:
             pattern:  ^/api/public
             stateless: true
@@ -42,6 +46,9 @@ security:
             anonymous: true
             lazy: true
             provider: app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\AdminAuthenticator
             logout:
                 path: app_logout
 
