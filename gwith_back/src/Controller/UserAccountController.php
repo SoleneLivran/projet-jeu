@@ -48,7 +48,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors de la création du compte"
+                "errors" => "Une erreur s'\est produite lors de la création du compte"
             ],
             Response::HTTP_BAD_REQUEST
         );
@@ -128,7 +128,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors de la mise à jour"
+                "errors" => "Une erreur s'\est produite lors de la mise à jour"
             ],
             Response::HTTP_BAD_REQUEST
         );
