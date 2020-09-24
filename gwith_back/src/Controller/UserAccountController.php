@@ -48,7 +48,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors de la création du compte"
+                "errors" => $form->getErrors(true),
             ],
             Response::HTTP_BAD_REQUEST
         );
@@ -98,7 +98,7 @@ class UserAccountController extends AbstractController
         $form->submit($submittedData, false);
 
         if($form->isSubmitted() && $form->isValid()) {
- 
+
             $newName = $form->get('newName')->getData();
             if (!empty($newName)) {
                 $user->setName($newName);
@@ -128,7 +128,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors de la mise à jour"
+                "errors" => $form->getErrors(true),
             ],
             Response::HTTP_BAD_REQUEST
         );
@@ -166,7 +166,7 @@ class UserAccountController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'\est produite lors de la mise à jour"
+                "errors" => $form->getErrors(true),
             ],
             Response::HTTP_BAD_REQUEST
         );

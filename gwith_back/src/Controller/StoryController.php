@@ -136,7 +136,7 @@ class StoryController extends AbstractController
         return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'est produite lors de l'affectation d'une note à l'histoire"
+                "errors" => $form->getErrors(true),
             ],
             Response::HTTP_BAD_REQUEST
         );

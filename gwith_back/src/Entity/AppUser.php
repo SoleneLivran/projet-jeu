@@ -56,13 +56,6 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     * min = 6,
-     * max = 50,
-     * minMessage = "Your password must be at least {{ limit }} characters long",
-     * maxMessage = "Your password cannot be longer than {{ limit }} characters",
-     * allowEmptyString = false
-     * )
      */
     private $password;
 
