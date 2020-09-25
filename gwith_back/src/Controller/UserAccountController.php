@@ -144,16 +144,15 @@ class UserAccountController extends AbstractController
             throw $this->createAccessDeniedException('You can\'t update another person\'s account!');
         }
 
+        $submittedData = json_decode($request->getContent(), true);
+
         /** @var AppUser $user */
         $user = $this->getUser();
         $form = $this->createForm(AvatarType::class, $user);
-        $form->handleRequest($request);
+        // false = clear missing fields
+        $form->submit($submittedData, false);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $avatar = $form->get('avatar')->getData();
-            $user->setAvatar($avatar);
-
             $this->getDoctrine()->getManager()->flush();
 
             return $this->json(
