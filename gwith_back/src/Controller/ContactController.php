@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Entity\Contact;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Address;
@@ -21,35 +22,45 @@ class ContactController extends AbstractController
      */
     public function contact(request $request, MailerInterface $mailer)
     {
-        $contactData = json_decode($request->getContent(), true);
+        //$contactData = json_decode($request->getContent(), true);
+        
         $form = $this->createForm(ContactType::class);
-        $form->submit($contactData, true);
+        $form->handleRequest($request);
 
+        //$form->submit($contactData, true);
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
+            //$contactFormData = $form->getData();
+
             $email = (new Email())
-            ->from($form->get('from'))
-            ->to(new Address('gwith.project@gmail.com', 'GWITH'))
-            ->text($form->get('message'))
-        ;
+                ->from('contact@gwith.fr')
+                ->to(new Address('gwith.project@gmail.com', 'GWITH'))
+                ->text($form->get('message'))
+            ;
 
-        $mailer->send($email);
+            $mailer->send($email);
 
-        return $this->json(
-            [
-                "success" => true
-            ],
-            Response::HTTP_OK
-        );
-
+            return $this->json(
+                [
+                    "success" => true
+                ],
+                Response::HTTP_OK
+            );
         }
-
-        return $this->json(
+        
+        return $this->render(
+            'contact/contact.html.twig',
+            [
+                "email_form" => $form->createView()
+            ]
+        );
+        /* return $this->json(
             [
                 "success" => false,
-                "errors" => "Une erreur s'\est produite lors de l'\envoie de votre Mail"
+                "errors" => $form->getErrors(),
             ],
             Response::HTTP_BAD_REQUEST
-        );
+        ); */
     }
 }

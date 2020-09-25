@@ -30,6 +30,10 @@ security:
             pattern:  ^/api/register
             stateless: true
             anonymous: true
+        contact:
+            pattern:  ^/api/contact
+            stateless: true
+            anonymous: true
         api:
             # celui qui permet de mettre en place l'autorisation d'accès pour les routes /api (uniquement pour les users avec token)
             pattern:   ^/api
@@ -58,6 +62,7 @@ security:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/public, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/contact, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: ROLE_USER }
         - #{ path: ^/admin, roles: ROLE_ADMIN }
 
