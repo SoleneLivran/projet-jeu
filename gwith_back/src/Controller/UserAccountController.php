@@ -150,7 +150,6 @@ class UserAccountController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $avatar = $form->get('avatar')->getData();
             $user->setAvatar($avatar);
 

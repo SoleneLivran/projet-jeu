@@ -13,13 +13,20 @@ class AvatarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('avatar', IntegerType::class);
+            ->add(
+                'avatar',
+                EntityType::class,
+                [
+                    "class" => Avatar::class,
+                    "required" => true
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Avatar::class,
+            'data_class' => AppUser::class,
         ]);
     }
 }
