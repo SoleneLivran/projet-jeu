@@ -135,7 +135,7 @@ class UserAccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/avatar/{id}", name="avatar_update", methods={"PUT"}, requirements={"id"="\d+"})
+     * @Route("/account/{id}/avatar", name="avatar_update", methods={"PUT"}, requirements={"id"="\d+"})
      */
     public function avatar(Request $request, UserInterface $user)
     {
