@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
+use App\Form\AvatarType;
 use App\Form\RegistrationFormType;
 use App\Form\UserAccountUpdateType;
 use Symfony\Component\HttpFoundation\Request;
