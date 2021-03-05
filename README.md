@@ -15,7 +15,9 @@ More info and YouTube presentation of the project can be found <a href="https://
 ## Installation 
 
 ### Step 1 : Clone
-Clone project
+Clone project.
+<br>
+Get into 'gwith_back' directory.
 
 ### Step 2 : Install dependencies
 
