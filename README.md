@@ -69,4 +69,4 @@ $ php -S localhost:8080 -t public
 ```sh
 $ php bin/console lexik:jwt:generate-keypair
 ```
-and update .env.local JWT_PASSPHRASE with chosen password
+and update .env.local JWT_PASSPHRASE with chosen password and correct path to keys
