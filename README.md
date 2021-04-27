@@ -69,4 +69,12 @@ $ php -S localhost:8080 -t public
 ```sh
 $ php bin/console lexik:jwt:generate-keypair
 ```
+<<<<<<< Updated upstream
 and update .env.local JWT_PASSPHRASE with chosen password
+=======
+and update .env.local JWT_PASSPHRASE with chosen password and correct path to keys
+
+### Step 7 : Update environment variables
+
+Update .env.local URL_REDIRECT_AFTER_PASSWORD_RESET with address to redirect to after password reset (i.e. login page of your front-end server)
+>>>>>>> Stashed changes
